@@ -2,6 +2,8 @@ import subprocess
 import tempfile
 import gzip
 import profile_pb2
+import glob
+import os
 
 pprof_location = "/users/mrancic/go/bin/pprof"
 
@@ -27,5 +29,116 @@ def get_pprof_proto(
             unzipped = gzip.GzipFile(fileobj=zipped_file).read()
             return profile_pb2.Profile().FromString(unzipped)
 
-get_pprof_proto("../perf.data")
 
+class SymbolLookupRange:
+    
+    def __init__(
+        self,
+        memory_start,
+        memory_limit,
+        file_offset,
+        build_id
+    ):
+        self.memory_start = memory_start
+        self.memory_limit = memory_limit
+        self.file_offset = file_offset
+        self.build_id = build_id
+    def get_binary_addr(self, address):
+
+        if self.memory_start == 0 and address >= self.file_offset:
+            return address - self.file_offset
+        else:
+            return address - self.memory_start + self.file_offset
+
+def get_symbol_lookup_ranges(perf_data_file):
+    pprof_proto = get_pprof_proto(perf_data_file)
+
+    if pprof_proto:
+        symbol_lookup_ranges = []
+
+        # Extract pprof mapping table
+        for m in pprof_proto.mapping:
+            if not pprof_proto.string_table[m.build_id]:
+                continue
+            
+            symbol_lookup_ranges.append(
+                SymbolLookupRange(
+                    m.memory_start,
+                    m.memory_limit,
+                    m.file_offset,
+                    pprof_proto.string_table[m.build_id]
+                )
+            )
+        return symbol_lookup_ranges
+    else:
+        return None
+
+class Symbolizer:
+
+    def __init__(self, perf_data_file):
+        self.perf_data_file = perf_data_file
+        self.symbol_lookup_ranges = get_symbol_lookup_ranges(self.perf_data_file)
+    
+    def get_symbols(
+        self, lookup_addr_list
+    ):
+        bin_addr_rmap = {}
+        build_id_to_addr_map = {}
+        for slr in self.symbol_lookup_ranges:
+            for addr in lookup_addr_list:
+                if addr >= slr.memory_start and addr < slr.memory_limit:
+                    if slr.build_id not in build_id_to_addr_map:
+                        build_id_to_addr_map[slr.build_id] = []
+
+                    bin_addr = slr.get_binary_addr(addr)
+
+                    bin_addr_rmap[(slr.build_id, bin_addr)] = addr
+                    build_id_to_addr_map[slr.build_id].append(bin_addr)
+        
+        ret = {}
+        for addr in lookup_addr_list:
+            ret[addr] = None
+        
+        for build_id, addrs in build_id_to_addr_map.items():
+            if not addrs:
+                continue
+            print(str(build_id) + ", " + str(addrs))
+
+            # get build_id file
+            build_file = os.path.join(
+                os.environ["HOME"],
+                ".debug",
+                ".build-id",
+                build_id[0:2],
+                build_id[2:],
+                "elf"
+            )
+            print(build_file)
+
+            addr_str = " ".join([hex(addr) for addr in addrs])
+            # run addr2line
+            addr2line_command = [
+                "addr2line",
+                "-C",
+                "-f",
+                "-e", build_file,
+            ]
+            addr2line_command.extend([hex(addr) for addr in addrs])
+            addr_res = subprocess.run(addr2line_command, capture_output=True)
+            print(addr_res.stdout.decode())
+
+            lines = addr_res.stdout.decode().split("\n")
+            
+            symbols = lines[::2]
+            
+            for (symbol, addr) in zip(symbols, addrs):
+                ret[bin_addr_rmap[(build_id, addr)]] = symbol
+
+        return ret
+
+        
+
+# print(get_symbol_lookup_ranges("../perf.data"))
+
+s = Symbolizer("../perf.data")
+print(s.get_symbols([94378379552526, 94378379512512]))
