@@ -20,7 +20,7 @@ def get_pprof_proto(
                         ] + pprof_extra_argv
         print("generating profile")
         pprof_res = subprocess.run(pprof_command, capture_output=True)
-        print(pprof_res)
+        # print(pprof_res)
         if pprof_res.returncode != 0:
             print("Error generating pprof output")
             print(pprof_res.stderr)
@@ -102,7 +102,7 @@ class Symbolizer:
         for build_id, addrs in build_id_to_addr_map.items():
             if not addrs:
                 continue
-            print(str(build_id) + ", " + str(addrs))
+            # print(str(build_id) + ", " + str(addrs))
 
             # get build_id file
             build_file = os.path.join(
@@ -113,7 +113,7 @@ class Symbolizer:
                 build_id[2:],
                 "elf"
             )
-            print(build_file)
+            # print(build_file)
 
             addr_str = " ".join([hex(addr) for addr in addrs])
             # run addr2line
@@ -125,7 +125,7 @@ class Symbolizer:
             ]
             addr2line_command.extend([hex(addr) for addr in addrs])
             addr_res = subprocess.run(addr2line_command, capture_output=True)
-            print(addr_res.stdout.decode())
+            # print(addr_res.stdout.decode())
 
             lines = addr_res.stdout.decode().split("\n")
             
@@ -140,5 +140,5 @@ class Symbolizer:
 
 # print(get_symbol_lookup_ranges("../perf.data"))
 
-s = Symbolizer("../perf.data")
-print(s.get_symbols([94378379552526, 94378379512512]))
+# s = Symbolizer("../perf.data")
+# print(s.get_symbols([94378379552526, 94378379512512]))
