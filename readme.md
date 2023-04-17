@@ -62,10 +62,12 @@
 ```
 **How to run perf**  
 	```sudo perf record -j any_call,any_ret -p <microservice_pid> -- sleep <time_in_seconds>```
+
 **Setup:**  
 	run perf
 	generate the perf proto file 
 		```sudo perf_converter -i perf.data -o perf.proto -O proto```
+        
 **How to use the tool:**  
 	The tool gives you a list of all perf events. Each perf event has a sampled function (essentially the current function) and a branch stack (the last 16 functions that occurred before this function)
 	If you're more interested in the format of the perf events, look at perf_data.proto.
