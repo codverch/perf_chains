@@ -24,94 +24,49 @@ print("setting up symbolizer")
 symbolize = symbolizer.Symbolizer(PERF_DATA_LOCATION)
 
 print("starting code!")
-top_n_function = {"do_syscall_64", "__GI___pthread_mutex_lock",  "lru_maintainer_thread",  "conn_cleanup", "syscall_return_via_sysret",  "ipt_do_table",  "nf_hook_slow", "ind_busiest_group","ipt_do_table","__fget", "drive_machine", "do_cache_free", "ixgbe_poll", "update_load_avg", "__pthread_mutex_unlock_usercnt"}
+top_n_function = {"__pthread_mutex_unlock_usercnt", 
+"__GI___pthread_mutex_lock", 
+"lru_maintainer_thread",
+"bipbuf_peek_all",
+"lru_pull_tail",
+"clock_nanosleep",
+"nanosleep",
+"item_trylock",
+"do_item_remove",
+"item_is_flushed"}
 # Write your code here....
 
-## with our own map:
-# function_map = {}
-# for event in perf_sample_events:
-#     sample = event.sample_event
-#     curr_sample_function = symbolize.get_symbols([sample.ip])[sample.ip]
-#     if curr_sample_function in function_map:
-#         function_map[curr_sample_function] = function_map[curr_sample_function] + 1
-#     else:
-#         function_map[curr_sample_function] = 1
+# what should the map contain?
+# the name of the top functions, 
+# 
+top_functions_chains={} 
 
-# freq_counter = collections.Counter(function_map)
-# top_functions = freq_counter.most_common(15)
-
-# top_functions_chains={}
-
-# for event in perf_sample_events:
-#     sample = event.sample_event
-#     curr_sample_function = symbolize.get_symbols([sample.ip])[sample.ip]
-#     if (curr_sample_function, freq in top_functions): ## only get the top 10 functions
-#         print("curr_sample_function name:")
-#         print(curr_sample_function)
-#         if curr_sample_function not in top_functions_chains:
-#             top_functions_chains[curr_sample_function] = []
-#         curr_chain = []
-#         for branch in sample.branch_stack:
-#             branch_from_ip = branch.from_ip
-#             branch_to_ip = branch.to_ip
-#             branch_from_symbol = symbolize.get_symbols([branch_from_ip])[branch_from_ip]
-#             # print("branch_from_symbol: ")
-#             # print(branch_from_symbol)
-#             curr_chain.append(branch_from_symbol)
-#         top_functions_chains[curr_sample_function].append(curr_chain)
-        
-# print(top_functions_chains)      
-
-
-## write the branch
-# top_functions_chains={}
-
-# for event in perf_sample_events:
-#     sample = event.sample_event
-#     print("sample:")
-#     print(sample)
-#     curr_sample_function = symbolize.get_symbols([sample.ip])[sample.ip]
-
-#     if (curr_sample_function in top_n_function): ## only get the top 10 functions
-#         # print("curr_sample_function name:")
-#         # print(curr_sample_function)
-#         if curr_sample_function not in top_functions_chains:
-#             top_functions_chains[curr_sample_function] = []
-#         curr_chain = []
-#         for branch in sample.branch_stack:
-#             branch_from_ip = branch.from_ip
-#             branch_to_ip = branch.to_ip
-#             branch_from_symbol = symbolize.get_symbols([branch_from_ip])[branch_from_ip]
-#             # print("branch_from_symbol: ")
-#             # print(branch_from_symbol)
-#             curr_chain.append(branch_from_symbol)
-#         top_functions_chains[curr_sample_function].append(curr_chain)
-        
-# print(top_functions_chains) 
-
-
-# write the name set
-function_names=set()
 
 for event in perf_sample_events:
     sample = event.sample_event
-    # print("sample:")
-    # print(sample)
     curr_sample_function = symbolize.get_symbols([sample.ip])[sample.ip]
-    function_names.add(curr_sample_function)
-    # if (curr_sample_function in top_n_function): ## only get the top 10 functions
-    #     # print("curr_sample_function name:")
-    #     # print(curr_sample_function)
-    #     if curr_sample_function not in top_functions_chains:
-    #         top_functions_chains[curr_sample_function] = []
-    #     curr_chain = []
-    #     for branch in sample.branch_stack:
-    #         branch_from_ip = branch.from_ip
-    #         branch_to_ip = branch.to_ip
-    #         branch_from_symbol = symbolize.get_symbols([branch_from_ip])[branch_from_ip]
-    #         # print("branch_from_symbol: ")
-    #         # print(branch_from_symbol)
-    #         curr_chain.append(branch_from_symbol)
-    #     top_functions_chains[curr_sample_function].append(curr_chain)
+    if (curr_sample_function, freq in top_functions): ## only get the top 10 functions
+        if curr_sample_function not in top_functions_chains:
+            top_functions_chains[curr_sample_function] = {} #this should be a map, which contains the function name,
+            # the value should be a map, where a+b:89 is the (key, value) pair
+        curr_chain = []
+        #
+        for branch in sample.branch_stack:
+            branch_from_ip = branch.from_ip
+            branch_to_ip = branch.to_ip
+            branch_from_symbol = symbolize.get_symbols([branch_from_ip])[branch_from_ip]
+            # branch_to_symbol = symbolize.get_symbols(branch_to_ip)[branch_to_ip]
+            curr_chain.append(branch_from_symbol)
+        ## each time we get the current chain.
+        # then we just generate the pair of the functions.
+        function_pair_map = top_functions_chains[curr_sample_function]
+        for i in range(len(curr_chain)-1):
+            key = curr_chain[i] + curr_chain[i+1]
+            if key not in function_pair_map:
+                function_pair_map[key] = 0
+            function_pair_map[key] = function_pair_map[key] + 1
         
-print(function_names) 
+        
+print(top_functions_chains)      
+
+
