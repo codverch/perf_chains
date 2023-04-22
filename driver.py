@@ -31,7 +31,7 @@ for event in perf_sample_events:
     print("curr_sample_function name:")
     print(curr_sample_function)
     if (curr_sample_function in top_n_function):
-        for branch in branch_stack:
+        for branch in sample.branch_stack:
             branch_from_ip = branch.from_ip
             branch_to_ip = branch.to_ip
             branch_from_symbol = symbolize.get_symbols([branch_from_ip])[branch_from_ip]
