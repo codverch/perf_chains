@@ -23,7 +23,7 @@ print("setting up symbolizer")
 symbolize = symbolizer.Symbolizer(PERF_DATA_LOCATION)
 
 print("starting code!")
-top_n_function = {do_syscall_64, __GI___pthread_mutex_lock,  lru_maintainer_thread,  conn_cleanup, syscall_return_via_sysret,  ipt_do_table,  nf_hook_slow, ind_busiest_group,ipt_do_table,__fget, drive_machine, do_cache_free, ixgbe_poll, update_load_avg, __pthread_mutex_unlock_usercnt}
+top_n_function = {"do_syscall_64", "__GI___pthread_mutex_lock",  "lru_maintainer_thread",  "conn_cleanup", "syscall_return_via_sysret",  "ipt_do_table",  "nf_hook_slow", "ind_busiest_group","ipt_do_table","__fget", "drive_machine", "do_cache_free", "ixgbe_poll", "update_load_avg", "__pthread_mutex_unlock_usercnt"}
 # Write your code here....
 for event in perf_sample_events:
     sample = event.sample_event
