@@ -91,14 +91,14 @@ top_n_function = {"do_syscall_64", "__GI___pthread_mutex_lock",  "lru_maintainer
 
 
 # write the name set
-function_names={}
+function_names=set()
 
 for event in perf_sample_events:
     sample = event.sample_event
     # print("sample:")
     # print(sample)
     curr_sample_function = symbolize.get_symbols([sample.ip])[sample.ip]
-    function_names.append(curr_sample_function)
+    function_names.add(curr_sample_function)
     # if (curr_sample_function in top_n_function): ## only get the top 10 functions
     #     # print("curr_sample_function name:")
     #     # print(curr_sample_function)
