@@ -68,8 +68,8 @@ for event in perf_sample_events:
     sample = event.sample_event
     curr_sample_function = symbolize.get_symbols([sample.ip])[sample.ip]
     if (curr_sample_function in top_n_function): ## only get the top 10 functions
-        print("curr_sample_function name:")
-        print(curr_sample_function)
+        # print("curr_sample_function name:")
+        # print(curr_sample_function)
         if curr_sample_function not in top_functions_chains:
             top_functions_chains[curr_sample_function] = []
         curr_chain = []
