@@ -5,7 +5,7 @@ import profile_pb2
 import glob
 import os
 
-pprof_location = "/users/mrancic/go/bin/pprof"
+pprof_location = "/users/huafang/go/bin/pprof"
 
 def get_pprof_proto(
     perf_data_file,
