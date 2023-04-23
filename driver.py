@@ -45,7 +45,7 @@ top_functions_chains={}
 for event in perf_sample_events:
     sample = event.sample_event
     curr_sample_function = symbolize.get_symbols([sample.ip])[sample.ip]
-    if (curr_sample_function, freq in top_functions): ## only get the top 10 functions
+    if (curr_sample_function in top_n_functions): ## only get the top 10 functions
         if curr_sample_function not in top_functions_chains:
             top_functions_chains[curr_sample_function] = {} #this should be a map, which contains the function name,
             # the value should be a map, where a+b:89 is the (key, value) pair
