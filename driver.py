@@ -24,7 +24,7 @@ print("setting up symbolizer")
 symbolize = symbolizer.Symbolizer(PERF_DATA_LOCATION)
 
 print("starting code!")
-top_n_function = {"__pthread_mutex_unlock_usercnt", 
+top_n_functions = {"__pthread_mutex_unlock_usercnt", 
 "__GI___pthread_mutex_lock", 
 "lru_maintainer_thread",
 "bipbuf_peek_all",
