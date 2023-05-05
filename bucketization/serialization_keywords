@@ -1,1 +1,10 @@
 Varint::Encode64
+mongo::(anonymous namespace)::encodeUserString# Entire function is a switch statement
+encoding/json.stateBeginValue            # Golang's code to scan a JSON, with the scanner starting with a value
+Document::Impl::getSerializedElement  
+BSONObj::getField  
+mutablebson::Element::getType  
+BSONObjBuilder::appendAs  
+mutablebson::Element::countChildren  
+BSONObjBuilderValueStream::endField   # Potentially a C-Library leaf function
+mongo::OpMsgBuilder:

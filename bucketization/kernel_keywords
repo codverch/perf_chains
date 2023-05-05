@@ -70,7 +70,6 @@ try_to_wake_up                          # Wake up a thread
 flexible_sched_in                       # Flexible Scheduling
 diskstats_show                          # Aggregate disk stat collector
 __pthread_enable_asynccancel            # Cancel cancelable functions like write()
-aesni_gcm_enc                           # 
 __pthread_disable_asynccancel           # Disable cancel for cancelable functions such as write()
 aa_file_perm                            # Do permission revalidation check
 task_numa_find_cpu                      # Go through each CPU and find where the task can migrate
@@ -138,7 +137,6 @@ dequeue_task_fair                        #
 __ip_finish_output                       # 
 sk_wait_data                             # 
 nf_ct_deliver_cached_events              # 
-aes_loop_initial_3470                    # 
 netdev_core_pick_tx                      # 
 iptunnel_xmit                            # 
 read_tsc                                 # 
@@ -154,7 +152,6 @@ vxlan_build_skb                          #
 dequeue_entity                           # 
 tcp_release_cb                           # 
 __get_xps_queue_idx                      # 
-aes_loop_initial_1085                    # 
 dst_cache_per_cpu_get.isra.0             # 
 deactivate_task                          # 
 ipv4_confirm                             # 
@@ -274,7 +271,6 @@ i40e_check_fdir_input_set.isra.0         #
 sock_sendmsg                             # 
 drm_lease_held                           # 
 __alloc_skb                              # 
-_encrypt_by_8_new7462                    # 
 ip_vs_reply4                             # 
 i40e_get_strings                         # 
 __evict_lock_handle_list                 # 

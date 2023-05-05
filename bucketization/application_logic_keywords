@@ -1,17 +1,13 @@
 __wt_                          # WiredTiger functions
 std::vector<mongo::BSONElement, std::allocator<mongo::BSONElement> >::operator=  
-page_fault  
 operator new[]  
 __config_next  
-mongo::latch_detail::Mutex::lock  
 StringData::StringData  
 IndexEntry::IndexEntry  
 mongo::(anonymous namespace)::receivedCommands  
 __session_begin_transaction  
 DiagnosticListener::onQuickLock  
 mutablebson::Element::rightSibling  
-Document::Impl::getSerializedElement  
-LockerImpl::_lockBegin         # Potentially a synchronization keyword
 BSONElement::woCompare  
 Document::Impl::resolveLeftChild  
 ServiceContext::makeOperationContext  
@@ -37,19 +33,15 @@ __curfile_next
 __session_open_cursor  
 FailPoint::shouldFail  
 ServiceContext::_delistOperation  
-BSONObj::getField  
 LockerImpl::getLockMode  
 indexEntryFromIndexCatalogEntry  
 QueryRequest::parseFromFindCommand  
 SystemClockSource::now  
 DatabaseHolderImpl::getDb  
-mutablebson::Element::getType  
 IndexCatalog::ReadyIndexesIterator::_advance  
 mongo::(anonymous namespace)::runCommandImpl  
 DiagnosticListener::onUnlock  
-BSONObjBuilder::appendAs  
 BSONObjIterator::next  
-mutablebson::Element::countChildren  
 ServiceStateMachine::_processMessage  
 LogicalSessionCacheImpl::vivify  
 WiredTigerSessionDeleter::operator()  
@@ -57,10 +49,8 @@ AuthorizationSessionImpl::startRequest
 TransportLayerASIO::makeBaton  
 TransportLayerASIO::BatonASIO::detachImpl  
 IndexEntryComparison::makeKeyStringFromSeekPointForSeek  
-BSONObjBuilder::obj<mongo::BSONObj::DefaultSizeTrait>  
 mongo::buildStages  
 KeyString::(anonymous namespace)::toBsonValue  
-AuthzSessionExternalStateMongod::startRequest  
 DecorationRegistry<mongo::OperationContext>::constructAt  
 mongo::isGenericArgument  
 repl::ReplicationCoordinator::get  
@@ -78,7 +68,6 @@ Element::getFieldName
 BackgroundThreadClockSource::now  
 DecimalCounter<unsigned int>::operator++  
 IndexBoundsChecker::checkKey  
-BSONObjBuilderValueStream::endField   # Potentially a C-Library leaf function
 mongo::make_intrusive  
 BSONObjBuilder::BSONObjBuilder  
 logv2::LogManager::global  
@@ -239,7 +228,6 @@ __free_skip_list                         #
 mongo::userAllowedCreateNS               # 
 mongo::(anonymous namespace)::serializeReply # 
 mongo::(anonymous namespace)::waitForReadConcernImpl # 
-_crypt_by_4_154                          # 
 mongo::CommandHelpers::extractOrAppendOk # 
 mongo::ServiceStateMachine::_sourceMessage # 
 __rec_row_leaf_insert                    # 

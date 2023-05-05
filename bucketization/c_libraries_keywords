@@ -23,7 +23,6 @@ _M_insert_unique               # Insert into std::_rb_tree
 BSONElement::embeddedObject    # std::stringstream
 MetricTree::appendTo           # C map operations
 mongo::LockRequestList::push_back       # Nullptr and linked list operations
-mongo::(anonymous namespace)::encodeUserString# Entire function is a switch statement
 error_entry                             # Struct to store errors
 mongo::FTDCCompressor::addSample         # Vector clear, iterating ops
 vfprintf                                 # Sends formatted output to a file stream
@@ -163,7 +162,6 @@ runtime.mapiternext                      # Golang's code to go to do map iterati
 runtime.(*consistentHeapStats).acquire   # Golang's code to update the heapstatsdelta
 grpc_core::promise_filter_detail::BaseCallData::Flusher::~Flusher # gRPC C++ destructor
 runtime.(*stackScanState).addObject      # Golang's code to add a stack object at an address of type typ to the set of stack objects
-encoding/json.stateBeginValue            # Golang's code to scan a JSON, with the scanner starting with a value
 google::protobuf::internal::ArenaStringPtr::DestroyNoArenaSlowPath # Protobuf's code to delete a mutable pointer
 grpc_core::(anonymous namespace)::RetryFilter::CallData::CallAttempt::BatchData::~BatchData # C++ gRPC destructor
 syscall.Getwd                            # Golang's code to get a rooted path name of the current directory

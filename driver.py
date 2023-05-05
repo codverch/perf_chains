@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import functools
 import cProfile
 import pickle
+import numpy as np
 
 def parse_perf_proto(perf_data_proto):
     with open(perf_data_proto, "rb") as proto_file:
@@ -30,18 +31,23 @@ symbolize = symbolizer.Symbolizer(PERF_DATA_LOCATION)
 uncat_file = "./uncategorized"
 
 tax_categories = [
-    "application_logic",
     "c_libraries",
     "compress",
-    "hash",
+    # "hash",
+    "encryption",
     "kernel",
     "mem",
-    "miscellaneous",
+    # "miscellaneous",
     "sync",
     "rpc",
-    "serialization"
+    "serialization",
+    "application_logic",
+    "kernel"
+
 ]
 
+plt.rcParams['figure.dpi'] = 300
+plt.rcParams['savefig.dpi'] = 300
 
 file_contents = {}
 
@@ -94,12 +100,32 @@ def plot_chain_cdf(perf_sample_events):
     
     xs = [i/len(cumulative)*100 for i in range(len(cumulative))]
     ax = sns.lineplot(y=cumulative, x=xs)
+    plt.xticks(size=14)
+    plt.xlabel("Percent of Chains", fontsize=16)
+    plt.ylabel("Percent of Cycles", fontsize=16)
+
+    ax.set_xlim(left=0)
+    ax.set_ylim(bottom=0)
 
     plt.savefig("results/chain_cdf.png", bbox_inches="tight")
     plt.cla()
     plt.clf()
 
 def plot_tax_sharing(perf_sample_events, ip_to_func_name):
+    tax_categories = [
+    "c_libraries",
+    "compress",
+    # "hash",
+    "encryption",
+    "kernel",
+    "mem",
+    # "miscellaneous",
+    "sync",
+    "rpc",
+    "serialization",
+    # "application_logic",
+    "kernel"
+]
     xs = tax_categories
     ys = [0 for _ in tax_categories]
 
@@ -107,26 +133,117 @@ def plot_tax_sharing(perf_sample_events, ip_to_func_name):
         if i%100 == 0:
             print(f"{i}/{len(perf_sample_events)}")
         sample = event.sample_event
-        taxes_found = []
+        taxes_found = ["application_logic"]
         for branch in sample.branch_stack:
             ip = branch.from_ip
             # func = symbolize.get_symbols(ip)[ip]
             func = ip_to_func_name[ip]
             if func is None or func == "":
-                cat = "kernel"
+                cat = "application_logic"
             else:
                 cat = bucketize(func)
             if cat not in taxes_found:
                 ys[xs.index(cat)] += 1
                 taxes_found.append(cat)
     ys = [y/len(perf_sample_events)*100 for y in ys]
-    ax = sns.barplot(x=xs, y=ys)
+    xs = sorted(xs, key=(lambda x: ys[xs.index(x)]), reverse=True)
+    ys.sort(reverse=True)
+    ax = sns.barplot(x=xs, y=ys, errorbar=None, ci=None)
+
+    plt.xticks(rotation=45, ha="right", rotation_mode="anchor")
+    plt.xlabel("Tax Categories", fontsize=16)
+    plt.ylabel("Percent of Chains", fontsize=16)
 
     plt.savefig("results/tax_sharing.png", bbox_inches="tight")
 
+    plt.cla()
+    plt.clf()
+
+
+def tax_heatmap(perf_sample_events, ip_to_func_name):
+    tax_categories = [
+    "c_libraries",
+    "compress",
+    # "hash",
+    "encryption",
+    "kernel",
+    "mem",
+    # "miscellaneous",
+    "sync",
+    "rpc",
+    "serialization",
+    # "application_logic",
+    "kernel"
+
+]
+    bucketized_chains = []
+
+    for (i, event) in enumerate(perf_sample_events):
+        sample = event.sample_event
+        taxes_found = []
+        curr_chain = []
+        for branch in sample.branch_stack:
+            ip = branch.from_ip
+            func = ip_to_func_name[ip]
+            if func is None or func == "":
+                cat = "kernel"
+            else:
+                cat = bucketize(func)
+            curr_chain.append(cat)
+        bucketized_chains.append(curr_chain)
+    
+
+    heatmap_hops = np.full((len(tax_categories), len(tax_categories)), -1)
+    heatmap_annotation = np.zeros((len(tax_categories), len(tax_categories)))
+    
+    for i, from_tax in enumerate(tax_categories):
+        for j, to_tax in enumerate(tax_categories):
+            if from_tax == to_tax:
+                continue
+            heat_val = 0
+            heat_cycles = 0
+            path_count = 0
+            for chain in bucketized_chains:
+                min_hops = 33
+                found = False
+                for (chain_idx, bucket) in enumerate(chain):
+                    if bucket == from_tax:
+                        to_chains = chain[chain_idx:]
+                        for (search_idx, curr_bucket) in enumerate(to_chains):
+                            if curr_bucket == to_tax:
+                                found = True
+                                min_hops = min(min_hops, np.abs(search_idx-chain_idx))
+                heat_val += min_hops if found else 0
+                path_count += 1 if found else 0
+            print(f"{from_tax}, {to_tax}: {heat_val}, {path_count}")
+            heatmap_annotation[i, j] = path_count
+            if path_count == 0: continue
+            heatmap_hops[i, j] = heat_val/path_count
+    ax =  sns.heatmap(heatmap_hops,
+                xticklabels=tax_categories,
+                yticklabels=tax_categories,
+                annot=heatmap_annotation,
+                fmt="g",
+                linewidths=1,
+                linecolor='black',
+                vmax=20,
+                annot_kws={"size": 7},
+                cbar={"label": "# Function Calls Between"})
+    
+    plt.xticks(rotation=45, ha="right", rotation_mode="anchor")
+    # plt.yticks(rotation=45, ha="right", rotation_mode="anchor")
+
+    cbar= ax.collections[0].colorbar
+    cbar.set_label("# Function Calls Between", size=9)
+
+
+    plt.savefig("results/tax_heatmap.png", bbox_inches="tight")
+
+
 def build_ip_mapping(perf_sample_events):
     ip_to_func_name = {}
-    for event in perf_sample_events:
+    for i, event in enumerate(perf_sample_events):
+        print(f"{i}/{len(perf_sample_events)}")
         sample_event = event.sample_event
         for branch in sample_event.branch_stack:
             if branch.from_ip in ip_to_func_name:
@@ -145,6 +262,8 @@ def work():
     plot_chain_cdf(perf_sample_events)
     print("plotting tax sharing")
     plot_tax_sharing(perf_sample_events, ip_to_func_name)
+    print("plotting heatmap")
+    tax_heatmap(perf_sample_events, ip_to_func_name)
 
 work()
 
