@@ -4,8 +4,9 @@ import gzip
 import profile_pb2
 import glob
 import os
+import functools
 
-pprof_location = "/users/huafang/go/bin/pprof"
+pprof_location = "/users/mrancic/go/bin/pprof"
 
 def get_pprof_proto(
     perf_data_file,
@@ -79,25 +80,24 @@ class Symbolizer:
         self.perf_data_file = perf_data_file
         self.symbol_lookup_ranges = get_symbol_lookup_ranges(self.perf_data_file)
     
+    @functools.lru_cache(maxsize=None)
     def get_symbols(
-        self, lookup_addr_list
+        self, addr
     ):
         bin_addr_rmap = {}
         build_id_to_addr_map = {}
         for slr in self.symbol_lookup_ranges:
-            for addr in lookup_addr_list:
-                if addr >= slr.memory_start and addr < slr.memory_limit:
-                    if slr.build_id not in build_id_to_addr_map:
-                        build_id_to_addr_map[slr.build_id] = []
+            if addr >= slr.memory_start and addr < slr.memory_limit:
+                if slr.build_id not in build_id_to_addr_map:
+                    build_id_to_addr_map[slr.build_id] = []
 
-                    bin_addr = slr.get_binary_addr(addr)
+                bin_addr = slr.get_binary_addr(addr)
 
-                    bin_addr_rmap[(slr.build_id, bin_addr)] = addr
-                    build_id_to_addr_map[slr.build_id].append(bin_addr)
+                bin_addr_rmap[(slr.build_id, bin_addr)] = addr
+                build_id_to_addr_map[slr.build_id].append(bin_addr)
         
         ret = {}
-        for addr in lookup_addr_list:
-            ret[addr] = None
+        ret[addr] = None
         
         for build_id, addrs in build_id_to_addr_map.items():
             if not addrs:
@@ -130,7 +130,7 @@ class Symbolizer:
             lines = addr_res.stdout.decode().split("\n")
             
             symbols = lines[::2]
-            
+                        
             for (symbol, addr) in zip(symbols, addrs):
                 ret[bin_addr_rmap[(build_id, addr)]] = symbol
 

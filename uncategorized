@@ -1,0 +1,209 @@
+__cxa_get_globals
+__cxa_get_globals
+__cxa_get_globals
+__cxa_get_globals
+__cxa_get_globals
+__conn_query_timestamp
+cuserid
+_IO_str_pbackfail
+_IO_setb
+__session_close_cursors.isra.6
+__session_close_cached_cursors
+_IO_padn
+vprintf
+swapcontext
+__libc_alloca_cutoff
+_IO_enable_locks
+deflateReset
+_tr_init
+adler32_z
+deflateInit2_
+_tr_flush_block
+send_tree
+mongo::OperationShardingState::~OperationShardingState()
+mongo::logv2::LogDomainGlobal::settings()
+mongo::BasicCommandWithReplyBuilderInterface::Invocation::ns() const
+mongo::Date_t::toSystemTimePoint() const
+mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
+mongo::CurOp::~CurOp()
+mongo::FTDCController::doLoop()
+_IO_default_uflow
+_IO_str_underflow
+_IO_sputbackc
+vsscanf
+_IO_sscanf
+adjtime
+tzset
+ctime_r
+mongo::time_t_to_String_short[abi:cxx11](long)
+mongo::TransactionCoordinatorsStats::toBSON() const
+mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
+mongo::CurrentInSteps::CurrentInSteps()
+mongo::getGlobalServiceContext()
+mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
+__libc_open64
+mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
+__cxa_get_globals
+__conn_query_timestamp
+cuserid
+_IO_str_pbackfail
+_IO_setb
+__session_close_cursors.isra.6
+__session_close_cached_cursors
+_IO_padn
+vprintf
+swapcontext
+__libc_alloca_cutoff
+_IO_enable_locks
+deflateReset
+_tr_init
+adler32_z
+deflateInit2_
+_tr_flush_block
+send_tree
+mongo::OperationShardingState::~OperationShardingState()
+mongo::logv2::LogDomainGlobal::settings()
+mongo::BasicCommandWithReplyBuilderInterface::Invocation::ns() const
+mongo::Date_t::toSystemTimePoint() const
+mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
+mongo::CurOp::~CurOp()
+mongo::FTDCController::doLoop()
+_IO_default_uflow
+_IO_str_underflow
+_IO_sputbackc
+vsscanf
+_IO_sscanf
+adjtime
+tzset
+ctime_r
+mongo::time_t_to_String_short[abi:cxx11](long)
+mongo::TransactionCoordinatorsStats::toBSON() const
+mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
+mongo::CurrentInSteps::CurrentInSteps()
+mongo::getGlobalServiceContext()
+mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
+__libc_open64
+mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
+__cxa_get_globals
+__conn_query_timestamp
+cuserid
+_IO_str_pbackfail
+_IO_setb
+__session_close_cursors.isra.6
+__session_close_cached_cursors
+_IO_padn
+vprintf
+swapcontext
+__libc_alloca_cutoff
+_IO_enable_locks
+deflateReset
+_tr_init
+adler32_z
+deflateInit2_
+_tr_flush_block
+send_tree
+mongo::OperationShardingState::~OperationShardingState()
+mongo::logv2::LogDomainGlobal::settings()
+mongo::BasicCommandWithReplyBuilderInterface::Invocation::ns() const
+mongo::Date_t::toSystemTimePoint() const
+mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
+mongo::CurOp::~CurOp()
+mongo::FTDCController::doLoop()
+_IO_default_uflow
+_IO_str_underflow
+_IO_sputbackc
+vsscanf
+_IO_sscanf
+adjtime
+tzset
+ctime_r
+mongo::time_t_to_String_short[abi:cxx11](long)
+mongo::TransactionCoordinatorsStats::toBSON() const
+mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
+mongo::CurrentInSteps::CurrentInSteps()
+mongo::getGlobalServiceContext()
+mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
+__libc_open64
+mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
+__cxa_get_globals
+__conn_query_timestamp
+cuserid
+_IO_str_pbackfail
+_IO_setb
+__session_close_cursors.isra.6
+__session_close_cached_cursors
+_IO_padn
+vprintf
+swapcontext
+__libc_alloca_cutoff
+_IO_enable_locks
+deflateReset
+_tr_init
+adler32_z
+deflateInit2_
+_tr_flush_block
+send_tree
+mongo::OperationShardingState::~OperationShardingState()
+mongo::logv2::LogDomainGlobal::settings()
+mongo::BasicCommandWithReplyBuilderInterface::Invocation::ns() const
+mongo::Date_t::toSystemTimePoint() const
+mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
+mongo::CurOp::~CurOp()
+mongo::FTDCController::doLoop()
+_IO_default_uflow
+_IO_str_underflow
+_IO_sputbackc
+vsscanf
+_IO_sscanf
+adjtime
+tzset
+ctime_r
+mongo::time_t_to_String_short[abi:cxx11](long)
+mongo::TransactionCoordinatorsStats::toBSON() const
+mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
+mongo::CurrentInSteps::CurrentInSteps()
+mongo::getGlobalServiceContext()
+mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
+__libc_open64
+mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
+__cxa_get_globals
+__conn_query_timestamp
+cuserid
+_IO_str_pbackfail
+_IO_setb
+__session_close_cursors.isra.6
+__session_close_cached_cursors
+_IO_padn
+vprintf
+swapcontext
+__libc_alloca_cutoff
+_IO_enable_locks
+deflateReset
+_tr_init
+adler32_z
+deflateInit2_
+_tr_flush_block
+send_tree
+mongo::OperationShardingState::~OperationShardingState()
+mongo::logv2::LogDomainGlobal::settings()
+mongo::BasicCommandWithReplyBuilderInterface::Invocation::ns() const
+mongo::Date_t::toSystemTimePoint() const
+mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
+mongo::CurOp::~CurOp()
+mongo::FTDCController::doLoop()
+_IO_default_uflow
+_IO_str_underflow
+_IO_sputbackc
+vsscanf
+_IO_sscanf
+adjtime
+tzset
+ctime_r
+mongo::time_t_to_String_short[abi:cxx11](long)
+mongo::TransactionCoordinatorsStats::toBSON() const
+mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
+mongo::CurrentInSteps::CurrentInSteps()
+mongo::getGlobalServiceContext()
+mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
+__libc_open64
+mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
