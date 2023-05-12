@@ -488,3 +488,11 @@ mongo::OperationContext
 mongo::ReadWriteConcernProvenanceBase
 mongo::DeadlineMonitor
 ClientOutOfLineExecutorClientObserver
+ngx_opentracing::
+jaegertracing::
+opentracing::
+ngx_
+lj_
+ngx_http_lua_read_bytes
+lua_bridge_tracer::
+lua_

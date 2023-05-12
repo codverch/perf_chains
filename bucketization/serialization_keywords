@@ -8,3 +8,22 @@ BSONObjBuilder::appendAs
 mutablebson::Element::countChildren  
 BSONObjBuilderValueStream::endField   # Potentially a C-Library leaf function
 mongo::OpMsgBuilder:
+json_
+_filter
+process_request_headers
+process_request_header
+ngx_http_parse
+ngx_http_process
+ngx_http_lua_content_by_chunk
+ngx_http_get_variable
+ngx_http_lua_unescape_uri
+ngx_http_lua_ngx_req_get_post_args
+ngx_http_lua_var_get
+ngx_http_chunked_create_trailers
+ngx_http_read_request_header
+ngx_http_create_request
+ngx_http_lua_content_phase_post_read
+ngx_http_do_read_client_request_body
+ngx_http_lua_read_bytes
+ngx_http_lua_parse_args
+ngx_http_read_client_request_body

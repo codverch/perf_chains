@@ -55,3 +55,8 @@ grpc_core::CompressionAlgorithmSet::CompressionAlgorithmSet # gRPC's code
 grpc_chttp2_stream::grpc_chttp2_stream   # gRPC's code
 rpc::readRequestMetadata  
 mongo::rpc
+apache::thrift
+ngx_resolver_create_name_query
+ngx_resolver_alloc
+ngx_resolver_lookup_srv
+ngx_resolve_name_locked

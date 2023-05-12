@@ -1,1668 +1,672 @@
-mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
-mongo::BSONObj::toString(mongo::StringBuilderImpl<mongo::SharedBufferAllocator>&, bool, bool, bool, int) const
-mongo::BSONObj::toString[abi:cxx11](bool) const
-mongo::FreeMonController::get(mongo::ServiceContext*)
-cuserid
-_IO_str_pbackfail
-_IO_setb
-_IO_enable_locks
-_IO_sputbackc
-strtoul
-_IO_default_uflow
-_IO_file_underflow
-__read
-__conn_query_timestamp
-mongo::Date_t::toSystemTimePoint() const
-__cxa_get_globals
-mongo::NetworkCounter::hitLogicalIn(long long)
-mongo::DbMessage::getns() const
-mongo::ReadConcernSupportResult::ReadConcernSupportResult(boost::optional<mongo::Status>, boost::optional<mongo::Status>)
-mongo::cc()
-__curstat_close
-mongo::logv2::LogDomainGlobal::settings()
-mongo::(anonymous namespace)::AuthzClientObserver::onDestroyClient(mongo::Client*)
-mongo::(anonymous namespace)::timerNowPosixMonotonicClock()
-__GI___nanosleep
-mongo::sleepsecs(int)
-mongo::(anonymous namespace)::ClientCursorMonitor::run()
-mongo::getClientCursorMonitorFrequencySecs()
-mongo::time_t_to_String_short[abi:cxx11](long)
-ctime_r
-asctime_r
-__snprintf
-vsnprintf
-boost::algorithm::split_iterator<char const*>::increment()
-read_buf
-fill_window
-deflate
-flush_pending
-bi_flush
-adler32_z
-mongo::BlockCompressor::compress(mongo::ConstDataRange)
-deflateInit_
-deflateReset
-_tr_init
-_tr_flush_block
-send_tree
-__cxxabiv1::__si_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-__libc_read
-mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
-getpid
-mongo::ProcessId::getCurrent()
-mongo::SystemMetricsCollector::name[abi:cxx11]() const
-mongo::OperationShardingState::~OperationShardingState()
-__curstat_search
-__curstat_set_key
-vsscanf
-_IO_sscanf
-adjtime
-tzset
-mongo::(anonymous namespace)::StorageClientObserver::onCreateClient(mongo::Client*)
-mongo::transport::TransportLayerASIO::BatonASIO::~BatonASIO()
-mongo::FTDCController::doLoop()
-non-virtual thunk to mongo::StorageEngineImpl::supportsDBLocking() const
-sem_timedwait
-mongo::Date_t::toTimeT() const
-mongo::TransactionCoordinatorsStats::toBSON() const
-mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
-mongo::CurrentInSteps::CurrentInSteps()
-mongo::TransactionCoordinatorsStats::TransactionCoordinatorsStats()
-mongo::AuthzSessionExternalStateServerCommon::shouldIgnoreAuthChecks() const
-mongo::AuthzSessionExternalStateMongod::shouldIgnoreAuthChecks() const
-mongo::TicketHolder::available() const
-mongo::TicketHolder::used() const
+luaL_testudata
+??
+index2adr
+hashmask
+lua_getfield
+lua_bridge_tracer::LuaTracer::binary_extract(lua_State*)
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+lua_bridge_tracer::LuaSpan::finish(lua_State*)
+emptybuffer
+luaL_addlstring
+l_bunpack
+lua_objlen
+hashkey
+lua_rawget
+lua_type
+newhpart
+newtab
+luaL_pushresult
+lua_pushlstring
+l_and
+luaL_checkudata
+operator delete(void*)
+lua_touserdata
+lua_createtable
+clearapart
+lua_tolstring
+final
+update
+T_htonll
+lua_pushvalue
+rehashtab
+countint
+lua_rawseti
+lua_rawgeti
+luaL_checktype
+luaL_ref
+lua_tointeger
+trace_exit_cp
+lua_toboolean
+lua_rawset
+lua_bridge_tracer::LuaTracer::start_span(lua_State*)
+operator()
+lua_settable
+lua_bridge_tracer::LuaTracer::new_lua_tracer_from_global(lua_State*)
+lua_newuserdata
+lua_setmetatable
+init
+luaL_unref
+lua_concat
+async_get_ctx
+counthash
 __cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-mongo::OpMsgRequest::getDatabase() const
-mongo::FTDCController::getMostRecentPeriodicDocument()
-mongo::(anonymous namespace)::UnusedLockCleaner::taskName() const
-mongo::(anonymous namespace)::PeriodicTaskRunner::_runTask(mongo::PeriodicTask*) [clone .isra.373]
-mongo::SystemTickSource::get()
-mongo::(anonymous namespace)::PeriodicTaskRunner::run()
-mongo::LockManager::_cleanupUnusedLocksInBucket(mongo::LockManager::LockBucket*)
-mongo::LockHead::migratePartitionedLockHeads()
-mongo::ProcessInfo::~ProcessInfo()
-__sweep_server
-mongo::CollectionOptions::parse(mongo::BSONObj const&, mongo::CollectionOptions::ParseKind)
-mongo::CollectionOptions::~CollectionOptions()
-mongo::CollectionOptions::CollectionOptions(mongo::CollectionOptions&&)
-mongo::BSONCollectionCatalogEntry::MetaData::parse(mongo::BSONObj const&)
-mongo::ServiceContext::LockedClientsCursor::next()
-mongo::ServiceContext::LockedClientsCursor::LockedClientsCursor(mongo::ServiceContext*)
-vprintf
-swapcontext
-_IO_padn
-sched_getaffinity
-mongo::ProcessInfo::getNumCoresForProcess()
-mongo::ProcessInfo::ProcessInfo(mongo::ProcessId)
-mongo::(anonymous namespace)::LatchAnalysisSection::includeByDefault() const
-mongo::globalInShutdownDeprecated()
-mongo::Lock::GlobalLock::~GlobalLock()
-mongo::BasicCommandWithReplyBuilderInterface::Invocation::~Invocation()
-mongo::OpMsgBuilder::releaseBody()
-__sysconf
-getloadavg
-__libc_close
-mongo::jsTime()
-mongo::ProcessId::asLongLong() const
-__libc_open64
-wcstof128
-_IO_str_underflow
-mongo::LockManager::LockBucket::findOrInsert(mongo::ResourceId)
-mongo::WiredTigerOplogManager::getOplogReadTimestamp() const
-mongo::redact(mongo::BSONObj const&)
-mongo::logv2::shouldRedactLogs()
-mongo::Lock::GlobalLock::_unlock()
-__new_sem_post
-mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
-__rec_destroy_session
-__rec_destroy
-mongo::LogicalSessionCacheImpl::getStats()
-mongo::ServerTransactionsMetrics::updateStats(mongo::TransactionsStats*, bool)
-mongo::RetryableWritesStats::updateStats(mongo::TransactionsStats*)
-mongo::TransactionsStats::TransactionsStats()
-mongo::LinuxProc::LinuxProc(mongo::ProcessId)
-mongo::ProcessInfo::getVirtualMemorySize()
-mongo::ProcessInfo::getResidentSize()
-mongo::ProcessInfo::sysInfo()
-fclose
-_IO_default_finish
-_IO_file_close_it
-_IO_un_link
-__close_nocancel
-mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
-mongo::BSONObj::toString(mongo::StringBuilderImpl<mongo::SharedBufferAllocator>&, bool, bool, bool, int) const
-mongo::BSONObj::toString[abi:cxx11](bool) const
-mongo::FreeMonController::get(mongo::ServiceContext*)
-cuserid
-_IO_str_pbackfail
-_IO_setb
-_IO_enable_locks
-_IO_sputbackc
-strtoul
-_IO_default_uflow
-_IO_file_underflow
-__read
-__conn_query_timestamp
-mongo::Date_t::toSystemTimePoint() const
-__cxa_get_globals
-mongo::NetworkCounter::hitLogicalIn(long long)
-mongo::DbMessage::getns() const
-mongo::ReadConcernSupportResult::ReadConcernSupportResult(boost::optional<mongo::Status>, boost::optional<mongo::Status>)
-mongo::cc()
-__curstat_close
-mongo::logv2::LogDomainGlobal::settings()
-mongo::(anonymous namespace)::AuthzClientObserver::onDestroyClient(mongo::Client*)
-mongo::(anonymous namespace)::timerNowPosixMonotonicClock()
-__GI___nanosleep
-mongo::sleepsecs(int)
-mongo::(anonymous namespace)::ClientCursorMonitor::run()
-mongo::getClientCursorMonitorFrequencySecs()
-mongo::time_t_to_String_short[abi:cxx11](long)
-ctime_r
-asctime_r
-__snprintf
-vsnprintf
-boost::algorithm::split_iterator<char const*>::increment()
-read_buf
-fill_window
-deflate
-flush_pending
-bi_flush
-adler32_z
-mongo::BlockCompressor::compress(mongo::ConstDataRange)
-deflateInit_
-deflateReset
-_tr_init
-_tr_flush_block
-send_tree
-__cxxabiv1::__si_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-__libc_read
-mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
-getpid
-mongo::ProcessId::getCurrent()
-mongo::SystemMetricsCollector::name[abi:cxx11]() const
-mongo::OperationShardingState::~OperationShardingState()
-__curstat_search
-__curstat_set_key
-vsscanf
-_IO_sscanf
-adjtime
+stack_init
+lua_bridge_tracer::get_span_context(lua_State*, int)
+lua_gettable
+c16rtomb
+strbuf_new
+strbuf_init
+lua_bridge_tracer::convert_timestamp(lua_State*, int)
+lua_bridge_tracer::LuaSpan::context(lua_State*)
+snap_restoreval
+release_unused_segments
 tzset
-mongo::(anonymous namespace)::StorageClientObserver::onCreateClient(mongo::Client*)
-mongo::transport::TransportLayerASIO::BatonASIO::~BatonASIO()
-mongo::FTDCController::doLoop()
-non-virtual thunk to mongo::StorageEngineImpl::supportsDBLocking() const
-sem_timedwait
-mongo::Date_t::toTimeT() const
-mongo::TransactionCoordinatorsStats::toBSON() const
-mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
-mongo::CurrentInSteps::CurrentInSteps()
-mongo::TransactionCoordinatorsStats::TransactionCoordinatorsStats()
-mongo::TicketHolder::available() const
-mongo::TicketHolder::used() const
-__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-mongo::OpMsgRequest::getDatabase() const
-mongo::FTDCController::getMostRecentPeriodicDocument()
-mongo::(anonymous namespace)::UnusedLockCleaner::taskName() const
-mongo::(anonymous namespace)::PeriodicTaskRunner::_runTask(mongo::PeriodicTask*) [clone .isra.373]
-mongo::SystemTickSource::get()
-mongo::(anonymous namespace)::PeriodicTaskRunner::run()
-mongo::LockManager::_cleanupUnusedLocksInBucket(mongo::LockManager::LockBucket*)
-mongo::LockHead::migratePartitionedLockHeads()
-mongo::ProcessInfo::~ProcessInfo()
-__sweep_server
-mongo::CollectionOptions::parse(mongo::BSONObj const&, mongo::CollectionOptions::ParseKind)
-mongo::CollectionOptions::~CollectionOptions()
-mongo::CollectionOptions::CollectionOptions(mongo::CollectionOptions&&)
-mongo::BSONCollectionCatalogEntry::MetaData::parse(mongo::BSONObj const&)
-mongo::ServiceContext::LockedClientsCursor::next()
-mongo::ServiceContext::LockedClientsCursor::LockedClientsCursor(mongo::ServiceContext*)
-vprintf
-swapcontext
-_IO_padn
-sched_getaffinity
-mongo::ProcessInfo::getNumCoresForProcess()
-mongo::ProcessInfo::ProcessInfo(mongo::ProcessId)
-mongo::(anonymous namespace)::LatchAnalysisSection::includeByDefault() const
-mongo::globalInShutdownDeprecated()
-mongo::Lock::GlobalLock::~GlobalLock()
-mongo::BasicCommandWithReplyBuilderInterface::Invocation::~Invocation()
-mongo::OpMsgBuilder::releaseBody()
-__sysconf
-getloadavg
-__libc_close
-mongo::jsTime()
-mongo::ProcessId::asLongLong() const
-__libc_open64
-wcstof128
-_IO_str_underflow
-mongo::LockManager::LockBucket::findOrInsert(mongo::ResourceId)
-mongo::WiredTigerOplogManager::getOplogReadTimestamp() const
-mongo::redact(mongo::BSONObj const&)
-mongo::logv2::shouldRedactLogs()
-mongo::Lock::GlobalLock::_unlock()
-__new_sem_post
-mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
-__rec_destroy_session
-__rec_destroy
-mongo::LogicalSessionCacheImpl::getStats()
-mongo::ServerTransactionsMetrics::updateStats(mongo::TransactionsStats*, bool)
-mongo::RetryableWritesStats::updateStats(mongo::TransactionsStats*)
-mongo::TransactionsStats::TransactionsStats()
-mongo::LinuxProc::LinuxProc(mongo::ProcessId)
-mongo::ProcessInfo::getVirtualMemorySize()
-mongo::ProcessInfo::getResidentSize()
-mongo::ProcessInfo::sysInfo()
-fclose
-_IO_default_finish
-_IO_file_close_it
-_IO_un_link
-__close_nocancel
-mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
-mongo::BSONObj::toString(mongo::StringBuilderImpl<mongo::SharedBufferAllocator>&, bool, bool, bool, int) const
-mongo::BSONObj::toString[abi:cxx11](bool) const
-mongo::FreeMonController::get(mongo::ServiceContext*)
-cuserid
-_IO_str_pbackfail
-_IO_setb
-_IO_enable_locks
-_IO_sputbackc
-strtoul
-_IO_default_uflow
-_IO_file_underflow
-__read
-__conn_query_timestamp
-mongo::Date_t::toSystemTimePoint() const
-__cxa_get_globals
-mongo::NetworkCounter::hitLogicalIn(long long)
-mongo::DbMessage::getns() const
-mongo::ReadConcernSupportResult::ReadConcernSupportResult(boost::optional<mongo::Status>, boost::optional<mongo::Status>)
-mongo::cc()
-__curstat_close
-mongo::logv2::LogDomainGlobal::settings()
-mongo::(anonymous namespace)::AuthzClientObserver::onDestroyClient(mongo::Client*)
-mongo::(anonymous namespace)::timerNowPosixMonotonicClock()
-__GI___nanosleep
-mongo::sleepsecs(int)
-mongo::(anonymous namespace)::ClientCursorMonitor::run()
-mongo::getClientCursorMonitorFrequencySecs()
-mongo::time_t_to_String_short[abi:cxx11](long)
-ctime_r
-asctime_r
-__snprintf
-vsnprintf
-boost::algorithm::split_iterator<char const*>::increment()
-read_buf
-fill_window
-deflate
-flush_pending
-bi_flush
-adler32_z
-mongo::BlockCompressor::compress(mongo::ConstDataRange)
-deflateInit_
-deflateReset
-_tr_init
-_tr_flush_block
-send_tree
-__cxxabiv1::__si_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-__libc_read
-mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
-getpid
-mongo::ProcessId::getCurrent()
-mongo::SystemMetricsCollector::name[abi:cxx11]() const
-mongo::OperationShardingState::~OperationShardingState()
-__curstat_search
-__curstat_set_key
-vsscanf
-_IO_sscanf
 adjtime
-tzset
-mongo::(anonymous namespace)::StorageClientObserver::onCreateClient(mongo::Client*)
-mongo::transport::TransportLayerASIO::BatonASIO::~BatonASIO()
-mongo::FTDCController::doLoop()
-non-virtual thunk to mongo::StorageEngineImpl::supportsDBLocking() const
-sem_timedwait
-mongo::Date_t::toTimeT() const
-mongo::TransactionCoordinatorsStats::toBSON() const
-mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
-mongo::CurrentInSteps::CurrentInSteps()
-mongo::TransactionCoordinatorsStats::TransactionCoordinatorsStats()
-mongo::TicketHolder::available() const
-mongo::TicketHolder::used() const
-__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-mongo::OpMsgRequest::getDatabase() const
-mongo::FTDCController::getMostRecentPeriodicDocument()
-mongo::(anonymous namespace)::UnusedLockCleaner::taskName() const
-mongo::(anonymous namespace)::PeriodicTaskRunner::_runTask(mongo::PeriodicTask*) [clone .isra.373]
-mongo::SystemTickSource::get()
-mongo::(anonymous namespace)::PeriodicTaskRunner::run()
-mongo::LockManager::_cleanupUnusedLocksInBucket(mongo::LockManager::LockBucket*)
-mongo::LockHead::migratePartitionedLockHeads()
-mongo::ProcessInfo::~ProcessInfo()
-__sweep_server
-mongo::CollectionOptions::parse(mongo::BSONObj const&, mongo::CollectionOptions::ParseKind)
-mongo::CollectionOptions::~CollectionOptions()
-mongo::CollectionOptions::CollectionOptions(mongo::CollectionOptions&&)
-mongo::BSONCollectionCatalogEntry::MetaData::parse(mongo::BSONObj const&)
-mongo::ServiceContext::LockedClientsCursor::next()
-mongo::ServiceContext::LockedClientsCursor::LockedClientsCursor(mongo::ServiceContext*)
-vprintf
-swapcontext
-_IO_padn
-sched_getaffinity
-mongo::ProcessInfo::getNumCoresForProcess()
-mongo::ProcessInfo::ProcessInfo(mongo::ProcessId)
-mongo::(anonymous namespace)::LatchAnalysisSection::includeByDefault() const
-mongo::globalInShutdownDeprecated()
-mongo::Lock::GlobalLock::~GlobalLock()
-mongo::BasicCommandWithReplyBuilderInterface::Invocation::~Invocation()
-__sysconf
-getloadavg
-__libc_close
-mongo::jsTime()
-mongo::ProcessId::asLongLong() const
-__libc_open64
-wcstof128
-_IO_str_underflow
-mongo::LockManager::LockBucket::findOrInsert(mongo::ResourceId)
-mongo::WiredTigerOplogManager::getOplogReadTimestamp() const
-mongo::redact(mongo::BSONObj const&)
-mongo::logv2::shouldRedactLogs()
-mongo::Lock::GlobalLock::_unlock()
-__new_sem_post
-mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
-__rec_destroy_session
-__rec_destroy
-mongo::LogicalSessionCacheImpl::getStats()
-mongo::ServerTransactionsMetrics::updateStats(mongo::TransactionsStats*, bool)
-mongo::RetryableWritesStats::updateStats(mongo::TransactionsStats*)
-mongo::TransactionsStats::TransactionsStats()
-mongo::LinuxProc::LinuxProc(mongo::ProcessId)
-mongo::ProcessInfo::getVirtualMemorySize()
-mongo::ProcessInfo::getResidentSize()
-mongo::ProcessInfo::sysInfo()
-fclose
-_IO_default_finish
-_IO_file_close_it
-_IO_un_link
 __close_nocancel
-mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
-mongo::BSONObj::toString(mongo::StringBuilderImpl<mongo::SharedBufferAllocator>&, bool, bool, bool, int) const
-mongo::BSONObj::toString[abi:cxx11](bool) const
-mongo::FreeMonController::get(mongo::ServiceContext*)
-cuserid
-_IO_str_pbackfail
-_IO_setb
-_IO_enable_locks
-_IO_sputbackc
-strtoul
-_IO_default_uflow
-_IO_file_underflow
-__read
-__conn_query_timestamp
-mongo::Date_t::toSystemTimePoint() const
-__cxa_get_globals
-mongo::NetworkCounter::hitLogicalIn(long long)
-mongo::DbMessage::getns() const
-mongo::ReadConcernSupportResult::ReadConcernSupportResult(boost::optional<mongo::Status>, boost::optional<mongo::Status>)
-mongo::cc()
-__curstat_close
-mongo::logv2::LogDomainGlobal::settings()
-mongo::(anonymous namespace)::AuthzClientObserver::onDestroyClient(mongo::Client*)
-mongo::(anonymous namespace)::timerNowPosixMonotonicClock()
-__GI___nanosleep
-mongo::sleepsecs(int)
-mongo::(anonymous namespace)::ClientCursorMonitor::run()
-mongo::getClientCursorMonitorFrequencySecs()
-mongo::time_t_to_String_short[abi:cxx11](long)
-ctime_r
-asctime_r
-__snprintf
-vsnprintf
-boost::algorithm::split_iterator<char const*>::increment()
-read_buf
-fill_window
-deflate
-flush_pending
-bi_flush
-adler32_z
-mongo::BlockCompressor::compress(mongo::ConstDataRange)
-deflateInit_
-deflateReset
-_tr_init
-_tr_flush_block
-send_tree
-__cxxabiv1::__si_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-__libc_read
-mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
-getpid
-mongo::ProcessId::getCurrent()
-mongo::SystemMetricsCollector::name[abi:cxx11]() const
-mongo::OperationShardingState::~OperationShardingState()
-__curstat_search
-__curstat_set_key
-vsscanf
-_IO_sscanf
+_setjmp
+lua_yield
+luaL_testudata
+??
+index2adr
+hashmask
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+emptybuffer
+luaL_addlstring
+l_bunpack
+hashkey
+newhpart
+newtab
+luaL_pushresult
+l_and
+luaL_checkudata
+operator delete(void*)
+clearapart
+final
+update
+T_htonll
+rehashtab
+countint
+luaL_checktype
+luaL_ref
+trace_exit_cp
+operator()
+init
+luaL_unref
+async_get_ctx
+counthash
+__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+stack_init
+c16rtomb
+strbuf_new
+strbuf_init
+snap_restoreval
+release_unused_segments
+tzset
 adjtime
-tzset
-mongo::(anonymous namespace)::StorageClientObserver::onCreateClient(mongo::Client*)
-mongo::transport::TransportLayerASIO::BatonASIO::~BatonASIO()
-mongo::FTDCController::doLoop()
-non-virtual thunk to mongo::StorageEngineImpl::supportsDBLocking() const
-sem_timedwait
-mongo::Date_t::toTimeT() const
-mongo::TransactionCoordinatorsStats::toBSON() const
-mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
-mongo::CurrentInSteps::CurrentInSteps()
-mongo::TransactionCoordinatorsStats::TransactionCoordinatorsStats()
-mongo::TicketHolder::available() const
-mongo::TicketHolder::used() const
-__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-mongo::OpMsgRequest::getDatabase() const
-mongo::FTDCController::getMostRecentPeriodicDocument()
-mongo::(anonymous namespace)::UnusedLockCleaner::taskName() const
-mongo::(anonymous namespace)::PeriodicTaskRunner::_runTask(mongo::PeriodicTask*) [clone .isra.373]
-mongo::SystemTickSource::get()
-mongo::(anonymous namespace)::PeriodicTaskRunner::run()
-mongo::LockManager::_cleanupUnusedLocksInBucket(mongo::LockManager::LockBucket*)
-mongo::LockHead::migratePartitionedLockHeads()
-mongo::ProcessInfo::~ProcessInfo()
-__sweep_server
-mongo::CollectionOptions::parse(mongo::BSONObj const&, mongo::CollectionOptions::ParseKind)
-mongo::CollectionOptions::~CollectionOptions()
-mongo::CollectionOptions::CollectionOptions(mongo::CollectionOptions&&)
-mongo::BSONCollectionCatalogEntry::MetaData::parse(mongo::BSONObj const&)
-mongo::ServiceContext::LockedClientsCursor::next()
-mongo::ServiceContext::LockedClientsCursor::LockedClientsCursor(mongo::ServiceContext*)
-vprintf
-swapcontext
-_IO_padn
-sched_getaffinity
-mongo::ProcessInfo::getNumCoresForProcess()
-mongo::ProcessInfo::ProcessInfo(mongo::ProcessId)
-mongo::(anonymous namespace)::LatchAnalysisSection::includeByDefault() const
-mongo::globalInShutdownDeprecated()
-mongo::Lock::GlobalLock::~GlobalLock()
-mongo::BasicCommandWithReplyBuilderInterface::Invocation::~Invocation()
-__sysconf
-getloadavg
-__libc_close
-mongo::jsTime()
-mongo::ProcessId::asLongLong() const
-__libc_open64
-wcstof128
-_IO_str_underflow
-mongo::LockManager::LockBucket::findOrInsert(mongo::ResourceId)
-mongo::WiredTigerOplogManager::getOplogReadTimestamp() const
-mongo::redact(mongo::BSONObj const&)
-mongo::logv2::shouldRedactLogs()
-mongo::Lock::GlobalLock::_unlock()
-__new_sem_post
-mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
-__rec_destroy_session
-__rec_destroy
-mongo::LogicalSessionCacheImpl::getStats()
-mongo::ServerTransactionsMetrics::updateStats(mongo::TransactionsStats*, bool)
-mongo::RetryableWritesStats::updateStats(mongo::TransactionsStats*)
-mongo::TransactionsStats::TransactionsStats()
-mongo::LinuxProc::LinuxProc(mongo::ProcessId)
-mongo::ProcessInfo::getVirtualMemorySize()
-mongo::ProcessInfo::getResidentSize()
-mongo::ProcessInfo::sysInfo()
-fclose
-_IO_default_finish
-_IO_file_close_it
-_IO_un_link
 __close_nocancel
-mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
-mongo::BSONObj::toString(mongo::StringBuilderImpl<mongo::SharedBufferAllocator>&, bool, bool, bool, int) const
-mongo::BSONObj::toString[abi:cxx11](bool) const
-mongo::FreeMonController::get(mongo::ServiceContext*)
-cuserid
-_IO_str_pbackfail
-_IO_setb
-_IO_enable_locks
-_IO_sputbackc
-strtoul
-_IO_default_uflow
-_IO_file_underflow
-__read
-__conn_query_timestamp
-mongo::Date_t::toSystemTimePoint() const
-__cxa_get_globals
-mongo::NetworkCounter::hitLogicalIn(long long)
-mongo::DbMessage::getns() const
-mongo::ReadConcernSupportResult::ReadConcernSupportResult(boost::optional<mongo::Status>, boost::optional<mongo::Status>)
-mongo::cc()
-__curstat_close
-mongo::logv2::LogDomainGlobal::settings()
-mongo::(anonymous namespace)::AuthzClientObserver::onDestroyClient(mongo::Client*)
-mongo::(anonymous namespace)::timerNowPosixMonotonicClock()
-__GI___nanosleep
-mongo::sleepsecs(int)
-mongo::(anonymous namespace)::ClientCursorMonitor::run()
-mongo::getClientCursorMonitorFrequencySecs()
-mongo::time_t_to_String_short[abi:cxx11](long)
-ctime_r
-asctime_r
-__snprintf
-vsnprintf
-boost::algorithm::split_iterator<char const*>::increment()
-read_buf
-fill_window
-deflate
-flush_pending
-bi_flush
-adler32_z
-mongo::BlockCompressor::compress(mongo::ConstDataRange)
-deflateInit_
-deflateReset
-_tr_init
-_tr_flush_block
-send_tree
-__cxxabiv1::__si_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-__libc_read
-mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
-getpid
-mongo::ProcessId::getCurrent()
-mongo::SystemMetricsCollector::name[abi:cxx11]() const
-mongo::OperationShardingState::~OperationShardingState()
-__curstat_search
-__curstat_set_key
-vsscanf
-_IO_sscanf
+_setjmp
+luaL_testudata
+??
+index2adr
+hashmask
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+emptybuffer
+luaL_addlstring
+l_bunpack
+hashkey
+newhpart
+newtab
+luaL_pushresult
+l_and
+luaL_checkudata
+operator delete(void*)
+clearapart
+final
+update
+T_htonll
+rehashtab
+countint
+luaL_checktype
+luaL_ref
+trace_exit_cp
+operator()
+init
+luaL_unref
+async_get_ctx
+counthash
+__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+stack_init
+c16rtomb
+strbuf_new
+strbuf_init
+snap_restoreval
+release_unused_segments
+tzset
 adjtime
-tzset
-mongo::(anonymous namespace)::StorageClientObserver::onCreateClient(mongo::Client*)
-mongo::transport::TransportLayerASIO::BatonASIO::~BatonASIO()
-mongo::FTDCController::doLoop()
-non-virtual thunk to mongo::StorageEngineImpl::supportsDBLocking() const
-sem_timedwait
-mongo::Date_t::toTimeT() const
-mongo::TransactionCoordinatorsStats::toBSON() const
-mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
-mongo::CurrentInSteps::CurrentInSteps()
-mongo::TransactionCoordinatorsStats::TransactionCoordinatorsStats()
-mongo::TicketHolder::available() const
-mongo::TicketHolder::used() const
-__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-mongo::OpMsgRequest::getDatabase() const
-mongo::FTDCController::getMostRecentPeriodicDocument()
-mongo::(anonymous namespace)::UnusedLockCleaner::taskName() const
-mongo::(anonymous namespace)::PeriodicTaskRunner::_runTask(mongo::PeriodicTask*) [clone .isra.373]
-mongo::SystemTickSource::get()
-mongo::(anonymous namespace)::PeriodicTaskRunner::run()
-mongo::LockManager::_cleanupUnusedLocksInBucket(mongo::LockManager::LockBucket*)
-mongo::LockHead::migratePartitionedLockHeads()
-mongo::ProcessInfo::~ProcessInfo()
-__sweep_server
-mongo::CollectionOptions::parse(mongo::BSONObj const&, mongo::CollectionOptions::ParseKind)
-mongo::CollectionOptions::~CollectionOptions()
-mongo::CollectionOptions::CollectionOptions(mongo::CollectionOptions&&)
-mongo::BSONCollectionCatalogEntry::MetaData::parse(mongo::BSONObj const&)
-mongo::ServiceContext::LockedClientsCursor::next()
-mongo::ServiceContext::LockedClientsCursor::LockedClientsCursor(mongo::ServiceContext*)
-vprintf
-swapcontext
-_IO_padn
-sched_getaffinity
-mongo::ProcessInfo::getNumCoresForProcess()
-mongo::ProcessInfo::ProcessInfo(mongo::ProcessId)
-mongo::(anonymous namespace)::LatchAnalysisSection::includeByDefault() const
-mongo::globalInShutdownDeprecated()
-mongo::Lock::GlobalLock::~GlobalLock()
-mongo::BasicCommandWithReplyBuilderInterface::Invocation::~Invocation()
-__sysconf
-getloadavg
-__libc_close
-mongo::jsTime()
-mongo::ProcessId::asLongLong() const
-__libc_open64
-wcstof128
-_IO_str_underflow
-mongo::LockManager::LockBucket::findOrInsert(mongo::ResourceId)
-mongo::WiredTigerOplogManager::getOplogReadTimestamp() const
-mongo::redact(mongo::BSONObj const&)
-mongo::logv2::shouldRedactLogs()
-mongo::Lock::GlobalLock::_unlock()
-__new_sem_post
-mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
-__rec_destroy_session
-__rec_destroy
-mongo::LogicalSessionCacheImpl::getStats()
-mongo::ServerTransactionsMetrics::updateStats(mongo::TransactionsStats*, bool)
-mongo::RetryableWritesStats::updateStats(mongo::TransactionsStats*)
-mongo::TransactionsStats::TransactionsStats()
-mongo::LinuxProc::LinuxProc(mongo::ProcessId)
-mongo::ProcessInfo::getVirtualMemorySize()
-mongo::ProcessInfo::getResidentSize()
-mongo::ProcessInfo::sysInfo()
-fclose
-_IO_default_finish
-_IO_file_close_it
-_IO_un_link
 __close_nocancel
-mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
-mongo::BSONObj::toString(mongo::StringBuilderImpl<mongo::SharedBufferAllocator>&, bool, bool, bool, int) const
-mongo::BSONObj::toString[abi:cxx11](bool) const
-mongo::FreeMonController::get(mongo::ServiceContext*)
-cuserid
-_IO_str_pbackfail
-_IO_setb
-_IO_enable_locks
-_IO_sputbackc
-strtoul
-_IO_default_uflow
-_IO_file_underflow
-__read
-__conn_query_timestamp
-mongo::Date_t::toSystemTimePoint() const
-__cxa_get_globals
-mongo::NetworkCounter::hitLogicalIn(long long)
-mongo::DbMessage::getns() const
-mongo::ReadConcernSupportResult::ReadConcernSupportResult(boost::optional<mongo::Status>, boost::optional<mongo::Status>)
-mongo::cc()
-__curstat_close
-mongo::logv2::LogDomainGlobal::settings()
-mongo::(anonymous namespace)::AuthzClientObserver::onDestroyClient(mongo::Client*)
-mongo::(anonymous namespace)::timerNowPosixMonotonicClock()
-__GI___nanosleep
-mongo::sleepsecs(int)
-mongo::(anonymous namespace)::ClientCursorMonitor::run()
-mongo::getClientCursorMonitorFrequencySecs()
-mongo::time_t_to_String_short[abi:cxx11](long)
-ctime_r
-asctime_r
-__snprintf
-vsnprintf
-boost::algorithm::split_iterator<char const*>::increment()
-read_buf
-fill_window
-deflate
-flush_pending
-bi_flush
-adler32_z
-mongo::BlockCompressor::compress(mongo::ConstDataRange)
-deflateInit_
-deflateReset
-_tr_init
-_tr_flush_block
-send_tree
-__cxxabiv1::__si_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-__libc_read
-mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
-getpid
-mongo::ProcessId::getCurrent()
-mongo::SystemMetricsCollector::name[abi:cxx11]() const
-mongo::OperationShardingState::~OperationShardingState()
-__curstat_search
-__curstat_set_key
-vsscanf
-_IO_sscanf
+_setjmp
+luaL_testudata
+??
+index2adr
+hashmask
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+emptybuffer
+luaL_addlstring
+l_bunpack
+hashkey
+newhpart
+newtab
+luaL_pushresult
+l_and
+luaL_checkudata
+operator delete(void*)
+clearapart
+final
+update
+T_htonll
+rehashtab
+countint
+luaL_checktype
+luaL_ref
+trace_exit_cp
+operator()
+init
+luaL_unref
+async_get_ctx
+counthash
+__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+stack_init
+c16rtomb
+strbuf_new
+strbuf_init
+snap_restoreval
+release_unused_segments
+tzset
 adjtime
-tzset
-mongo::(anonymous namespace)::StorageClientObserver::onCreateClient(mongo::Client*)
-mongo::transport::TransportLayerASIO::BatonASIO::~BatonASIO()
-mongo::FTDCController::doLoop()
-non-virtual thunk to mongo::StorageEngineImpl::supportsDBLocking() const
-sem_timedwait
-mongo::Date_t::toTimeT() const
-mongo::TransactionCoordinatorsStats::toBSON() const
-mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
-mongo::CurrentInSteps::CurrentInSteps()
-mongo::TransactionCoordinatorsStats::TransactionCoordinatorsStats()
-mongo::TicketHolder::available() const
-mongo::TicketHolder::used() const
-__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-mongo::OpMsgRequest::getDatabase() const
-mongo::FTDCController::getMostRecentPeriodicDocument()
-mongo::(anonymous namespace)::UnusedLockCleaner::taskName() const
-mongo::(anonymous namespace)::PeriodicTaskRunner::_runTask(mongo::PeriodicTask*) [clone .isra.373]
-mongo::SystemTickSource::get()
-mongo::(anonymous namespace)::PeriodicTaskRunner::run()
-mongo::LockManager::_cleanupUnusedLocksInBucket(mongo::LockManager::LockBucket*)
-mongo::LockHead::migratePartitionedLockHeads()
-mongo::ProcessInfo::~ProcessInfo()
-__sweep_server
-mongo::CollectionOptions::parse(mongo::BSONObj const&, mongo::CollectionOptions::ParseKind)
-mongo::CollectionOptions::~CollectionOptions()
-mongo::CollectionOptions::CollectionOptions(mongo::CollectionOptions&&)
-mongo::BSONCollectionCatalogEntry::MetaData::parse(mongo::BSONObj const&)
-mongo::ServiceContext::LockedClientsCursor::next()
-mongo::ServiceContext::LockedClientsCursor::LockedClientsCursor(mongo::ServiceContext*)
-vprintf
-swapcontext
-_IO_padn
-sched_getaffinity
-mongo::ProcessInfo::getNumCoresForProcess()
-mongo::ProcessInfo::ProcessInfo(mongo::ProcessId)
-mongo::(anonymous namespace)::LatchAnalysisSection::includeByDefault() const
-mongo::globalInShutdownDeprecated()
-mongo::Lock::GlobalLock::~GlobalLock()
-mongo::BasicCommandWithReplyBuilderInterface::Invocation::~Invocation()
-__sysconf
-getloadavg
-__libc_close
-mongo::jsTime()
-mongo::ProcessId::asLongLong() const
-__libc_open64
-wcstof128
-_IO_str_underflow
-mongo::LockManager::LockBucket::findOrInsert(mongo::ResourceId)
-mongo::WiredTigerOplogManager::getOplogReadTimestamp() const
-mongo::redact(mongo::BSONObj const&)
-mongo::logv2::shouldRedactLogs()
-mongo::Lock::GlobalLock::_unlock()
-__new_sem_post
-mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
-__rec_destroy_session
-__rec_destroy
-mongo::LogicalSessionCacheImpl::getStats()
-mongo::ServerTransactionsMetrics::updateStats(mongo::TransactionsStats*, bool)
-mongo::RetryableWritesStats::updateStats(mongo::TransactionsStats*)
-mongo::TransactionsStats::TransactionsStats()
-mongo::LinuxProc::LinuxProc(mongo::ProcessId)
-mongo::ProcessInfo::getVirtualMemorySize()
-mongo::ProcessInfo::getResidentSize()
-mongo::ProcessInfo::sysInfo()
-fclose
-_IO_default_finish
-_IO_file_close_it
-_IO_un_link
 __close_nocancel
-mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
-mongo::BSONObj::toString(mongo::StringBuilderImpl<mongo::SharedBufferAllocator>&, bool, bool, bool, int) const
-mongo::BSONObj::toString[abi:cxx11](bool) const
-mongo::FreeMonController::get(mongo::ServiceContext*)
-cuserid
-_IO_str_pbackfail
-_IO_setb
-_IO_enable_locks
-_IO_sputbackc
-strtoul
-_IO_default_uflow
-_IO_file_underflow
-__read
-__conn_query_timestamp
-mongo::Date_t::toSystemTimePoint() const
-__cxa_get_globals
-mongo::NetworkCounter::hitLogicalIn(long long)
-mongo::DbMessage::getns() const
-mongo::ReadConcernSupportResult::ReadConcernSupportResult(boost::optional<mongo::Status>, boost::optional<mongo::Status>)
-mongo::cc()
-__curstat_close
-mongo::logv2::LogDomainGlobal::settings()
-mongo::(anonymous namespace)::AuthzClientObserver::onDestroyClient(mongo::Client*)
-mongo::(anonymous namespace)::timerNowPosixMonotonicClock()
-__GI___nanosleep
-mongo::sleepsecs(int)
-mongo::(anonymous namespace)::ClientCursorMonitor::run()
-mongo::getClientCursorMonitorFrequencySecs()
-mongo::time_t_to_String_short[abi:cxx11](long)
-ctime_r
-asctime_r
-__snprintf
-vsnprintf
-boost::algorithm::split_iterator<char const*>::increment()
-read_buf
-fill_window
-deflate
-flush_pending
-bi_flush
-adler32_z
-mongo::BlockCompressor::compress(mongo::ConstDataRange)
-deflateInit_
-deflateReset
-_tr_init
-_tr_flush_block
-send_tree
-__cxxabiv1::__si_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-__libc_read
-mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
-getpid
-mongo::ProcessId::getCurrent()
-mongo::SystemMetricsCollector::name[abi:cxx11]() const
-mongo::OperationShardingState::~OperationShardingState()
-__curstat_search
-__curstat_set_key
-vsscanf
-_IO_sscanf
+_setjmp
+luaL_testudata
+??
+index2adr
+hashmask
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+emptybuffer
+luaL_addlstring
+l_bunpack
+hashkey
+newhpart
+newtab
+luaL_pushresult
+l_and
+luaL_checkudata
+operator delete(void*)
+clearapart
+final
+update
+T_htonll
+rehashtab
+countint
+luaL_checktype
+luaL_ref
+trace_exit_cp
+operator()
+init
+luaL_unref
+async_get_ctx
+counthash
+__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+stack_init
+c16rtomb
+strbuf_new
+strbuf_init
+snap_restoreval
+release_unused_segments
+tzset
 adjtime
-tzset
-mongo::(anonymous namespace)::StorageClientObserver::onCreateClient(mongo::Client*)
-mongo::transport::TransportLayerASIO::BatonASIO::~BatonASIO()
-mongo::FTDCController::doLoop()
-non-virtual thunk to mongo::StorageEngineImpl::supportsDBLocking() const
-sem_timedwait
-mongo::Date_t::toTimeT() const
-mongo::TransactionCoordinatorsStats::toBSON() const
-mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
-mongo::CurrentInSteps::CurrentInSteps()
-mongo::TransactionCoordinatorsStats::TransactionCoordinatorsStats()
-mongo::TicketHolder::available() const
-mongo::TicketHolder::used() const
-__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-mongo::OpMsgRequest::getDatabase() const
-mongo::FTDCController::getMostRecentPeriodicDocument()
-mongo::(anonymous namespace)::UnusedLockCleaner::taskName() const
-mongo::(anonymous namespace)::PeriodicTaskRunner::_runTask(mongo::PeriodicTask*) [clone .isra.373]
-mongo::SystemTickSource::get()
-mongo::(anonymous namespace)::PeriodicTaskRunner::run()
-mongo::LockManager::_cleanupUnusedLocksInBucket(mongo::LockManager::LockBucket*)
-mongo::LockHead::migratePartitionedLockHeads()
-mongo::ProcessInfo::~ProcessInfo()
-__sweep_server
-mongo::CollectionOptions::parse(mongo::BSONObj const&, mongo::CollectionOptions::ParseKind)
-mongo::CollectionOptions::~CollectionOptions()
-mongo::CollectionOptions::CollectionOptions(mongo::CollectionOptions&&)
-mongo::BSONCollectionCatalogEntry::MetaData::parse(mongo::BSONObj const&)
-mongo::ServiceContext::LockedClientsCursor::next()
-mongo::ServiceContext::LockedClientsCursor::LockedClientsCursor(mongo::ServiceContext*)
-vprintf
-swapcontext
-_IO_padn
-sched_getaffinity
-mongo::ProcessInfo::getNumCoresForProcess()
-mongo::ProcessInfo::ProcessInfo(mongo::ProcessId)
-mongo::(anonymous namespace)::LatchAnalysisSection::includeByDefault() const
-mongo::globalInShutdownDeprecated()
-mongo::Lock::GlobalLock::~GlobalLock()
-mongo::BasicCommandWithReplyBuilderInterface::Invocation::~Invocation()
-__sysconf
-getloadavg
-__libc_close
-mongo::jsTime()
-mongo::ProcessId::asLongLong() const
-__libc_open64
-wcstof128
-_IO_str_underflow
-mongo::LockManager::LockBucket::findOrInsert(mongo::ResourceId)
-mongo::WiredTigerOplogManager::getOplogReadTimestamp() const
-mongo::redact(mongo::BSONObj const&)
-mongo::logv2::shouldRedactLogs()
-mongo::Lock::GlobalLock::_unlock()
-__new_sem_post
-mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
-__rec_destroy_session
-__rec_destroy
-mongo::LogicalSessionCacheImpl::getStats()
-mongo::ServerTransactionsMetrics::updateStats(mongo::TransactionsStats*, bool)
-mongo::RetryableWritesStats::updateStats(mongo::TransactionsStats*)
-mongo::TransactionsStats::TransactionsStats()
-mongo::LinuxProc::LinuxProc(mongo::ProcessId)
-mongo::ProcessInfo::getVirtualMemorySize()
-mongo::ProcessInfo::getResidentSize()
-mongo::ProcessInfo::sysInfo()
-fclose
-_IO_default_finish
-_IO_file_close_it
-_IO_un_link
 __close_nocancel
-mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
-mongo::BSONObj::toString(mongo::StringBuilderImpl<mongo::SharedBufferAllocator>&, bool, bool, bool, int) const
-mongo::BSONObj::toString[abi:cxx11](bool) const
-mongo::FreeMonController::get(mongo::ServiceContext*)
-cuserid
-_IO_str_pbackfail
-_IO_setb
-_IO_enable_locks
-_IO_sputbackc
-strtoul
-_IO_default_uflow
-_IO_file_underflow
-__read
-__conn_query_timestamp
-mongo::Date_t::toSystemTimePoint() const
-__cxa_get_globals
-mongo::NetworkCounter::hitLogicalIn(long long)
-mongo::DbMessage::getns() const
-mongo::ReadConcernSupportResult::ReadConcernSupportResult(boost::optional<mongo::Status>, boost::optional<mongo::Status>)
-mongo::cc()
-__curstat_close
-mongo::logv2::LogDomainGlobal::settings()
-mongo::(anonymous namespace)::AuthzClientObserver::onDestroyClient(mongo::Client*)
-mongo::(anonymous namespace)::timerNowPosixMonotonicClock()
-__GI___nanosleep
-mongo::sleepsecs(int)
-mongo::(anonymous namespace)::ClientCursorMonitor::run()
-mongo::getClientCursorMonitorFrequencySecs()
-mongo::time_t_to_String_short[abi:cxx11](long)
-ctime_r
-asctime_r
-__snprintf
-vsnprintf
-boost::algorithm::split_iterator<char const*>::increment()
-read_buf
-fill_window
-deflate
-flush_pending
-bi_flush
-adler32_z
-mongo::BlockCompressor::compress(mongo::ConstDataRange)
-deflateInit_
-deflateReset
-_tr_init
-_tr_flush_block
-send_tree
-__cxxabiv1::__si_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-__libc_read
-mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
-getpid
-mongo::ProcessId::getCurrent()
-mongo::SystemMetricsCollector::name[abi:cxx11]() const
-mongo::OperationShardingState::~OperationShardingState()
-__curstat_search
-__curstat_set_key
-vsscanf
-_IO_sscanf
+_setjmp
+luaL_testudata
+??
+index2adr
+hashmask
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+emptybuffer
+luaL_addlstring
+l_bunpack
+hashkey
+newhpart
+newtab
+luaL_pushresult
+l_and
+luaL_checkudata
+operator delete(void*)
+clearapart
+final
+update
+T_htonll
+rehashtab
+countint
+luaL_checktype
+luaL_ref
+trace_exit_cp
+operator()
+init
+luaL_unref
+async_get_ctx
+counthash
+__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+stack_init
+c16rtomb
+strbuf_new
+strbuf_init
+snap_restoreval
+release_unused_segments
+tzset
 adjtime
-tzset
-mongo::(anonymous namespace)::StorageClientObserver::onCreateClient(mongo::Client*)
-mongo::transport::TransportLayerASIO::BatonASIO::~BatonASIO()
-mongo::FTDCController::doLoop()
-non-virtual thunk to mongo::StorageEngineImpl::supportsDBLocking() const
-sem_timedwait
-mongo::Date_t::toTimeT() const
-mongo::TransactionCoordinatorsStats::toBSON() const
-mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
-mongo::CurrentInSteps::CurrentInSteps()
-mongo::TransactionCoordinatorsStats::TransactionCoordinatorsStats()
-mongo::TicketHolder::available() const
-mongo::TicketHolder::used() const
-__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-mongo::OpMsgRequest::getDatabase() const
-mongo::FTDCController::getMostRecentPeriodicDocument()
-mongo::(anonymous namespace)::UnusedLockCleaner::taskName() const
-mongo::(anonymous namespace)::PeriodicTaskRunner::_runTask(mongo::PeriodicTask*) [clone .isra.373]
-mongo::SystemTickSource::get()
-mongo::(anonymous namespace)::PeriodicTaskRunner::run()
-mongo::LockManager::_cleanupUnusedLocksInBucket(mongo::LockManager::LockBucket*)
-mongo::LockHead::migratePartitionedLockHeads()
-mongo::ProcessInfo::~ProcessInfo()
-__sweep_server
-mongo::CollectionOptions::parse(mongo::BSONObj const&, mongo::CollectionOptions::ParseKind)
-mongo::CollectionOptions::~CollectionOptions()
-mongo::CollectionOptions::CollectionOptions(mongo::CollectionOptions&&)
-mongo::BSONCollectionCatalogEntry::MetaData::parse(mongo::BSONObj const&)
-mongo::ServiceContext::LockedClientsCursor::next()
-mongo::ServiceContext::LockedClientsCursor::LockedClientsCursor(mongo::ServiceContext*)
-vprintf
-swapcontext
-_IO_padn
-sched_getaffinity
-mongo::ProcessInfo::getNumCoresForProcess()
-mongo::ProcessInfo::ProcessInfo(mongo::ProcessId)
-mongo::(anonymous namespace)::LatchAnalysisSection::includeByDefault() const
-mongo::globalInShutdownDeprecated()
-mongo::Lock::GlobalLock::~GlobalLock()
-mongo::BasicCommandWithReplyBuilderInterface::Invocation::~Invocation()
-__sysconf
-getloadavg
-__libc_close
-mongo::jsTime()
-mongo::ProcessId::asLongLong() const
-__libc_open64
-wcstof128
-_IO_str_underflow
-mongo::LockManager::LockBucket::findOrInsert(mongo::ResourceId)
-mongo::WiredTigerOplogManager::getOplogReadTimestamp() const
-mongo::redact(mongo::BSONObj const&)
-mongo::logv2::shouldRedactLogs()
-mongo::Lock::GlobalLock::_unlock()
-__new_sem_post
-mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
-__rec_destroy_session
-__rec_destroy
-mongo::LogicalSessionCacheImpl::getStats()
-mongo::ServerTransactionsMetrics::updateStats(mongo::TransactionsStats*, bool)
-mongo::RetryableWritesStats::updateStats(mongo::TransactionsStats*)
-mongo::TransactionsStats::TransactionsStats()
-mongo::LinuxProc::LinuxProc(mongo::ProcessId)
-mongo::ProcessInfo::getVirtualMemorySize()
-mongo::ProcessInfo::getResidentSize()
-mongo::ProcessInfo::sysInfo()
-fclose
-_IO_default_finish
-_IO_file_close_it
-_IO_un_link
 __close_nocancel
-mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
-mongo::BSONObj::toString(mongo::StringBuilderImpl<mongo::SharedBufferAllocator>&, bool, bool, bool, int) const
-mongo::BSONObj::toString[abi:cxx11](bool) const
-mongo::FreeMonController::get(mongo::ServiceContext*)
-cuserid
-_IO_str_pbackfail
-_IO_setb
-_IO_enable_locks
-_IO_sputbackc
-strtoul
-_IO_default_uflow
-_IO_file_underflow
-__read
-__conn_query_timestamp
-mongo::Date_t::toSystemTimePoint() const
-__cxa_get_globals
-mongo::NetworkCounter::hitLogicalIn(long long)
-mongo::DbMessage::getns() const
-mongo::ReadConcernSupportResult::ReadConcernSupportResult(boost::optional<mongo::Status>, boost::optional<mongo::Status>)
-mongo::cc()
-__curstat_close
-mongo::logv2::LogDomainGlobal::settings()
-mongo::(anonymous namespace)::AuthzClientObserver::onDestroyClient(mongo::Client*)
-mongo::(anonymous namespace)::timerNowPosixMonotonicClock()
-__GI___nanosleep
-mongo::sleepsecs(int)
-mongo::(anonymous namespace)::ClientCursorMonitor::run()
-mongo::getClientCursorMonitorFrequencySecs()
-mongo::time_t_to_String_short[abi:cxx11](long)
-ctime_r
-asctime_r
-__snprintf
-vsnprintf
-boost::algorithm::split_iterator<char const*>::increment()
-read_buf
-fill_window
-deflate
-flush_pending
-bi_flush
-adler32_z
-mongo::BlockCompressor::compress(mongo::ConstDataRange)
-deflateInit_
-deflateReset
-_tr_init
-_tr_flush_block
-send_tree
-__cxxabiv1::__si_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-__libc_read
-mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
-getpid
-mongo::ProcessId::getCurrent()
-mongo::SystemMetricsCollector::name[abi:cxx11]() const
-mongo::OperationShardingState::~OperationShardingState()
-__curstat_search
-__curstat_set_key
-vsscanf
-_IO_sscanf
+_setjmp
+luaL_testudata
+??
+index2adr
+hashmask
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+emptybuffer
+luaL_addlstring
+l_bunpack
+hashkey
+newhpart
+newtab
+luaL_pushresult
+l_and
+luaL_checkudata
+operator delete(void*)
+clearapart
+final
+update
+T_htonll
+rehashtab
+countint
+luaL_checktype
+luaL_ref
+trace_exit_cp
+operator()
+init
+luaL_unref
+async_get_ctx
+counthash
+__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+stack_init
+c16rtomb
+strbuf_new
+strbuf_init
+snap_restoreval
+release_unused_segments
+tzset
 adjtime
-tzset
-mongo::(anonymous namespace)::StorageClientObserver::onCreateClient(mongo::Client*)
-mongo::transport::TransportLayerASIO::BatonASIO::~BatonASIO()
-mongo::FTDCController::doLoop()
-non-virtual thunk to mongo::StorageEngineImpl::supportsDBLocking() const
-sem_timedwait
-mongo::Date_t::toTimeT() const
-mongo::TransactionCoordinatorsStats::toBSON() const
-mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
-mongo::CurrentInSteps::CurrentInSteps()
-mongo::TransactionCoordinatorsStats::TransactionCoordinatorsStats()
-mongo::TicketHolder::available() const
-mongo::TicketHolder::used() const
-__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-mongo::OpMsgRequest::getDatabase() const
-mongo::FTDCController::getMostRecentPeriodicDocument()
-mongo::(anonymous namespace)::UnusedLockCleaner::taskName() const
-mongo::(anonymous namespace)::PeriodicTaskRunner::_runTask(mongo::PeriodicTask*) [clone .isra.373]
-mongo::SystemTickSource::get()
-mongo::(anonymous namespace)::PeriodicTaskRunner::run()
-mongo::LockManager::_cleanupUnusedLocksInBucket(mongo::LockManager::LockBucket*)
-mongo::LockHead::migratePartitionedLockHeads()
-mongo::ProcessInfo::~ProcessInfo()
-__sweep_server
-mongo::CollectionOptions::parse(mongo::BSONObj const&, mongo::CollectionOptions::ParseKind)
-mongo::CollectionOptions::~CollectionOptions()
-mongo::CollectionOptions::CollectionOptions(mongo::CollectionOptions&&)
-mongo::BSONCollectionCatalogEntry::MetaData::parse(mongo::BSONObj const&)
-mongo::ServiceContext::LockedClientsCursor::next()
-mongo::ServiceContext::LockedClientsCursor::LockedClientsCursor(mongo::ServiceContext*)
-vprintf
-swapcontext
-_IO_padn
-sched_getaffinity
-mongo::ProcessInfo::getNumCoresForProcess()
-mongo::ProcessInfo::ProcessInfo(mongo::ProcessId)
-mongo::(anonymous namespace)::LatchAnalysisSection::includeByDefault() const
-mongo::globalInShutdownDeprecated()
-mongo::Lock::GlobalLock::~GlobalLock()
-mongo::BasicCommandWithReplyBuilderInterface::Invocation::~Invocation()
-__sysconf
-getloadavg
-__libc_close
-mongo::jsTime()
-mongo::ProcessId::asLongLong() const
-__libc_open64
-wcstof128
-_IO_str_underflow
-mongo::LockManager::LockBucket::findOrInsert(mongo::ResourceId)
-mongo::WiredTigerOplogManager::getOplogReadTimestamp() const
-mongo::redact(mongo::BSONObj const&)
-mongo::logv2::shouldRedactLogs()
-mongo::Lock::GlobalLock::_unlock()
-__new_sem_post
-mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
-__rec_destroy_session
-__rec_destroy
-mongo::LogicalSessionCacheImpl::getStats()
-mongo::ServerTransactionsMetrics::updateStats(mongo::TransactionsStats*, bool)
-mongo::RetryableWritesStats::updateStats(mongo::TransactionsStats*)
-mongo::TransactionsStats::TransactionsStats()
-mongo::LinuxProc::LinuxProc(mongo::ProcessId)
-mongo::ProcessInfo::getVirtualMemorySize()
-mongo::ProcessInfo::getResidentSize()
-mongo::ProcessInfo::sysInfo()
-fclose
-_IO_default_finish
-_IO_file_close_it
-_IO_un_link
 __close_nocancel
-mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
-mongo::BSONObj::toString(mongo::StringBuilderImpl<mongo::SharedBufferAllocator>&, bool, bool, bool, int) const
-mongo::BSONObj::toString[abi:cxx11](bool) const
-mongo::FreeMonController::get(mongo::ServiceContext*)
-cuserid
-_IO_str_pbackfail
-_IO_setb
-_IO_enable_locks
-_IO_sputbackc
-strtoul
-_IO_default_uflow
-_IO_file_underflow
-__read
-__conn_query_timestamp
-mongo::Date_t::toSystemTimePoint() const
-__cxa_get_globals
-mongo::NetworkCounter::hitLogicalIn(long long)
-mongo::DbMessage::getns() const
-mongo::ReadConcernSupportResult::ReadConcernSupportResult(boost::optional<mongo::Status>, boost::optional<mongo::Status>)
-mongo::cc()
-__curstat_close
-mongo::logv2::LogDomainGlobal::settings()
-mongo::(anonymous namespace)::AuthzClientObserver::onDestroyClient(mongo::Client*)
-mongo::(anonymous namespace)::timerNowPosixMonotonicClock()
-__GI___nanosleep
-mongo::sleepsecs(int)
-mongo::(anonymous namespace)::ClientCursorMonitor::run()
-mongo::getClientCursorMonitorFrequencySecs()
-mongo::time_t_to_String_short[abi:cxx11](long)
-ctime_r
-asctime_r
-__snprintf
-vsnprintf
-boost::algorithm::split_iterator<char const*>::increment()
-read_buf
-fill_window
-deflate
-flush_pending
-bi_flush
-adler32_z
-mongo::BlockCompressor::compress(mongo::ConstDataRange)
-deflateInit_
-deflateReset
-_tr_init
-_tr_flush_block
-send_tree
-__cxxabiv1::__si_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-__libc_read
-mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
-getpid
-mongo::ProcessId::getCurrent()
-mongo::SystemMetricsCollector::name[abi:cxx11]() const
-mongo::OperationShardingState::~OperationShardingState()
-__curstat_search
-__curstat_set_key
-vsscanf
-_IO_sscanf
+_setjmp
+luaL_testudata
+??
+index2adr
+hashmask
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+emptybuffer
+luaL_addlstring
+l_bunpack
+hashkey
+newhpart
+newtab
+luaL_pushresult
+l_and
+luaL_checkudata
+operator delete(void*)
+clearapart
+final
+update
+T_htonll
+rehashtab
+countint
+luaL_checktype
+luaL_ref
+trace_exit_cp
+operator()
+init
+luaL_unref
+async_get_ctx
+counthash
+__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+stack_init
+c16rtomb
+strbuf_new
+strbuf_init
+snap_restoreval
+release_unused_segments
+tzset
 adjtime
-tzset
-mongo::(anonymous namespace)::StorageClientObserver::onCreateClient(mongo::Client*)
-mongo::transport::TransportLayerASIO::BatonASIO::~BatonASIO()
-mongo::FTDCController::doLoop()
-non-virtual thunk to mongo::StorageEngineImpl::supportsDBLocking() const
-sem_timedwait
-mongo::Date_t::toTimeT() const
-mongo::TransactionCoordinatorsStats::toBSON() const
-mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
-mongo::CurrentInSteps::CurrentInSteps()
-mongo::TransactionCoordinatorsStats::TransactionCoordinatorsStats()
-mongo::TicketHolder::available() const
-mongo::TicketHolder::used() const
-__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-mongo::OpMsgRequest::getDatabase() const
-mongo::FTDCController::getMostRecentPeriodicDocument()
-mongo::(anonymous namespace)::UnusedLockCleaner::taskName() const
-mongo::(anonymous namespace)::PeriodicTaskRunner::_runTask(mongo::PeriodicTask*) [clone .isra.373]
-mongo::SystemTickSource::get()
-mongo::(anonymous namespace)::PeriodicTaskRunner::run()
-mongo::LockManager::_cleanupUnusedLocksInBucket(mongo::LockManager::LockBucket*)
-mongo::LockHead::migratePartitionedLockHeads()
-mongo::ProcessInfo::~ProcessInfo()
-__sweep_server
-mongo::CollectionOptions::parse(mongo::BSONObj const&, mongo::CollectionOptions::ParseKind)
-mongo::CollectionOptions::~CollectionOptions()
-mongo::CollectionOptions::CollectionOptions(mongo::CollectionOptions&&)
-mongo::BSONCollectionCatalogEntry::MetaData::parse(mongo::BSONObj const&)
-mongo::ServiceContext::LockedClientsCursor::next()
-mongo::ServiceContext::LockedClientsCursor::LockedClientsCursor(mongo::ServiceContext*)
-vprintf
-swapcontext
-_IO_padn
-sched_getaffinity
-mongo::ProcessInfo::getNumCoresForProcess()
-mongo::ProcessInfo::ProcessInfo(mongo::ProcessId)
-mongo::(anonymous namespace)::LatchAnalysisSection::includeByDefault() const
-mongo::globalInShutdownDeprecated()
-mongo::Lock::GlobalLock::~GlobalLock()
-mongo::BasicCommandWithReplyBuilderInterface::Invocation::~Invocation()
-__sysconf
-getloadavg
-__libc_close
-mongo::jsTime()
-mongo::ProcessId::asLongLong() const
-__libc_open64
-wcstof128
-_IO_str_underflow
-mongo::LockManager::LockBucket::findOrInsert(mongo::ResourceId)
-mongo::WiredTigerOplogManager::getOplogReadTimestamp() const
-mongo::redact(mongo::BSONObj const&)
-mongo::logv2::shouldRedactLogs()
-mongo::Lock::GlobalLock::_unlock()
-__new_sem_post
-mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
-__rec_destroy_session
-__rec_destroy
-mongo::LogicalSessionCacheImpl::getStats()
-mongo::ServerTransactionsMetrics::updateStats(mongo::TransactionsStats*, bool)
-mongo::RetryableWritesStats::updateStats(mongo::TransactionsStats*)
-mongo::TransactionsStats::TransactionsStats()
-mongo::LinuxProc::LinuxProc(mongo::ProcessId)
-mongo::ProcessInfo::getVirtualMemorySize()
-mongo::ProcessInfo::getResidentSize()
-mongo::ProcessInfo::sysInfo()
-fclose
-_IO_default_finish
-_IO_file_close_it
-_IO_un_link
 __close_nocancel
-mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
-mongo::BSONObj::toString(mongo::StringBuilderImpl<mongo::SharedBufferAllocator>&, bool, bool, bool, int) const
-mongo::BSONObj::toString[abi:cxx11](bool) const
-mongo::FreeMonController::get(mongo::ServiceContext*)
-cuserid
-_IO_str_pbackfail
-_IO_setb
-_IO_enable_locks
-_IO_sputbackc
-strtoul
-_IO_default_uflow
-_IO_file_underflow
-__read
-__conn_query_timestamp
-mongo::Date_t::toSystemTimePoint() const
-__cxa_get_globals
-mongo::NetworkCounter::hitLogicalIn(long long)
-mongo::DbMessage::getns() const
-mongo::ReadConcernSupportResult::ReadConcernSupportResult(boost::optional<mongo::Status>, boost::optional<mongo::Status>)
-mongo::cc()
-__curstat_close
-mongo::logv2::LogDomainGlobal::settings()
-mongo::(anonymous namespace)::AuthzClientObserver::onDestroyClient(mongo::Client*)
-mongo::(anonymous namespace)::timerNowPosixMonotonicClock()
-__GI___nanosleep
-mongo::sleepsecs(int)
-mongo::(anonymous namespace)::ClientCursorMonitor::run()
-mongo::getClientCursorMonitorFrequencySecs()
-mongo::time_t_to_String_short[abi:cxx11](long)
-ctime_r
-asctime_r
-__snprintf
-vsnprintf
-boost::algorithm::split_iterator<char const*>::increment()
-read_buf
-fill_window
-deflate
-flush_pending
-bi_flush
-adler32_z
-mongo::BlockCompressor::compress(mongo::ConstDataRange)
-deflateInit_
-deflateReset
-_tr_init
-_tr_flush_block
-send_tree
-__cxxabiv1::__si_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-__libc_read
-mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
-getpid
-mongo::ProcessId::getCurrent()
-mongo::SystemMetricsCollector::name[abi:cxx11]() const
-mongo::OperationShardingState::~OperationShardingState()
-__curstat_search
-__curstat_set_key
-vsscanf
-_IO_sscanf
+_setjmp
+luaL_testudata
+??
+index2adr
+hashmask
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+emptybuffer
+luaL_addlstring
+l_bunpack
+hashkey
+newhpart
+newtab
+luaL_pushresult
+l_and
+luaL_checkudata
+operator delete(void*)
+clearapart
+final
+update
+T_htonll
+rehashtab
+countint
+luaL_checktype
+luaL_ref
+trace_exit_cp
+operator()
+init
+luaL_unref
+async_get_ctx
+counthash
+__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+stack_init
+c16rtomb
+strbuf_new
+strbuf_init
+snap_restoreval
+release_unused_segments
+tzset
 adjtime
-tzset
-mongo::(anonymous namespace)::StorageClientObserver::onCreateClient(mongo::Client*)
-mongo::transport::TransportLayerASIO::BatonASIO::~BatonASIO()
-mongo::FTDCController::doLoop()
-non-virtual thunk to mongo::StorageEngineImpl::supportsDBLocking() const
-sem_timedwait
-mongo::Date_t::toTimeT() const
-mongo::TransactionCoordinatorsStats::toBSON() const
-mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
-mongo::CurrentInSteps::CurrentInSteps()
-mongo::TransactionCoordinatorsStats::TransactionCoordinatorsStats()
-mongo::TicketHolder::available() const
-mongo::TicketHolder::used() const
-__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-mongo::OpMsgRequest::getDatabase() const
-mongo::FTDCController::getMostRecentPeriodicDocument()
-mongo::(anonymous namespace)::UnusedLockCleaner::taskName() const
-mongo::(anonymous namespace)::PeriodicTaskRunner::_runTask(mongo::PeriodicTask*) [clone .isra.373]
-mongo::SystemTickSource::get()
-mongo::(anonymous namespace)::PeriodicTaskRunner::run()
-mongo::LockManager::_cleanupUnusedLocksInBucket(mongo::LockManager::LockBucket*)
-mongo::LockHead::migratePartitionedLockHeads()
-mongo::ProcessInfo::~ProcessInfo()
-__sweep_server
-mongo::CollectionOptions::parse(mongo::BSONObj const&, mongo::CollectionOptions::ParseKind)
-mongo::CollectionOptions::~CollectionOptions()
-mongo::CollectionOptions::CollectionOptions(mongo::CollectionOptions&&)
-mongo::BSONCollectionCatalogEntry::MetaData::parse(mongo::BSONObj const&)
-mongo::ServiceContext::LockedClientsCursor::next()
-mongo::ServiceContext::LockedClientsCursor::LockedClientsCursor(mongo::ServiceContext*)
-vprintf
-swapcontext
-_IO_padn
-sched_getaffinity
-mongo::ProcessInfo::getNumCoresForProcess()
-mongo::ProcessInfo::ProcessInfo(mongo::ProcessId)
-mongo::(anonymous namespace)::LatchAnalysisSection::includeByDefault() const
-mongo::globalInShutdownDeprecated()
-mongo::Lock::GlobalLock::~GlobalLock()
-mongo::BasicCommandWithReplyBuilderInterface::Invocation::~Invocation()
-__sysconf
-getloadavg
-__libc_close
-mongo::jsTime()
-mongo::ProcessId::asLongLong() const
-__libc_open64
-wcstof128
-_IO_str_underflow
-mongo::LockManager::LockBucket::findOrInsert(mongo::ResourceId)
-mongo::WiredTigerOplogManager::getOplogReadTimestamp() const
-mongo::redact(mongo::BSONObj const&)
-mongo::logv2::shouldRedactLogs()
-mongo::Lock::GlobalLock::_unlock()
-__new_sem_post
-mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
-__rec_destroy_session
-__rec_destroy
-mongo::LogicalSessionCacheImpl::getStats()
-mongo::ServerTransactionsMetrics::updateStats(mongo::TransactionsStats*, bool)
-mongo::RetryableWritesStats::updateStats(mongo::TransactionsStats*)
-mongo::TransactionsStats::TransactionsStats()
-mongo::LinuxProc::LinuxProc(mongo::ProcessId)
-mongo::ProcessInfo::getVirtualMemorySize()
-mongo::ProcessInfo::getResidentSize()
-mongo::ProcessInfo::sysInfo()
-fclose
-_IO_default_finish
-_IO_file_close_it
-_IO_un_link
 __close_nocancel
-mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
-mongo::BSONObj::toString(mongo::StringBuilderImpl<mongo::SharedBufferAllocator>&, bool, bool, bool, int) const
-mongo::BSONObj::toString[abi:cxx11](bool) const
-mongo::FreeMonController::get(mongo::ServiceContext*)
-cuserid
-_IO_str_pbackfail
-_IO_setb
-_IO_enable_locks
-_IO_sputbackc
-strtoul
-_IO_default_uflow
-_IO_file_underflow
-__read
-__conn_query_timestamp
-mongo::Date_t::toSystemTimePoint() const
-__cxa_get_globals
-mongo::NetworkCounter::hitLogicalIn(long long)
-mongo::DbMessage::getns() const
-mongo::ReadConcernSupportResult::ReadConcernSupportResult(boost::optional<mongo::Status>, boost::optional<mongo::Status>)
-mongo::cc()
-__curstat_close
-mongo::logv2::LogDomainGlobal::settings()
-mongo::(anonymous namespace)::AuthzClientObserver::onDestroyClient(mongo::Client*)
-mongo::(anonymous namespace)::timerNowPosixMonotonicClock()
-__GI___nanosleep
-mongo::sleepsecs(int)
-mongo::(anonymous namespace)::ClientCursorMonitor::run()
-mongo::getClientCursorMonitorFrequencySecs()
-mongo::time_t_to_String_short[abi:cxx11](long)
-ctime_r
-asctime_r
-__snprintf
-vsnprintf
-boost::algorithm::split_iterator<char const*>::increment()
-read_buf
-fill_window
-deflate
-flush_pending
-bi_flush
-adler32_z
-mongo::BlockCompressor::compress(mongo::ConstDataRange)
-deflateInit_
-deflateReset
-_tr_init
-_tr_flush_block
-send_tree
-__cxxabiv1::__si_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-__libc_read
-mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
-getpid
-mongo::ProcessId::getCurrent()
-mongo::SystemMetricsCollector::name[abi:cxx11]() const
-mongo::OperationShardingState::~OperationShardingState()
-__curstat_search
-__curstat_set_key
-vsscanf
-_IO_sscanf
+_setjmp
+luaL_testudata
+??
+index2adr
+hashmask
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+emptybuffer
+luaL_addlstring
+l_bunpack
+hashkey
+newhpart
+newtab
+luaL_pushresult
+l_and
+luaL_checkudata
+operator delete(void*)
+clearapart
+final
+update
+T_htonll
+rehashtab
+countint
+luaL_checktype
+luaL_ref
+trace_exit_cp
+operator()
+init
+luaL_unref
+async_get_ctx
+counthash
+__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+stack_init
+c16rtomb
+strbuf_new
+strbuf_init
+snap_restoreval
+release_unused_segments
+tzset
 adjtime
-tzset
-mongo::(anonymous namespace)::StorageClientObserver::onCreateClient(mongo::Client*)
-mongo::transport::TransportLayerASIO::BatonASIO::~BatonASIO()
-mongo::FTDCController::doLoop()
-non-virtual thunk to mongo::StorageEngineImpl::supportsDBLocking() const
-sem_timedwait
-mongo::Date_t::toTimeT() const
-mongo::TransactionCoordinatorsStats::toBSON() const
-mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
-mongo::CurrentInSteps::CurrentInSteps()
-mongo::TransactionCoordinatorsStats::TransactionCoordinatorsStats()
-mongo::TicketHolder::available() const
-mongo::TicketHolder::used() const
-__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-mongo::OpMsgRequest::getDatabase() const
-mongo::FTDCController::getMostRecentPeriodicDocument()
-mongo::(anonymous namespace)::UnusedLockCleaner::taskName() const
-mongo::(anonymous namespace)::PeriodicTaskRunner::_runTask(mongo::PeriodicTask*) [clone .isra.373]
-mongo::SystemTickSource::get()
-mongo::(anonymous namespace)::PeriodicTaskRunner::run()
-mongo::LockManager::_cleanupUnusedLocksInBucket(mongo::LockManager::LockBucket*)
-mongo::LockHead::migratePartitionedLockHeads()
-mongo::ProcessInfo::~ProcessInfo()
-__sweep_server
-mongo::CollectionOptions::parse(mongo::BSONObj const&, mongo::CollectionOptions::ParseKind)
-mongo::CollectionOptions::~CollectionOptions()
-mongo::CollectionOptions::CollectionOptions(mongo::CollectionOptions&&)
-mongo::BSONCollectionCatalogEntry::MetaData::parse(mongo::BSONObj const&)
-mongo::ServiceContext::LockedClientsCursor::next()
-mongo::ServiceContext::LockedClientsCursor::LockedClientsCursor(mongo::ServiceContext*)
-vprintf
-swapcontext
-_IO_padn
-sched_getaffinity
-mongo::ProcessInfo::getNumCoresForProcess()
-mongo::ProcessInfo::ProcessInfo(mongo::ProcessId)
-mongo::(anonymous namespace)::LatchAnalysisSection::includeByDefault() const
-mongo::globalInShutdownDeprecated()
-mongo::Lock::GlobalLock::~GlobalLock()
-mongo::BasicCommandWithReplyBuilderInterface::Invocation::~Invocation()
-__sysconf
-getloadavg
-__libc_close
-mongo::jsTime()
-mongo::ProcessId::asLongLong() const
-__libc_open64
-wcstof128
-_IO_str_underflow
-mongo::LockManager::LockBucket::findOrInsert(mongo::ResourceId)
-mongo::WiredTigerOplogManager::getOplogReadTimestamp() const
-mongo::redact(mongo::BSONObj const&)
-mongo::logv2::shouldRedactLogs()
-mongo::Lock::GlobalLock::_unlock()
-__new_sem_post
-mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
-__rec_destroy_session
-__rec_destroy
-mongo::LogicalSessionCacheImpl::getStats()
-mongo::ServerTransactionsMetrics::updateStats(mongo::TransactionsStats*, bool)
-mongo::RetryableWritesStats::updateStats(mongo::TransactionsStats*)
-mongo::TransactionsStats::TransactionsStats()
-mongo::LinuxProc::LinuxProc(mongo::ProcessId)
-mongo::ProcessInfo::getVirtualMemorySize()
-mongo::ProcessInfo::getResidentSize()
-mongo::ProcessInfo::sysInfo()
-fclose
-_IO_default_finish
-_IO_file_close_it
-_IO_un_link
 __close_nocancel
-mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
-mongo::BSONObj::toString(mongo::StringBuilderImpl<mongo::SharedBufferAllocator>&, bool, bool, bool, int) const
-mongo::BSONObj::toString[abi:cxx11](bool) const
-mongo::FreeMonController::get(mongo::ServiceContext*)
-cuserid
-_IO_str_pbackfail
-_IO_setb
-_IO_enable_locks
-_IO_sputbackc
-strtoul
-_IO_default_uflow
-_IO_file_underflow
-__read
-__conn_query_timestamp
-mongo::Date_t::toSystemTimePoint() const
-__cxa_get_globals
-mongo::NetworkCounter::hitLogicalIn(long long)
-mongo::DbMessage::getns() const
-mongo::ReadConcernSupportResult::ReadConcernSupportResult(boost::optional<mongo::Status>, boost::optional<mongo::Status>)
-mongo::cc()
-__curstat_close
-mongo::logv2::LogDomainGlobal::settings()
-mongo::(anonymous namespace)::AuthzClientObserver::onDestroyClient(mongo::Client*)
-mongo::(anonymous namespace)::timerNowPosixMonotonicClock()
-__GI___nanosleep
-mongo::sleepsecs(int)
-mongo::(anonymous namespace)::ClientCursorMonitor::run()
-mongo::getClientCursorMonitorFrequencySecs()
-mongo::time_t_to_String_short[abi:cxx11](long)
-ctime_r
-asctime_r
-__snprintf
-vsnprintf
-boost::algorithm::split_iterator<char const*>::increment()
-read_buf
-fill_window
-deflate
-flush_pending
-bi_flush
-adler32_z
-mongo::BlockCompressor::compress(mongo::ConstDataRange)
-deflateInit_
-deflateReset
-_tr_init
-_tr_flush_block
-send_tree
-__cxxabiv1::__si_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-__libc_read
-mongo::(anonymous namespace)::readFileAsString(mongo::StringData)
-getpid
-mongo::ProcessId::getCurrent()
-mongo::SystemMetricsCollector::name[abi:cxx11]() const
-mongo::OperationShardingState::~OperationShardingState()
-__curstat_search
-__curstat_set_key
-vsscanf
-_IO_sscanf
+_setjmp
+luaL_testudata
+??
+index2adr
+hashmask
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+emptybuffer
+luaL_addlstring
+l_bunpack
+hashkey
+newhpart
+newtab
+luaL_pushresult
+l_and
+luaL_checkudata
+operator delete(void*)
+clearapart
+final
+update
+T_htonll
+rehashtab
+countint
+luaL_checktype
+luaL_ref
+trace_exit_cp
+operator()
+init
+luaL_unref
+async_get_ctx
+counthash
+__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+stack_init
+c16rtomb
+strbuf_new
+strbuf_init
+snap_restoreval
+release_unused_segments
+tzset
 adjtime
-tzset
-mongo::(anonymous namespace)::StorageClientObserver::onCreateClient(mongo::Client*)
-mongo::transport::TransportLayerASIO::BatonASIO::~BatonASIO()
-mongo::FTDCController::doLoop()
-non-virtual thunk to mongo::StorageEngineImpl::supportsDBLocking() const
-sem_timedwait
-mongo::Date_t::toTimeT() const
-mongo::TransactionCoordinatorsStats::toBSON() const
-mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
-mongo::CurrentInSteps::CurrentInSteps()
-mongo::TransactionCoordinatorsStats::TransactionCoordinatorsStats()
-mongo::TicketHolder::available() const
-mongo::TicketHolder::used() const
-__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
-mongo::OpMsgRequest::getDatabase() const
-mongo::FTDCController::getMostRecentPeriodicDocument()
-mongo::(anonymous namespace)::UnusedLockCleaner::taskName() const
-mongo::(anonymous namespace)::PeriodicTaskRunner::_runTask(mongo::PeriodicTask*) [clone .isra.373]
-mongo::SystemTickSource::get()
-mongo::(anonymous namespace)::PeriodicTaskRunner::run()
-mongo::LockManager::_cleanupUnusedLocksInBucket(mongo::LockManager::LockBucket*)
-mongo::LockHead::migratePartitionedLockHeads()
-mongo::ProcessInfo::~ProcessInfo()
-__sweep_server
-mongo::CollectionOptions::parse(mongo::BSONObj const&, mongo::CollectionOptions::ParseKind)
-mongo::CollectionOptions::~CollectionOptions()
-mongo::CollectionOptions::CollectionOptions(mongo::CollectionOptions&&)
-mongo::BSONCollectionCatalogEntry::MetaData::parse(mongo::BSONObj const&)
-mongo::ServiceContext::LockedClientsCursor::next()
-mongo::ServiceContext::LockedClientsCursor::LockedClientsCursor(mongo::ServiceContext*)
-vprintf
-swapcontext
-_IO_padn
-sched_getaffinity
-mongo::ProcessInfo::getNumCoresForProcess()
-mongo::ProcessInfo::ProcessInfo(mongo::ProcessId)
-mongo::(anonymous namespace)::LatchAnalysisSection::includeByDefault() const
-mongo::globalInShutdownDeprecated()
-mongo::Lock::GlobalLock::~GlobalLock()
-mongo::BasicCommandWithReplyBuilderInterface::Invocation::~Invocation()
-__sysconf
-getloadavg
-__libc_close
-mongo::jsTime()
-mongo::ProcessId::asLongLong() const
-__libc_open64
-wcstof128
-_IO_str_underflow
-mongo::LockManager::LockBucket::findOrInsert(mongo::ResourceId)
-mongo::WiredTigerOplogManager::getOplogReadTimestamp() const
-mongo::redact(mongo::BSONObj const&)
-mongo::logv2::shouldRedactLogs()
-mongo::Lock::GlobalLock::_unlock()
-__new_sem_post
-mongo::WiredTigerSessionCache::releaseSession(mongo::WiredTigerSession*)
-__rec_destroy_session
-__rec_destroy
-mongo::LogicalSessionCacheImpl::getStats()
-mongo::ServerTransactionsMetrics::updateStats(mongo::TransactionsStats*, bool)
-mongo::RetryableWritesStats::updateStats(mongo::TransactionsStats*)
-mongo::TransactionsStats::TransactionsStats()
-mongo::LinuxProc::LinuxProc(mongo::ProcessId)
-mongo::ProcessInfo::getVirtualMemorySize()
-mongo::ProcessInfo::getResidentSize()
-mongo::ProcessInfo::sysInfo()
-fclose
-_IO_default_finish
-_IO_file_close_it
-_IO_un_link
 __close_nocancel
+_setjmp
+luaL_testudata
+??
+index2adr
+hashmask
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+emptybuffer
+luaL_addlstring
+l_bunpack
+hashkey
+newhpart
+newtab
+luaL_pushresult
+l_and
+luaL_checkudata
+operator delete(void*)
+clearapart
+final
+update
+T_htonll
+rehashtab
+countint
+luaL_checktype
+luaL_ref
+trace_exit_cp
+operator()
+init
+luaL_unref
+async_get_ctx
+counthash
+__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+stack_init
+c16rtomb
+strbuf_new
+strbuf_init
+snap_restoreval
+release_unused_segments
+tzset
+adjtime
+__close_nocancel
+_setjmp
+luaL_testudata
+??
+index2adr
+hashmask
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+emptybuffer
+luaL_addlstring
+l_bunpack
+hashkey
+newhpart
+newtab
+luaL_pushresult
+l_and
+luaL_checkudata
+operator delete(void*)
+clearapart
+final
+update
+T_htonll
+rehashtab
+countint
+luaL_checktype
+luaL_ref
+trace_exit_cp
+operator()
+init
+luaL_unref
+async_get_ctx
+counthash
+__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+stack_init
+c16rtomb
+strbuf_new
+strbuf_init
+snap_restoreval
+release_unused_segments
+tzset
+adjtime
+__close_nocancel
+_setjmp
+luaL_testudata
+??
+index2adr
+hashmask
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+emptybuffer
+luaL_addlstring
+l_bunpack
+hashkey
+newhpart
+newtab
+luaL_pushresult
+l_and
+luaL_checkudata
+operator delete(void*)
+clearapart
+final
+update
+T_htonll
+rehashtab
+countint
+luaL_checktype
+luaL_ref
+trace_exit_cp
+operator()
+init
+luaL_unref
+async_get_ctx
+counthash
+__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+stack_init
+c16rtomb
+strbuf_new
+strbuf_init
+snap_restoreval
+release_unused_segments
+tzset
+adjtime
+__close_nocancel
+_setjmp
+luaL_testudata
+??
+index2adr
+hashmask
+l_bpack
+luaL_checklstring
+l_or
+luaL_checkinteger
+emptybuffer
+luaL_addlstring
+l_bunpack
+hashkey
+newhpart
+newtab
+luaL_pushresult
+l_and
+luaL_checkudata
+operator delete(void*)
+clearapart
+final
+update
+T_htonll
+rehashtab
+countint
+luaL_checktype
+luaL_ref
+trace_exit_cp
+operator()
+init
+luaL_unref
+async_get_ctx
+counthash
+__cxxabiv1::__vmi_class_type_info::__do_dyncast(long, __cxxabiv1::__class_type_info::__sub_kind, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info const*, void const*, __cxxabiv1::__class_type_info::__dyncast_result&) const
+stack_init
+c16rtomb
+strbuf_new
+strbuf_init
+snap_restoreval
+release_unused_segments
+tzset
+adjtime
+__close_nocancel
+_setjmp

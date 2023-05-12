@@ -181,3 +181,5 @@ config_check
 __curstat_get_value
 __curstat_next
 _IO_default_xsputn
+__gnu_cxx::
+__cxxabiv1::__si_class_type_info::__do_dyncast

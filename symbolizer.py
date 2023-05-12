@@ -84,6 +84,7 @@ class Symbolizer:
     def get_symbols(
         self, addr
     ):
+        in_addr=addr
         bin_addr_rmap = {}
         build_id_to_addr_map = {}
         for slr in self.symbol_lookup_ranges:
@@ -113,16 +114,29 @@ class Symbolizer:
                 build_id[2:],
                 "elf"
             )
+            # if build_id=="ea81f6db6ec6ab2fb9cbee8a95c9b94ad4bf9f11":
+            #     print(addr)
+            #     print(in_addr)
+            if not os.path.isfile(build_file):
+                build_file = os.path.join(
+                                os.environ["HOME"],
+                                ".debug",
+                                ".build-id",
+                                build_id[0:2],
+                                build_id[2:],
+                                "vdso"
+                            )
             # print(build_file)
 
             addr_str = " ".join([hex(addr) for addr in addrs])
             # run addr2line
-            addr2line_command = [
+            base_addr2line_command = [
                 "addr2line",
                 "-C",
                 "-f",
                 "-e", build_file,
             ]
+            addr2line_command = base_addr2line_command.copy()
             addr2line_command.extend([hex(addr) for addr in addrs])
             addr_res = subprocess.run(addr2line_command, capture_output=True)
             # print(addr_res.stdout.decode())
@@ -130,8 +144,17 @@ class Symbolizer:
             lines = addr_res.stdout.decode().split("\n")
             
             symbols = lines[::2]
-                        
+            # print(symbols)
+            if symbols[0] == "??":
+                addr2line_command = base_addr2line_command.copy()
+                addr2line_command.extend([hex(bin_addr_rmap[(build_id, addr)]) for addr in addrs])
+                addr_res = subprocess.run(addr2line_command, capture_output=True)
+                lines = addr_res.stdout.decode().split("\n")     
+                symbols = lines[::2]  
             for (symbol, addr) in zip(symbols, addrs):
+                # if symbol == "??":
+                #     print(symbols)
+                #     print(f"{build_id}, {addr}, {bin_addr_rmap[(build_id, addr)]}")
                 ret[bin_addr_rmap[(build_id, addr)]] = symbol
 
         return ret

@@ -5,3 +5,14 @@ _encrypt_by_8_new7462                    #
 AuthzSessionExternalStateMongod::startRequest  
 _crypt_by_4_154                          # 
 mongo::Auth
+SHA1_
+EVP_
+sha1_
+OPENSSL_
+RAND_
+CRYPTO_THREAD_
+ENGINE_
+ASYNC_
+CRYPTO_
+ngx_crc32_short
+rand_bytes

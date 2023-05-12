@@ -35,14 +35,14 @@ tax_categories = [
     "compress",
     # "hash",
     "encryption",
-    "kernel",
+    # "kernel",
     "mem",
     # "miscellaneous",
     "sync",
     "rpc",
     "serialization",
+    "kernel",
     "application_logic",
-    "kernel"
 
 ]
 
@@ -117,7 +117,7 @@ def plot_tax_sharing(perf_sample_events, ip_to_func_name):
     "compress",
     # "hash",
     "encryption",
-    "kernel",
+    # "kernel",
     "mem",
     # "miscellaneous",
     "sync",
@@ -137,7 +137,7 @@ def plot_tax_sharing(perf_sample_events, ip_to_func_name):
         for branch in sample.branch_stack:
             ip = branch.from_ip
             # func = symbolize.get_symbols(ip)[ip]
-            func = ip_to_func_name[ip]
+            func = ip_to_func_name.get(ip, None)
             if func is None or func == "":
                 cat = "application_logic"
             else:
@@ -166,7 +166,7 @@ def tax_heatmap(perf_sample_events, ip_to_func_name):
     "compress",
     # "hash",
     "encryption",
-    "kernel",
+    # "kernel",
     "mem",
     # "miscellaneous",
     "sync",
@@ -239,11 +239,38 @@ def tax_heatmap(perf_sample_events, ip_to_func_name):
 
     plt.savefig("results/tax_heatmap.png", bbox_inches="tight")
 
+def tax_bars(perf_sample_events, ip_to_func_name):
+    xs = tax_categories
+    ys = [0 for _ in tax_categories]
+    length = len(perf_sample_events)
+    for (i, event) in enumerate(perf_sample_events):
+        if i%100 == 0:
+            print(f"{i}/{len(perf_sample_events)}")
+        sample = event.sample_event
+        if sample.branch_stack is None or len(sample.branch_stack) == 0:
+            length -= 1
+            continue
+        ip = sample.branch_stack[0].from_ip
+        func = ip_to_func_name[ip]
+        if func is None or func == "":
+            cat = "kernel"
+        else:
+            cat = bucketize(func)
+        ys[xs.index(cat)] += 1
+    ys = [y/length*100 for y in ys]
+    # xs = sorted(xs, key=(lambda x: ys[xs.index(x)]), reverse=True)
+    # ys.sort(reverse=True)
+    print(xs)
+    print(ys)
+    print(sum(ys))
+    return None
+
 
 def build_ip_mapping(perf_sample_events):
     ip_to_func_name = {}
     for i, event in enumerate(perf_sample_events):
-        print(f"{i}/{len(perf_sample_events)}")
+        if i%100 == 0:
+            print(f"{i}/{len(perf_sample_events)}")
         sample_event = event.sample_event
         for branch in sample_event.branch_stack:
             if branch.from_ip in ip_to_func_name:
@@ -256,14 +283,18 @@ with open("ip_map.pickle", "rb") as f:
     # ip_to_func_name = build_ip_mapping(perf_sample_events)
     # pickle.dump(ip_to_func_name, f)
     ip_to_func_name = pickle.load(f)
+    print(ip_to_func_name.keys())
 
 def work():
     print("Plotting chain cdf")
     plot_chain_cdf(perf_sample_events)
     print("plotting tax sharing")
     plot_tax_sharing(perf_sample_events, ip_to_func_name)
+    print("tax")
+    tax_bars(perf_sample_events, ip_to_func_name)
     print("plotting heatmap")
     tax_heatmap(perf_sample_events, ip_to_func_name)
+    
 
 work()
 

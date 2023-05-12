@@ -48,3 +48,16 @@ mongo::LockerImpl
 mongo::CondVarLockGrantNotification
 pthread
 __thread_run
+atomic
+__lll_lock_wait
+ngx_http_lua_finalize_threads
+ngx_shmtx_wakeup
+ngx_shmtx_lock
+lua_newthread
+ngx_pool_cleanup_add
+ngx_http_lua_new_thread
+ngx_create_pool
+ngx_http_block_reading
+ngx_http_set_content_type
+ngx_http_lua_ngx_req_read_body
+ngx_http_lua_req_body_post_read

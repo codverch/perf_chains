@@ -380,3 +380,18 @@ tcp_send                                 #
 _raw_read_lock_irqsave                   # 
 __unqueue_futex                          # 
 __evict_clear_all_walks
+posix_memalign
+__libc_send
+socket
+__libc_recv
+ngx_unix_recv
+ngx_unix_send
+ngx_reusable_connection
+ngx_tcp_nodelay
+recv
+ngx_linux_sendfile_chain
+ngx_memalign
+ngx_resolver
+ngx_resolve_name
+ngx_resolve_start
+ngx_get_connection
