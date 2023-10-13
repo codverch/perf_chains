@@ -279,11 +279,11 @@ def build_ip_mapping(perf_sample_events):
     return ip_to_func_name
 
 
-with open("ip_map.pickle", "rb") as f:
-    # ip_to_func_name = build_ip_mapping(perf_sample_events)
-    # pickle.dump(ip_to_func_name, f)
-    ip_to_func_name = pickle.load(f)
-    print(ip_to_func_name.keys())
+with open("ip_map.pickle", "wb") as f:
+    ip_to_func_name = build_ip_mapping(perf_sample_events)
+    pickle.dump(ip_to_func_name, f)
+    # ip_to_func_name = pickle.load(f)
+    # print(ip_to_func_name.keys())
 
 def work():
     print("Plotting chain cdf")
