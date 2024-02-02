@@ -1,6 +1,6 @@
-# Performance Monitoring Readme
+# Performance Monitoring 
 
-**Goal:** Measure the CPU-cycles taken by a particular microservice (of interest) in an open-source benchmark suite called DeathStarBench.
+**Goal:** Measure the CPU-cycles taken by a particular microservice (of interest) in an open-source benchmark suite called DeathStarBench, on multiple nodes.
 
 To measure microarchitectural statistics, Perf requires the PID as an argument. Follow the steps below to obtain it.
 
@@ -13,10 +13,9 @@ sudo docker service ls
 
 ## Step 2: Identify Node
 
-# Get detailed information about the specified service to find the node information
 sudo docker service ps <task-id-of-the-microservice>
 
-# Identify the task id of the microservice that you want to profile.
+# Identify the node number and SSH into it 
 
 ## Step 3: Obtain Container ID
 
