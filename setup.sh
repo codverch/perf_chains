@@ -37,13 +37,10 @@ go install github.com/google/pprof@latest
 export PATH=$PATH:$HOME/go/bin
 
 # Install Bazel
-if ! command -v bazel &>/dev/null; then
-    sudo apt update && sudo apt install -y curl gnupg
-    curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > bazel.gpg
-    sudo mv bazel.gpg /usr/share/keyrings/
-    echo "deb [signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list > /dev/null
-    sudo apt update && sudo apt install -y bazel
-fi
+
+wget https://github.com/bazelbuild/bazel/releases/download/7.0.2/bazel-7.0.2-linux-x86_64
+chmod +x bazel-7.0.2-linux-x86_64
+sudo mv bazel-7.0.2-linux-x86_64 /usr/local/bin/bazel
 
 # <---------- Check if Bazel is installed ---------->
 # bazel --version
