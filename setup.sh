@@ -53,9 +53,29 @@ fi
 sudo apt-get -y install g++ git libelf-dev libcap-dev
 git clone https://github.com/google/perf_data_converter.git
 cd perf_data_converter
-bazel build src:perf_to_profile
+
+# Make the .bazelrc file writable by the current user
+chmod +x .bazelrc
+
+# Change ownership of .bazelrc to the current user
+sudo chown $USER .bazelrc
+
+# Build perf_to_profile using Bazel
+sudo bazel build src:perf_to_profile
+
+# Check if the build fails due to an unrecognized option
+if [ $? -ne 0 ]; then
+    echo "Build failed. Removing the problematic line from .bazelrc."
+
+    # Remove the line containing --noenable_bzlmod
+    sed -i '/--noenable_bzlmod/d' .bazelrc
+    
+    # Retry the build
+    sudo bazel build src:perf_to_profile
+fi
+
 cd src
-bazel build quipper:perf_converter
+sudo bazel build quipper:perf_converter
 cd ..
 sudo cp bazel-bin/src/quipper/perf_converter /usr/local/bin/
 sudo cp bazel-bin/src/perf_to_profile /usr/local/bin/
