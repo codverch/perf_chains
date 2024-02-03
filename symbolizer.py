@@ -6,7 +6,7 @@ import glob
 import os
 import functools
 
-pprof_location = "/users/mrancic/go/bin/pprof"
+pprof_location = "/users/deepmish/go/bin/pprof"
 
 def get_pprof_proto(
     perf_data_file,
