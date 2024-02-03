@@ -87,7 +87,8 @@ def plot_chain_cdf(perf_sample_events):
         chain_cycles.append(curr_chain_cycles)
         chain_total_cycles += curr_chain_cycles
     
-    chain_percents = [(cycles/chain_total_cycles)*100 for cycles in chain_cycles]
+    chain_percents = [(cycles/chain_total_cycles)*100 if chain_total_cycles != 0 else 0 for cycles in chain_cycles]
+
     
     chain_percents.sort(reverse=True)
 
