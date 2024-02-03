@@ -9,13 +9,17 @@ fi
 
 # <---------- Install protobuf-compiler and protobuf Python package ---------->
 
-# For efficient data serialization and seamless communication
-sudo apt install protobuf-compiler -y
-pip3 install protobuf
+wget https://github.com/protocolbuffers/protobuf/releases/download/v3.19.0/protoc-3.19.0-linux-x86_64.zip
+unzip -o -d protoc-3.19.0-linux-x86_64 protoc-3.19.0-linux-x86_64.zip
+sudo mv protoc-3.19.0-linux-x86_64/bin/protoc /usr/bin/
 
 # <---------- Check if protobuf-compiler is installed ---------->
 
 # protoc --version
+
+#  <---------- Install Seaborn ---------->
+
+pip install seaborn
 
 # <---------- Download and Install Go ---------->
 
@@ -34,7 +38,8 @@ fi
 
 # Install pprof using go get
 go install github.com/google/pprof@latest
-export PATH=$PATH:$HOME/go/bin
+# export PATH=$PATH:$HOME/go/bin
+export GOPATH=/users/deepmish/perf_chains/go
 
 # Install Bazel
 
