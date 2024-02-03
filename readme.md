@@ -77,3 +77,10 @@ sudo perf record -j any_call,any_ret -p <microservice_pid> -- sleep <time_in_sec
     protoc --python_out=. ./perf_data.proto
 
     ```
+9. **Generate Graphs:**
+    Execute the following command to generate the output graphs for the collected samples in the results folder. To make changes to the          graph, modify driver.py:
+
+   ```bash
+   python3 driver.py
+   ```
+
