@@ -12,6 +12,9 @@ fi
 wget https://github.com/protocolbuffers/protobuf/releases/download/v3.19.0/protoc-3.19.0-linux-x86_64.zip
 unzip -o -d protoc-3.19.0-linux-x86_64 protoc-3.19.0-linux-x86_64.zip
 sudo mv protoc-3.19.0-linux-x86_64/bin/protoc /usr/bin/
+pip install google-cloud
+pip install google-cloud-vision
+
 
 # <---------- Check if protobuf-compiler is installed ---------->
 
