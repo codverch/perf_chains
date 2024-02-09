@@ -395,3 +395,4 @@ ngx_resolver
 ngx_resolve_name
 ngx_resolve_start
 ngx_get_connection
+__libc_alloca_cutoff

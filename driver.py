@@ -124,7 +124,7 @@ def plot_tax_sharing(perf_sample_events, ip_to_func_name):
     "sync",
     "rpc",
     "serialization",
-    # "application_logic",
+    "application_logic",
     "kernel"
 ]
     xs = tax_categories
@@ -134,7 +134,7 @@ def plot_tax_sharing(perf_sample_events, ip_to_func_name):
         if i%100 == 0:
             print(f"{i}/{len(perf_sample_events)}")
         sample = event.sample_event
-        taxes_found = ["application_logic"]
+        taxes_found = []
         for branch in sample.branch_stack:
             ip = branch.from_ip
             # func = symbolize.get_symbols(ip)[ip]
@@ -143,9 +143,13 @@ def plot_tax_sharing(perf_sample_events, ip_to_func_name):
                 cat = "application_logic"
             else:
                 cat = bucketize(func)
+            print(f"{i}\t{cat}")
             if cat not in taxes_found:
                 ys[xs.index(cat)] += 1
                 taxes_found.append(cat)
+    print("Tax Sharing Raw Data")
+    print(xs)
+    print(ys)
     ys = [y/len(perf_sample_events)*100 for y in ys]
     xs = sorted(xs, key=(lambda x: ys[xs.index(x)]), reverse=True)
     ys.sort(reverse=True)

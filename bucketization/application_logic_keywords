@@ -496,3 +496,10 @@ lj_
 ngx_http_lua_read_bytes
 lua_bridge_tracer::
 lua_
+bipbuf_peek_all
+slabs_available_chunks
+assoc_start_expand
+fill_item_stats_automove_
+slab_automove_run
+lru_maintainer_thread
+lru_pull_tail

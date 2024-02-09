@@ -76,3 +76,4 @@ lj_mem_newgco
 lj_buf_putmem
 ngx_pnalloc
 lj_BC_JLOOP
+event_strlcpy_

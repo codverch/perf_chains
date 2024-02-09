@@ -61,3 +61,14 @@ ngx_http_block_reading
 ngx_http_set_content_type
 ngx_http_lua_ngx_req_read_body
 ngx_http_lua_req_body_post_read
+event_set
+usleep #  The usleep() function suspends execution of the calling thread for (at least) usec microseconds.
+nanosleep #      nanosleep() suspends the execution of the calling thread until either at least the time specified in *req has elapsed, or..
+clock_nanosleep
+event_callback_activate_nolock_
+event_del_nolock_
+event_reinit
+evutil_gettime_monotonic_
+event_changelist_remove_all_
+event_base_loop
+clock_handler

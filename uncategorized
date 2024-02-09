@@ -670,3 +670,5 @@ tzset
 adjtime
 __close_nocancel
 _setjmp
+fill_slab_stats_automove
+fill_item_stats_automove

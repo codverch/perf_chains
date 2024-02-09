@@ -183,3 +183,5 @@ __curstat_next
 _IO_default_xsputn
 __gnu_cxx::
 __cxxabiv1::__si_class_type_info::__do_dyncast
+main
+bufferevent_base_set
