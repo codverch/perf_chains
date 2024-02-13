@@ -185,3 +185,7 @@ __gnu_cxx::
 __cxxabiv1::__si_class_type_info::__do_dyncast
 main
 bufferevent_base_set
+clock_nanosleep 
+clock_handler
+usleep #  The usleep() function suspends execution of the calling thread for (at least) usec microseconds.
+nanosleep #      nanosleep() suspends the execution of the calling thread until either at least the time specified in *req has elapsed, or..
