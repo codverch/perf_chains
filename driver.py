@@ -132,7 +132,7 @@ def plot_tax_sharing(perf_sample_events, ip_to_func_name):
 
     for (i, event) in enumerate(perf_sample_events):
         if i%100 == 0:
-            print(f"{i}/{len(perf_sample_events)}")
+            print(f"{i}/{len(perf_sample_events)}") 
         sample = event.sample_event
         taxes_found = []
         for branch in sample.branch_stack:
@@ -143,7 +143,7 @@ def plot_tax_sharing(perf_sample_events, ip_to_func_name):
                 cat = "application_logic"
             else:
                 cat = bucketize(func)
-            print(f"{i}\t{cat}")
+            # print(f"{i}\t{cat}")
             if cat not in taxes_found:
                 ys[xs.index(cat)] += 1
                 taxes_found.append(cat)
@@ -164,7 +164,54 @@ def plot_tax_sharing(perf_sample_events, ip_to_func_name):
     plt.cla()
     plt.clf()
 
+def plot_sample_based_attribution(perf_sample_events, ip_to_func_name):
+    tax_categories = [
+        "c_libraries",
+        "compress",
+        "encryption",
+        "mem",
+        "sync",
+        "rpc",
+        "serialization",
+        "application_logic",
+        "kernel"
+    ]
 
+    store_cpu_cycles_by_tax = {tax: 0 for tax in tax_categories}
+
+    for(i, event) in enumerate(perf_sample_events):
+        sample = event.sample_event 
+        taxes_found = []
+        # Iterate through each sample and only look at the first branch
+        if sample.branch_stack:
+            branch = sample.branch_stack[0] # Sample only the top function
+            instruction_pointer = branch.from_ip
+            function_name = ip_to_func_name.get(instruction_pointer, None)
+            if function_name == None or function_name == "":
+                category = "application_logic"
+
+            else:
+                category = bucketize(function_name)
+                store_cpu_cycles_by_tax[category] += branch.cycles
+
+    # Plot the results
+    
+    # Create a bar graph
+    plt.figure(figsize=(10, 6))
+    plt.bar(store_cpu_cycles_by_tax.keys(), store_cpu_cycles_by_tax.values(), color='skyblue')
+    plt.xlabel('Tax Category')
+    plt.ylabel('CPU Cycles')
+    plt.title('CPU Cycles by Tax Category')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    plt.savefig("results/sample_based_attribution.png", bbox_inches="tight")
+    # Show plot
+    plt.show()
+
+
+
+   
 def tax_heatmap(perf_sample_events, ip_to_func_name):
     tax_categories = [
     "c_libraries",
@@ -299,6 +346,8 @@ def work():
     tax_bars(perf_sample_events, ip_to_func_name)
     print("plotting heatmap")
     tax_heatmap(perf_sample_events, ip_to_func_name)
+    print("Plotting Sample Based Attribution")
+    plot_sample_based_attribution(perf_sample_events, ip_to_func_name)
     
 
 work()
@@ -337,5 +386,4 @@ work()
         
         
 # # print(top_functions_chains)      
-
 
