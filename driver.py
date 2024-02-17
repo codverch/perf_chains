@@ -108,7 +108,7 @@ def plot_chain_cdf(perf_sample_events):
     ax.set_xlim(left=0)
     ax.set_ylim(bottom=0)
 
-    plt.savefig("results/chain_cdf.png", bbox_inches="tight")
+    plt.savefig("perf_data/120_sec/chain_cdf.png", bbox_inches="tight")
     plt.cla()
     plt.clf()
 
@@ -159,7 +159,7 @@ def plot_tax_sharing(perf_sample_events, ip_to_func_name):
     plt.xlabel("Tax Categories", fontsize=16)
     plt.ylabel("Percent of Chains", fontsize=16)
 
-    plt.savefig("results/tax_sharing.png", bbox_inches="tight")
+    plt.savefig("perf_data/120_sec/tax_sharing.png", bbox_inches="tight")
 
     plt.cla()
     plt.clf()
@@ -216,7 +216,7 @@ def plot_top_function_sample_attribution(perf_sample_events, ip_to_func_name):
     plt.xticks([])
     plt.ylim(0, 100)
 
-    plt.savefig("results/top_function_sample_attribution.png", bbox_inches="tight")
+    plt.savefig("perf_data/120_sec/top_function_sample_attribution.png", bbox_inches="tight")
     # Show plot
     plt.show()
 
@@ -282,7 +282,7 @@ def plot_all_branches_sample_attribution(perf_sample_events, ip_to_func_name):
     plt.ylim(0, 100)
 
     # Save the plot as an image
-    plt.savefig("results/all_branches_sample_attribution.png", bbox_inches="tight")
+    plt.savefig("perf_data/120_sec/all_branches_sample_attribution.png", bbox_inches="tight")
 
     # Show the plot
     plt.show()
@@ -366,34 +366,7 @@ def plot_tax_heatmap(perf_sample_events, ip_to_func_name):
     cbar.set_label("# Function Calls Between", size=9)
 
 
-    plt.savefig("results/tax_heatmap.png", bbox_inches="tight")
-
-def tax_bars(perf_sample_events, ip_to_func_name):
-    xs = tax_categories
-    ys = [0 for _ in tax_categories]
-    length = len(perf_sample_events)
-    for (i, event) in enumerate(perf_sample_events):
-        if i%100 == 0:
-            print(f"{i}/{len(perf_sample_events)}")
-        sample = event.sample_event
-        if sample.branch_stack is None or len(sample.branch_stack) == 0:
-            length -= 1
-            continue
-        ip = sample.branch_stack[0].from_ip
-        func = ip_to_func_name[ip]
-        if func is None or func == "":
-            cat = "kernel"
-        else:
-            cat = bucketize(func)
-        ys[xs.index(cat)] += 1
-    ys = [y/length*100 for y in ys]
-    # xs = sorted(xs, key=(lambda x: ys[xs.index(x)]), reverse=True)
-    # ys.sort(reverse=True)
-    print(xs)
-    print(ys)
-    print(sum(ys))
-    return None
-
+    plt.savefig("perf_data/120_sec/tax_heatmap.png", bbox_inches="tight")
 
 def build_ip_mapping(perf_sample_events):
     ip_to_func_name = {}
