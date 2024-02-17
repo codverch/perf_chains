@@ -199,34 +199,6 @@ def plot_sample_based_attribution(perf_sample_events, ip_to_func_name):
     # Percentage of CPU cycles
     percentage_cpu_cycles = {tax: (store_cpu_cycles_by_tax[tax] / total_cpu_cycles) * 100 for tax in store_cpu_cycles_by_tax.keys()}
 
-    # Plot the results
-    
-    # # Create a bar graph
-    # plt.figure(figsize=(10, 6))
-    # plt.bar(store_cpu_cycles_by_tax.keys(), store_cpu_cycles_by_tax.values(), color='skyblue')
-    # plt.xlabel('Tax Category')
-    # plt.ylabel('CPU Cycles')
-    # plt.title('CPU Cycles by Tax Category')
-    # plt.xticks(rotation=45)
-    # plt.tight_layout()
-
-    # plt.savefig("results/sample_based_attribution_raw_cycles.png", bbox_inches="tight")
-    # # Show plot
-    # plt.show()
-
-    # # Plot the results
-    # plt.figure(figsize=(10, 6))
-    # plt.bar(percentage_cpu_cycles.keys(), percentage_cpu_cycles.values(), color='skyblue')
-    # plt.xlabel('Tax Category')
-    # plt.ylabel('Percentage of CPU Cycles (%)')
-    # plt.title('Percentage of CPU Cycles by Tax Category')
-    # plt.xticks(rotation=45)
-    # plt.tight_layout()
-
-    # plt.savefig("results/sample_based_attribution_percentage_cycles.png", bbox_inches="tight")
-    # # Show plot
-    # plt.show()
-
     # Calculate percentage of CPU cycles for application logic
     application_logic_percentage = (store_cpu_cycles_by_tax['application_logic'] / total_cpu_cycles) * 100
 
