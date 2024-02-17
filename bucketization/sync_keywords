@@ -68,3 +68,7 @@ event_reinit
 evutil_gettime_monotonic_
 event_changelist_remove_all_
 event_base_loop
+event_add
+event_add_nolock_
+event_base_set
+event_assign

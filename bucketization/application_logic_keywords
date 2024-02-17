@@ -500,6 +500,8 @@ bipbuf_peek_all
 slabs_available_chunks
 assoc_start_expand
 fill_item_stats_automove_
+fill_item_stats_automove
 slab_automove_run
 lru_maintainer_thread
 lru_pull_tail
+fill_slab_stats_automove
