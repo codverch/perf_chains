@@ -164,7 +164,7 @@ def plot_tax_sharing(perf_sample_events, ip_to_func_name):
     plt.cla()
     plt.clf()
 
-def plot_sample_based_attribution(perf_sample_events, ip_to_func_name):
+def plot_top_function_sample_attribution(perf_sample_events, ip_to_func_name):
     tax_categories = [
         "c_libraries",
         "compress",
@@ -205,25 +205,24 @@ def plot_sample_based_attribution(perf_sample_events, ip_to_func_name):
     # Calculate percentage of CPU cycles for other tax categories
     other_tax_categories_percentage = 100 - application_logic_percentage
 
-    # Plot the results
+   # Plot the results
     plt.figure(figsize=(8, 6))
     plt.bar('application_logic', application_logic_percentage, color='black', label='Application Logic')
     plt.bar('application_logic', other_tax_categories_percentage, bottom=application_logic_percentage, color='maroon', label='Other Tax Categories')
-    plt.xlabel('Category')
+    plt.xlabel('Memcached')
     plt.ylabel('Percentage of CPU Cycles (%)')
     plt.title('Percentage of CPU Cycles by Category')
     plt.legend()
     plt.xticks([])
     plt.ylim(0, 100)
-    plt.text('application_logic', application_logic_percentage + 1, f"{application_logic_percentage:.2f}%", ha='center')
-    plt.text('application_logic', 50, f"{other_tax_categories_percentage:.2f}%", ha='center')
 
-    plt.savefig("results/sample_based_attribution_combined.png", bbox_inches="tight")
+    plt.savefig("results/top_function_sample_attribution.png", bbox_inches="tight")
     # Show plot
     plt.show()
 
 
-def plot_multiple_occurrences(perf_sample_events, ip_to_func_name):
+
+def plot_all_branches_sample_attribution(perf_sample_events, ip_to_func_name):
     # List of tax categories
     tax_categories = [
         "c_libraries",
@@ -281,18 +280,16 @@ def plot_multiple_occurrences(perf_sample_events, ip_to_func_name):
     plt.legend()
     plt.xticks([])
     plt.ylim(0, 100)
-    plt.text('application_logic', application_logic_percentage + 1, f"{application_logic_percentage:.2f}%", ha='center')
-    plt.text('application_logic', 50, f"{other_tax_categories_percentage:.2f}%", ha='center')
 
     # Save the plot as an image
-    plt.savefig("results/multiple_occurrences.png", bbox_inches="tight")
+    plt.savefig("results/all_branches_sample_attribution.png", bbox_inches="tight")
 
     # Show the plot
     plt.show()
 
 
 
-def tax_heatmap(perf_sample_events, ip_to_func_name):
+def plot_tax_heatmap(perf_sample_events, ip_to_func_name):
     tax_categories = [
     "c_libraries",
     "compress",
@@ -418,54 +415,15 @@ with open("ip_map.pickle", "wb") as f:
     # print(ip_to_func_name.keys())
 
 def work():
-    print("Plotting chain cdf")
+    print("Plotting Chain CDF...")
     plot_chain_cdf(perf_sample_events)
-    print("plotting tax sharing")
+    print("Plotting Tax Sharing...")
     plot_tax_sharing(perf_sample_events, ip_to_func_name)
-    print("tax")
-    tax_bars(perf_sample_events, ip_to_func_name)
-    print("plotting heatmap")
-    tax_heatmap(perf_sample_events, ip_to_func_name)
-    print("Plotting Sample Based Attribution")
-    plot_sample_based_attribution(perf_sample_events, ip_to_func_name)
-    print("Plotting Multiple Occurrences")
-    plot_multiple_occurrences(perf_sample_events, ip_to_func_name)
-    
+    print("Plotting Heatmap...")
+    plot_tax_heatmap(perf_sample_events, ip_to_func_name)
+    print("Plotting Sample-Based Attribution - Top Function...")
+    plot_top_function_sample_attribution(perf_sample_events, ip_to_func_name)
+    print("Plotting Sample-Based Attribution - All Branches...")
+    plot_all_branches_sample_attribution(perf_sample_events, ip_to_func_name)
 
 work()
-
-# for event in perf_sample_events:
-#     sample = event.sample_event
-#     curr_sample_function = symbolize.get_symbols([sample.ip])[sample.ip]
-#     # print(curr_sample_function)
-#     if curr_sample_function is not None and curr_sample_function != "":
-#         cat = bucketize(curr_sample_function)
-#     else:
-#         cat = "kernel"
-#     if cat not in ["UNKNOWN", "kernel"]:
-#         print((cat, curr_sample_function))
-#     # print(cat)
-#     # if (curr_sample_function in top_n_functions): ## only get the top 10 functions
-#     #     if curr_sample_function not in top_functions_chains:
-#     #         top_functions_chains[curr_sample_function] = {} #this should be a map, which contains the function name,
-#     #         # the value should be a map, where a+b:89 is the (key, value) pair
-#     #     curr_chain = []
-#     #     #
-#     #     for branch in sample.branch_stack:
-#     #         branch_from_ip = branch.from_ip
-#     #         branch_to_ip = branch.to_ip
-#     #         branch_from_symbol = symbolize.get_symbols([branch_from_ip])[branch_from_ip]
-#     #         # branch_to_symbol = symbolize.get_symbols(branch_to_ip)[branch_to_ip]
-#     #         curr_chain.append(branch_from_symbol)
-#     #     ## each time we get the current chain.
-#     #     # then we just generate the pair of the functions.
-#     #     function_pair_map = top_functions_chains[curr_sample_function]
-#     #     for i in range(len(curr_chain)-1):
-#     #         key = curr_chain[i] + curr_chain[i+1]
-#     #         if key not in function_pair_map:
-#     #             function_pair_map[key] = 0
-#     #         function_pair_map[key] = function_pair_map[key] + 1
-        
-        
-# # print(top_functions_chains)      
-
