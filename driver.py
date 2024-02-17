@@ -194,24 +194,63 @@ def plot_sample_based_attribution(perf_sample_events, ip_to_func_name):
                 category = bucketize(function_name)
                 store_cpu_cycles_by_tax[category] += branch.cycles
 
+    total_cpu_cycles = sum(store_cpu_cycles_by_tax.values())
+
+    # Percentage of CPU cycles
+    percentage_cpu_cycles = {tax: (store_cpu_cycles_by_tax[tax] / total_cpu_cycles) * 100 for tax in store_cpu_cycles_by_tax.keys()}
+
     # Plot the results
     
-    # Create a bar graph
-    plt.figure(figsize=(10, 6))
-    plt.bar(store_cpu_cycles_by_tax.keys(), store_cpu_cycles_by_tax.values(), color='skyblue')
-    plt.xlabel('Tax Category')
-    plt.ylabel('CPU Cycles')
-    plt.title('CPU Cycles by Tax Category')
-    plt.xticks(rotation=45)
-    plt.tight_layout()
+    # # Create a bar graph
+    # plt.figure(figsize=(10, 6))
+    # plt.bar(store_cpu_cycles_by_tax.keys(), store_cpu_cycles_by_tax.values(), color='skyblue')
+    # plt.xlabel('Tax Category')
+    # plt.ylabel('CPU Cycles')
+    # plt.title('CPU Cycles by Tax Category')
+    # plt.xticks(rotation=45)
+    # plt.tight_layout()
 
-    plt.savefig("results/sample_based_attribution.png", bbox_inches="tight")
+    # plt.savefig("results/sample_based_attribution_raw_cycles.png", bbox_inches="tight")
+    # # Show plot
+    # plt.show()
+
+    # # Plot the results
+    # plt.figure(figsize=(10, 6))
+    # plt.bar(percentage_cpu_cycles.keys(), percentage_cpu_cycles.values(), color='skyblue')
+    # plt.xlabel('Tax Category')
+    # plt.ylabel('Percentage of CPU Cycles (%)')
+    # plt.title('Percentage of CPU Cycles by Tax Category')
+    # plt.xticks(rotation=45)
+    # plt.tight_layout()
+
+    # plt.savefig("results/sample_based_attribution_percentage_cycles.png", bbox_inches="tight")
+    # # Show plot
+    # plt.show()
+
+    # Calculate percentage of CPU cycles for application logic
+    application_logic_percentage = (store_cpu_cycles_by_tax['application_logic'] / total_cpu_cycles) * 100
+
+    # Calculate percentage of CPU cycles for other tax categories
+    other_tax_categories_percentage = 100 - application_logic_percentage
+
+    # Plot the results
+    plt.figure(figsize=(8, 6))
+    plt.bar('application_logic', application_logic_percentage, color='black', label='Application Logic')
+    plt.bar('application_logic', other_tax_categories_percentage, bottom=application_logic_percentage, color='maroon', label='Other Tax Categories')
+    plt.xlabel('Category')
+    plt.ylabel('Percentage of CPU Cycles (%)')
+    plt.title('Percentage of CPU Cycles by Category')
+    plt.legend()
+    plt.xticks([])
+    plt.ylim(0, 100)
+    plt.text('application_logic', application_logic_percentage + 1, f"{application_logic_percentage:.2f}%", ha='center')
+    plt.text('application_logic', 50, f"{other_tax_categories_percentage:.2f}%", ha='center')
+
+    plt.savefig("results/sample_based_attribution_combined.png", bbox_inches="tight")
     # Show plot
     plt.show()
 
 
-
-   
 def tax_heatmap(perf_sample_events, ip_to_func_name):
     tax_categories = [
     "c_libraries",
