@@ -223,6 +223,75 @@ def plot_sample_based_attribution(perf_sample_events, ip_to_func_name):
     plt.show()
 
 
+def plot_multiple_occurrences(perf_sample_events, ip_to_func_name):
+    # List of tax categories
+    tax_categories = [
+        "c_libraries",
+        "compress",
+        "encryption",
+        "mem",
+        "sync",
+        "rpc",
+        "serialization",
+        "application_logic",
+        "kernel"
+    ]
+
+    # Initialize a dictionary to store CPU cycles for each tax category
+    store_cpu_cycles_by_tax = {tax: 0 for tax in tax_categories}
+
+    # Iterate through each sample
+    for (i, event) in enumerate(perf_sample_events):
+        sample = event.sample_event
+        
+        # Iterate through each branch stack in the sample
+        for branch in sample.branch_stack:
+            # Get the function name from the instruction pointer
+            instruction_pointer = branch.from_ip
+            function_name = ip_to_func_name.get(instruction_pointer, None)
+            
+            # Categorize the function into a tax category
+            if function_name is None or function_name == "":
+                category = "application_logic"
+            else:
+                category = bucketize(function_name)
+            
+            # Add the cycles to the total for the category
+            store_cpu_cycles_by_tax[category] += branch.cycles
+
+    # Calculate the total CPU cycles
+    total_cpu_cycles = sum(store_cpu_cycles_by_tax.values())
+
+    # Calculate the percentage of CPU cycles for each tax category
+    percentage_cpu_cycles = {tax: (store_cpu_cycles_by_tax[tax] / total_cpu_cycles) * 100 for tax in store_cpu_cycles_by_tax.keys()}
+
+    # Calculate the percentage of CPU cycles for the 'application_logic' category
+    application_logic_percentage = (store_cpu_cycles_by_tax['application_logic'] / total_cpu_cycles) * 100
+
+    # Calculate the percentage of CPU cycles for all other tax categories combined
+    other_tax_categories_percentage = 100 - application_logic_percentage
+
+    # Plot the results
+    plt.figure(figsize=(8, 6))
+    plt.bar('application_logic', application_logic_percentage, color='black', label='Application Logic')
+    plt.bar('application_logic', other_tax_categories_percentage, bottom=application_logic_percentage, color='maroon', label='Other Tax Categories')
+    plt.xlabel('Memcached')
+    plt.ylabel('Percentage of CPU Cycles (%)')
+    plt.title('Percentage of CPU Cycles by Category')
+    plt.legend()
+    plt.xticks([])
+    plt.ylim(0, 100)
+    plt.text('application_logic', application_logic_percentage + 1, f"{application_logic_percentage:.2f}%", ha='center')
+    plt.text('application_logic', 50, f"{other_tax_categories_percentage:.2f}%", ha='center')
+
+    # Save the plot as an image
+    plt.savefig("results/multiple_occurrences.png", bbox_inches="tight")
+
+    # Show the plot
+    plt.show()
+
+
+
 def tax_heatmap(perf_sample_events, ip_to_func_name):
     tax_categories = [
     "c_libraries",
@@ -359,6 +428,8 @@ def work():
     tax_heatmap(perf_sample_events, ip_to_func_name)
     print("Plotting Sample Based Attribution")
     plot_sample_based_attribution(perf_sample_events, ip_to_func_name)
+    print("Plotting Multiple Occurrences")
+    plot_multiple_occurrences(perf_sample_events, ip_to_func_name)
     
 
 work()
