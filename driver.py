@@ -107,8 +107,8 @@ def plot_chain_cdf(perf_sample_events):
 
     ax.set_xlim(left=0)
     ax.set_ylim(bottom=0)
-
-    plt.savefig("perf_data/120_sec/chain_cdf.png", bbox_inches="tight")
+    
+    plt.savefig("cpu-cycles/memcached/chain_cdf.png", bbox_inches="tight")
     plt.cla()
     plt.clf()
 
@@ -158,8 +158,8 @@ def plot_tax_sharing(perf_sample_events, ip_to_func_name):
     plt.xticks(rotation=45, ha="right", rotation_mode="anchor")
     plt.xlabel("Tax Categories", fontsize=16)
     plt.ylabel("Percent of Chains", fontsize=16)
-
-    plt.savefig("perf_data/120_sec/tax_sharing.png", bbox_inches="tight")
+    plt.title("Memcached Tax Sharing", fontsize=16)
+    plt.savefig("cpu-cycles/memcached/tax_sharing.png", bbox_inches="tight")
 
     plt.cla()
     plt.clf()
@@ -215,8 +215,8 @@ def plot_top_function_sample_attribution(perf_sample_events, ip_to_func_name):
     plt.legend()
     plt.xticks([])
     plt.ylim(0, 100)
-
-    plt.savefig("perf_data/120_sec/top_function_sample_attribution.png", bbox_inches="tight")
+    plt.title("Memcached Top Function Sample Attribution - CPU Cycles")
+    plt.savefig("cpu-cycles/memcached/top_function_sample_attribution.png", bbox_inches="tight")
     # Show plot
     plt.show()
 
@@ -282,7 +282,8 @@ def plot_all_branches_sample_attribution(perf_sample_events, ip_to_func_name):
     plt.ylim(0, 100)
 
     # Save the plot as an image
-    plt.savefig("perf_data/120_sec/all_branches_sample_attribution.png", bbox_inches="tight")
+    plt.title("Memcached All Branches Sample Attribution - CPU Cycles")
+    plt.savefig("cpu-cycles/memcached/all_branches_sample_attribution.png", bbox_inches="tight")
 
     # Show the plot
     plt.show()
@@ -365,8 +366,8 @@ def plot_tax_heatmap(perf_sample_events, ip_to_func_name):
     cbar= ax.collections[0].colorbar
     cbar.set_label("# Function Calls Between", size=9)
 
-
-    plt.savefig("perf_data/120_sec/tax_heatmap.png", bbox_inches="tight")
+    plt.title("Memcached Tax Heatmap")
+    plt.savefig("cpu-cycles/memcached/tax_heatmap.png", bbox_inches="tight")
 
 def build_ip_mapping(perf_sample_events):
     ip_to_func_name = {}
