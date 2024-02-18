@@ -7,3 +7,9 @@ mongo::MessageCompressorRegistry
 deflateResetKeep
 deflateStateCheck
 build_tree
+deflateReset
+deflateInit2_
+deflate_
+deflate
+deflateInit_
+mongo::BlockCompressor::compress(mongo::ConstDataRange)

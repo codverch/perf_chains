@@ -37,6 +37,7 @@ LockerImpl::getLockMode
 indexEntryFromIndexCatalogEntry  
 QueryRequest::parseFromFindCommand  
 SystemClockSource::now  
+mongo::SystemTickSource::get() #  is related to MongoDB’s system tick source, which is used for tracking time in the system. This function retrieves the current system tick. 
 DatabaseHolderImpl::getDb  
 IndexCatalog::ReadyIndexesIterator::_advance  
 mongo::(anonymous namespace)::runCommandImpl  
@@ -505,3 +506,66 @@ slab_automove_run
 lru_maintainer_thread
 lru_pull_tail
 fill_slab_stats_automove
+mongo::ClientMetadata::fieldName() # is related to MongoDB, a NoSQL database, and is used for handling data within the application. 
+mongo::ProfileFilter::getDefault() # is related to MongoDB’s profiling feature, which is used to collect data about MongoDB’s performance. This function retrieves the default profile filter. 
+mongo::WiredTigerIndexUnique::isTimestampSafeUniqueIdx() const # is related to MongoDB’s WiredTiger storage engine, which is used to store data in MongoDB. This function checks if the index is a unique index and if it is safe to use for a timestamp.
+mongo::ShardingState::enabled() const # is related to MongoDB’s sharding feature, which is used to distribute data across multiple machines. This function checks if sharding is enabled.
+mongo::OpMsgRequest::getDatabase() const
+mongo::KeyString::sizeWithoutRecordIdAtEnd(void const*, unsigned long) # is related to MongoDB’s KeyString class, which is used to represent keys in MongoDB. This function returns the size of the key string without the record ID at the end.
+mongo::(anonymous namespace)::WriteCommand::getReadWriteType() const
+mongo::Top::get(mongo::ServiceContext*)
+mongo::(anonymous namespace)::LastOpFixer::~LastOpFixer()
+mongo::CurOp::~CurOp()
+mongo::CommandInvocation::~CommandInvocation()
+mongo::(anonymous namespace)::CmdInsert::Invocation::~Invocation()
+mongo::getGlobalServiceContext()
+mongo::sizeRecoveryState(mongo::ServiceContext*)
+mongo::WiredTigerRecordStore::cappedAndNeedDelete() const
+mongo::ServiceEntryPointCommon::Hooks::~Hooks()
+mongo::CurOp::raiseDbProfileLevel(int)
+mongo::WriteUnitOfWork::commit()
+mongo::CollectionImpl::notifyCappedWaitersIfNeeded()
+mongo::WriteConcernOptions::extractWCFromCommand(mongo::BSONObj const&)
+mongo::OperationShardingState::~OperationShardingState()
+mongo::ErrorLabelBuilder::isTransientTransactionError() const
+mongo::DbResponse::~DbResponse()
+mongo::OperationShardingState::hasDbVersion() const
+mongo::OperationShardingState::hasShardVersion() const
+mongo::(anonymous namespace)::AuthzClientObserver::onDestroyClient(mongo::Client*)
+mongo::(anonymous namespace)::StorageClientObserver::onCreateClient(mongo::Client*)
+mongo::audit::logCommandAuthzCheck(mongo::Client*, mongo::OpMsgRequest const&, mongo::audit::CommandInterface const&, mongo::ErrorCodes::Error)
+mongo::ReadConcernSupportResult::ReadConcernSupportResult(boost::optional<mongo::Status>, boost::optional<mongo::Status>)
+mongo::hasGlobalServiceContext()
+mongo::IndexCatalog::IndexIterator::next()
+mongo::(anonymous namespace)::WriteCommand::shouldAffectCommandCounter() const
+mongo::(anonymous namespace)::WriteCommand::secondaryAllowed(mongo::ServiceContext*) const
+mongo::KeyString::BuilderBase<mongo::BasicBufBuilder<mongo::SharedBufferAllocator> >::appendRecordId(mongo::RecordId)
+mongo::KeyString::BuilderBase<mongo::BasicBufBuilder<mongo::SharedBufferAllocator> >::_transition(mongo::KeyString::BuildState)
+mongo::KeyString::BuilderBase<mongo::BasicBufBuilder<mongo::SharedBufferAllocator> >::_appendEnd()
+mongo::KeyString::BuilderBase<mongo::BasicBufBuilder<mongo::SharedBufferAllocator> >::_appendPreshiftedIntegerPortion(unsigned long, bool, bool)
+mongo::Ordering::get(int) const [clone .isra.162]
+mongo::transport::TransportLayerASIO::BatonASIO::~BatonASIO()
+mongo::OpDebug::AdditiveMetrics::incrementNinserted(long long)
+mongo::SingleWriteResult::SingleWriteResult()
+mongo::userAllowedWriteNS(mongo::StringData, mongo::StringData)
+mongo::userAllowedWriteNS(mongo::NamespaceString const&)
+mongo::KeyString::BuilderBase<mongo::StackBufBuilderBase<512ul> >::~BuilderBase()
+mongo::LogicalClock::isEnabled() const
+mongo::OperationShardingState::resetShardingOperationFailedStatus()
+mongo::InsertOp::parse(mongo::OpMsgRequest const&)
+mongo::Date_t::toSystemTimePoint() const
+mongo::InExhaustIsMaster::get(mongo::transport::Session*)
+mongo::KeyString::Value::getTypeBits() const
+mongo::KeyString::TypeBits::setRawSize(unsigned int)
+mongo::ServerTransactionCoordinatorsMetrics::updateStats(mongo::TransactionCoordinatorsStats*)
+mongo::TransactionCoordinatorsStats::TransactionCoordinatorsStats()
+mongo::ServiceContext::LockedClientsCursor::LockedClientsCursor(mongo::ServiceContext*) # This function is related to MongoDB’s service context, which is used to manage clients and their operations. This constructor creates a locked clients cursor for the given service context.
+__conn_dhandle_destroy
+__btree_clear
+__conn_dhandle_remove
+__sweep_server_run_chk
+__conn_dhandle_config_clear
+mongo::ReadConcernStats::ReadConcernStats()
+mongo::ServerTransactionsMetrics::updateStats(mongo::TransactionsStats*, bool)
+mongo::(anonymous namespace)::ReadWriteConcernDefaultsServerStatus::includeByDefault() const
+mongo::ItoA::ItoA(unsigned long)

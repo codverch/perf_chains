@@ -189,3 +189,13 @@ clock_nanosleep
 clock_handler
 usleep #  The usleep() function suspends execution of the calling thread for (at least) usec microseconds.
 nanosleep #      nanosleep() suspends the execution of the calling thread until either at least the time specified in *req has elapsed, or..
+_IO_unsave_markers
+fscanf
+__close_nocancel
+_IO_enable_locks
+_IO_sscanf
+_IO_sputbackc
+vprintf
+fscanf
+_IO_file_underflow
+vscanf

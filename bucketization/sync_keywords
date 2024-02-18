@@ -21,7 +21,10 @@ mongo::LockManager::lock                 #
 mongo::Lock::DBLock::DBLock              # 
 std::condition_variable::condition_variable # std synchronization primitive
 mongo::LockerImpl::wasGlobalLockTakenForWrite # 
+mongo::isModeCovered(mongo::LockMode, mongo::LockMode)
+mongo::future_details::FutureImpl<mongo::Message>::makeReady(mongo::StatusWith<mongo::Message>) # is related to MongoDB’s asynchronous programming model. It sets the state of a Future object to ready with the provided StatusWith<Message>.
 mongo::TicketHolder::release             # 
+mongo::Lock::ResourceLock::unlock() [clone .part.47] 
 namespace)::DiagnosticListener::onContendedLock mongo::(anonymous namespace)::DiagnosticListener::onContendedLock # 
 runtime.lock2                            # Golang's code to lock mutex with a rank, ranks of locks depict what child locks block the current lock
 sync.(*poolChain).popTail                # Golang's queue popping operation
@@ -72,3 +75,4 @@ event_add
 event_add_nolock_
 event_base_set
 event_assign
+__sync_page_skip

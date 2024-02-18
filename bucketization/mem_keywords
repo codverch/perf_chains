@@ -77,3 +77,18 @@ lj_buf_putmem
 ngx_pnalloc
 lj_BC_JLOOP
 event_strlcpy_
+mongo::StringBuilderImpl<mongo::SharedBufferAllocator>::operator<<(char const*)
+_IO_setb
+_IO_default_uflow # Involves memory management as it deals with buffers
+_IO_str_underflow
+_IO_str_pbackfail # It involves memory management as it deals with string buffers
+_IO_file_doallocate
+_IO_doallocbuf
+__sweep_remove_one
+__block_manager_session_cleanup # This function is responsible for cleaning up the session of a block manager. It is a memory management function as it is responsible for freeing up the memory used by the block manager session.
+__block_size_discard # This function is responsible for discarding the block size. It is a memory management function as it is responsible for freeing up the memory used by the block size.
+__block_merge # This function is responsible for merging the blocks. It is a memory management function as it is responsible for freeing up the memory used by the blocks.
+__block_ext_insert # This function is responsible for inserting the block extension. It is a memory management function as it is responsible for allocating memory for the block extension.
+__block_off_remove.isra.0 # This function is responsible for removing the block offset. It is a memory management function as it is responsible for freeing up the memory used by the block offset.
+__block_append # This function is responsible for appending the block. It is a memory management function as it is responsible for allocating memory for the block.
+__block_ext_alloc # This function is responsible for allocating the block extension. It is a memory management function as it is responsible for allocating memory for the block extension.

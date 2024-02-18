@@ -1,5 +1,6 @@
 Varint::Encode64
-mongo::(anonymous namespace)::encodeUserString# Entire function is a switch statement
+mongo::(anonymous namespace)::encodeUserString # Entire function is a switch statement
+mongo::BSONDepth::getMaxAllowableDepth()
 encoding/json.stateBeginValue            # Golang's code to scan a JSON, with the scanner starting with a value
 Document::Impl::getSerializedElement  
 BSONObj::getField  
@@ -7,6 +8,10 @@ mutablebson::Element::getType
 BSONObjBuilder::appendAs  
 mutablebson::Element::countChildren  
 BSONObjBuilderValueStream::endField   # Potentially a C-Library leaf function
+mongo::BSONObjStlIterator::endOf(mongo::BSONObj const&) # is related to MongoDB’s BSON (Binary JSON) data format. It checks if the end of a BSON object has been reached during iteration. This falls under the category of “serialization_keywords” as it deals with the traversal of serialized data in the context of database operations.
+mongo::BSONObjStlIterator::operator++() # is related to MongoDB’s BSON (Binary JSON) data format. It is an overloaded operator that is used to increment the iterator to the next element in the BSON object. This falls under the category of “serialization_keywords” as it deals with the traversal of serialized data in the context of database operations.
+mongo::TransactionCoordinatorsStats::toBSON() const
+mongo::BSONObj::toString(mongo::StringBuilderImpl<mongo::SharedBufferAllocator>&, bool, bool, bool, int) const
 mongo::OpMsgBuilder:
 json_
 _filter
@@ -28,3 +33,5 @@ ngx_http_lua_read_bytes
 ngx_http_lua_parse_args
 ngx_http_read_client_request_body
 evutil_tv_to_msec_
+mongo::ReadConcernStats::toBSON() const
+
