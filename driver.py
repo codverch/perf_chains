@@ -75,94 +75,113 @@ def bucketize(function_name):
 # 
 top_functions_chains={} 
 
-
-def plot_chain_cdf(perf_sample_events):
-    chain_cycles = []
-    chain_total_cycles = 0
-    for event in perf_sample_events:
-        sample = event.sample_event
-        curr_chain_cycles = 0
-        for branch in sample.branch_stack:
-            curr_chain_cycles += branch.cycles
-        chain_cycles.append(curr_chain_cycles)
-        chain_total_cycles += curr_chain_cycles
-    
-    chain_percents = [(cycles/chain_total_cycles)*100 if chain_total_cycles != 0 else 0 for cycles in chain_cycles]
-
-    
-    chain_percents.sort(reverse=True)
-
-    cumulative = []
-    for percent in chain_percents:
-        if len(cumulative) == 0:
-            cumulative.append(percent)
-        else:
-            cumulative.append(cumulative[-1]+percent)
-    
-    xs = [i/len(cumulative)*100 for i in range(len(cumulative))]
-    ax = sns.lineplot(y=cumulative, x=xs)
-    plt.xticks(size=14)
-    plt.xlabel("Percent of Chains", fontsize=16)
-    plt.ylabel("Percent of Cycles", fontsize=16)
-
-    ax.set_xlim(left=0)
-    ax.set_ylim(bottom=0)
-    
-    plt.savefig("cpu-cycles/memcached/chain_cdf.png", bbox_inches="tight")
-    plt.cla()
-    plt.clf()
-
-def plot_tax_sharing(perf_sample_events, ip_to_func_name):
+def plot_tax_sharing_top_function(perf_sample_events, ip_to_func_name):
     tax_categories = [
-    "c_libraries",
-    "compress",
-    # "hash",
-    "encryption",
-    # "kernel",
-    "mem",
-    # "miscellaneous",
-    "sync",
-    "rpc",
-    "serialization",
-    "application_logic",
-    "kernel"
-]
+        "c_libraries",
+        "compress",
+        "encryption",
+        "mem",
+        "sync",
+        "rpc",
+        "serialization",
+        "application_logic",
+        "kernel"
+    ]
     xs = tax_categories
     ys = [0 for _ in tax_categories]
 
+    total_cpu_cycles = sum([event.sample_event.branch_stack[0].cycles for event in perf_sample_events if event.sample_event.branch_stack])
+
     for (i, event) in enumerate(perf_sample_events):
-        if i%100 == 0:
+        if i % 100 == 0:
             print(f"{i}/{len(perf_sample_events)}") 
         sample = event.sample_event
         taxes_found = []
-        for branch in sample.branch_stack:
+        
+        if sample.branch_stack:
+            branch = sample.branch_stack[0]  # Sample only the top function
             ip = branch.from_ip
-            # func = symbolize.get_symbols(ip)[ip]
             func = ip_to_func_name.get(ip, None)
             if func is None or func == "":
                 cat = "application_logic"
             else:
                 cat = bucketize(func)
-            # print(f"{i}\t{cat}")
+
             if cat not in taxes_found:
-                ys[xs.index(cat)] += 1
+                ys[xs.index(cat)] += branch.cycles
                 taxes_found.append(cat)
-    print("Tax Sharing Raw Data")
+
+    print("Tax Sharing Raw Data for top function")
     print(xs)
     print(ys)
-    ys = [y/len(perf_sample_events)*100 for y in ys]
     xs = sorted(xs, key=(lambda x: ys[xs.index(x)]), reverse=True)
     ys.sort(reverse=True)
-    ax = sns.barplot(x=xs, y=ys, errorbar=None, ci=None)
+    ax = sns.barplot(x=xs, y=ys, palette="muted")
 
     plt.xticks(rotation=45, ha="right", rotation_mode="anchor")
     plt.xlabel("Tax Categories", fontsize=16)
-    plt.ylabel("Percent of Chains", fontsize=16)
-    plt.title("Memcached Tax Sharing", fontsize=16)
-    plt.savefig("cpu-cycles/memcached/tax_sharing.png", bbox_inches="tight")
+    plt.ylabel("CPU Cycles", fontsize=16)
+    plt.title("Memcached Tax Sharing Top Function", fontsize=16)
+    plt.savefig("test/tax_sharing_top_function.png", bbox_inches="tight")
 
     plt.cla()
     plt.clf()
+
+
+def plot_tax_sharing_all_functions(perf_sample_events, ip_to_func_name):
+    tax_categories = [
+        "c_libraries",
+        "compress",
+        "encryption",
+        "mem",
+        "sync",
+        "rpc",
+        "serialization",
+        "application_logic",
+        "kernel"
+    ]
+    xs = tax_categories
+    ys = [0 for _ in tax_categories]
+
+    total_cpu_cycles = sum([sum([branch.cycles for branch in event.sample_event.branch_stack]) for event in perf_sample_events if event.sample_event.branch_stack])
+
+    for (i, event) in enumerate(perf_sample_events):
+        if i % 100 == 0:
+            print(f"{i}/{len(perf_sample_events)}") 
+        sample = event.sample_event
+        taxes_found = []
+
+        for branch in sample.branch_stack:
+            instruction_pointer = branch.from_ip
+            function_name = ip_to_func_name.get(instruction_pointer, None)
+            
+            # Categorize the function into a tax category
+            if function_name is None or function_name == "":
+                cat = "application_logic"
+            else:
+                cat = bucketize(function_name)
+            
+            if cat not in taxes_found:
+                ys[xs.index(cat)] += branch.cycles
+                taxes_found.append(cat)
+
+    print("Tax Sharing Raw Data for all functions")
+    print(xs)
+    print(ys)
+    xs = sorted(xs, key=(lambda x: ys[xs.index(x)]), reverse=True)
+    ys.sort(reverse=True)
+    ax = sns.barplot(x=xs, y=ys, palette="muted")
+
+    plt.xticks(rotation=45, ha="right", rotation_mode="anchor")
+    plt.xlabel("Tax Categories", fontsize=16)
+    plt.ylabel("CPU Cycles", fontsize=16)
+    plt.title("Memcached Tax Sharing All functions", fontsize=16)
+    plt.savefig("test/tax_sharing_all_functions.png", bbox_inches="tight")
+
+    plt.cla()
+    plt.clf()
+
+
 
 def plot_top_function_sample_attribution(perf_sample_events, ip_to_func_name):
     tax_categories = [
@@ -192,7 +211,7 @@ def plot_top_function_sample_attribution(perf_sample_events, ip_to_func_name):
 
             else:
                 category = bucketize(function_name)
-                store_cpu_cycles_by_tax[category] += branch.cycles
+            store_cpu_cycles_by_tax[category] += branch.cycles
 
     total_cpu_cycles = sum(store_cpu_cycles_by_tax.values())
 
@@ -216,7 +235,7 @@ def plot_top_function_sample_attribution(perf_sample_events, ip_to_func_name):
     plt.xticks([])
     plt.ylim(0, 100)
     plt.title("Memcached Top Function Sample Attribution - CPU Cycles")
-    plt.savefig("cpu-cycles/memcached/top_function_sample_attribution.png", bbox_inches="tight")
+    plt.savefig("test/top_function_sample_attribution.png", bbox_inches="tight")
     # Show plot
     plt.show()
 
@@ -283,7 +302,7 @@ def plot_all_branches_sample_attribution(perf_sample_events, ip_to_func_name):
 
     # Save the plot as an image
     plt.title("Memcached All Branches Sample Attribution - CPU Cycles")
-    plt.savefig("cpu-cycles/memcached/all_branches_sample_attribution.png", bbox_inches="tight")
+    plt.savefig("test/all_branches_sample_attribution.png", bbox_inches="tight")
 
     # Show the plot
     plt.show()
@@ -367,7 +386,7 @@ def plot_tax_heatmap(perf_sample_events, ip_to_func_name):
     cbar.set_label("# Function Calls Between", size=9)
 
     plt.title("Memcached Tax Heatmap")
-    plt.savefig("cpu-cycles/memcached/tax_heatmap.png", bbox_inches="tight")
+    plt.savefig("test/tax_heatmap.png", bbox_inches="tight")
 
 def build_ip_mapping(perf_sample_events):
     ip_to_func_name = {}
@@ -388,16 +407,23 @@ with open("ip_map.pickle", "wb") as f:
     # ip_to_func_name = pickle.load(f)
     # print(ip_to_func_name.keys())
 
+
+
 def work():
-    print("Plotting Chain CDF...")
-    plot_chain_cdf(perf_sample_events)
-    print("Plotting Tax Sharing...")
-    plot_tax_sharing(perf_sample_events, ip_to_func_name)
-    print("Plotting Heatmap...")
-    plot_tax_heatmap(perf_sample_events, ip_to_func_name)
-    print("Plotting Sample-Based Attribution - Top Function...")
-    plot_top_function_sample_attribution(perf_sample_events, ip_to_func_name)
-    print("Plotting Sample-Based Attribution - All Branches...")
-    plot_all_branches_sample_attribution(perf_sample_events, ip_to_func_name)
+    # print("Plotting Chain CDF...")
+    # plot_chain_cdf(perf_sample_events)
+    # print("Plotting Tax Sharing...")
+    # plot_tax_sharing_top_function(perf_sample_events, ip_to_func_name)
+    # print("Plotting Heatmap...")
+    # plot_tax_heatmap(perf_sample_events, ip_to_func_name)
+    # print("Plotting Sample-Based Attribution - Top Function...")
+    # plot_top_function_sample_attribution(perf_sample_events, ip_to_func_name)
+    # print("Plotting Sample-Based Attribution - All Branches...")
+    # plot_all_branches_sample_attribution(perf_sample_events, ip_to_func_name)
+    print("Plotting Tax Sharing - All Functions...")
+    plot_tax_sharing_all_functions(perf_sample_events, ip_to_func_name)
+    print("Plotting Tax Sharing - Top Function...")
+    plot_tax_sharing_top_function(perf_sample_events, ip_to_func_name)
+
 
 work()
