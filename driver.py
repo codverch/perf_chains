@@ -14,6 +14,9 @@ def parse_perf_proto(perf_data_proto):
     with open(perf_data_proto, "rb") as proto_file:
         proto_string = proto_file.read()
         perf_data = perf_data_pb2.PerfDataProto().FromString(proto_string)
+        # Print the contents of the protobuf file into a human-readable format in a text file
+        with open("perf_data.txt", "w") as text_file:
+            text_file.write(str(perf_data))
     return perf_data
 
 # Function to get a list of sample events from the protobuf file
@@ -41,6 +44,7 @@ uncat_file = "./uncategorized"
 # Define tax categories
 tax_categories = [
     "c_libraries",
+    "application_logic",
     "compress",
     # "hash",
     "encryption",
@@ -50,8 +54,7 @@ tax_categories = [
     "sync",
     "rpc",
     "serialization",
-    "kernel",
-    "application_logic",
+    "kernel"
 ]
 
 # Set plot parameters
@@ -72,22 +75,23 @@ memo = {}
 # Description: This function assigns functions to tax categories based on 
 #              predefined keywords.
 # ============================================================================
+# Define location for categorized functions
+cat_file = "./categorized.txt"
 
 def bucketize(function_name):
-    if function_name in memo:
-        return memo[function_name]
     for tax in tax_categories:
         lines = file_contents[tax]
         for func in lines:
             func = func.split("#")[0].strip()
             if func in function_name:
-                memo[function_name] = tax
-                return tax
-    # If function is not found in any tax category, write it to uncategorized file
+                with open(cat_file, "a") as cat:
+                    cat.write(f"{function_name}: {tax}\n")
+                return tax  # Exit the loop once a category is found
     with open(uncat_file, "a") as uncat:
         uncat.write(function_name + "\n")
-    memo[function_name] = "application_logic"
-    return "application_logic"
+    return None
+
+
 
 top_functions_chains={} 
 
@@ -100,19 +104,7 @@ top_functions_chains={}
 # ============================================================================
 
 def plot_tax_sharing_all_functions(perf_sample_events, ip_to_func_name):
-    # Define tax categories
-    tax_categories = [
-        "c_libraries",
-        "compress",
-        "encryption",
-        "mem",
-        "sync",
-        "rpc",
-        "serialization",
-        "application_logic",
-        "kernel"
-    ]
-    
+ 
     # Initialize x-axis (tax categories) and y-axis (percentage of CPU cycles) data
     xs = tax_categories
     ys = [0 for _ in tax_categories]
@@ -122,8 +114,6 @@ def plot_tax_sharing_all_functions(perf_sample_events, ip_to_func_name):
 
     # Iterate over each sample event
     for (i, event) in enumerate(perf_sample_events):
-        if i % 100 == 0:
-            print(f"{i}/{len(perf_sample_events)}") 
         sample = event.sample_event
         taxes_found = []
 
@@ -131,17 +121,15 @@ def plot_tax_sharing_all_functions(perf_sample_events, ip_to_func_name):
         for branch in sample.branch_stack:
             instruction_pointer = branch.from_ip
             function_name = ip_to_func_name.get(instruction_pointer, None)
-            
-            # Categorize the function into a tax category
-            if function_name is None or function_name == "":
+
+            cat = bucketize(function_name)
+
+            if(cat is None):
                 cat = "application_logic"
-            else:
-                cat = bucketize(function_name)
-            
-            # Update percentage of CPU cycles for the tax category
+
             if cat not in taxes_found:
-                ys[xs.index(cat)] += branch.cycles / total_cpu_cycles * 100
-                taxes_found.append(cat)
+                ys[xs.index(cat)] += (branch.cycles / total_cpu_cycles) * 100
+                # taxes_found.append(cat)
 
     # Print raw data for tax sharing
     print("Tax Sharing Raw Data for all functions")
@@ -166,179 +154,6 @@ def plot_tax_sharing_all_functions(perf_sample_events, ip_to_func_name):
     plt.cla()
     plt.clf()
 
-# ============================================================================
-# Function: plot_all_branches_sample_attribution
-# Description: This function calculates and plots the attribution of CPU cycles 
-#              to different tax categories for all branch stacks in all samples.
-# ============================================================================
-
-def plot_all_branches_sample_attribution(perf_sample_events, ip_to_func_name):
-    # List of tax categories
-    tax_categories = [
-        "c_libraries",
-        "compress",
-        "encryption",
-        "mem",
-        "sync",
-        "rpc",
-        "serialization",
-        "application_logic",
-        "kernel"
-    ]
-
-    # Initialize a dictionary to store CPU cycles for each tax category
-    store_cpu_cycles_by_tax = {tax: 0 for tax in tax_categories}
-
-    # Iterate through each sample
-    for (i, event) in enumerate(perf_sample_events):
-        sample = event.sample_event
-        
-        # Iterate through each branch stack in the sample
-        for branch in sample.branch_stack:
-            # Get the function name from the instruction pointer
-            instruction_pointer = branch.from_ip
-            function_name = ip_to_func_name.get(instruction_pointer, None)
-            
-            # Categorize the function into a tax category
-            if function_name is None or function_name == "":
-                cat = "application_logic"
-            else:
-                cat = bucketize(function_name)
-            
-            # Add the cycles to the total for the category
-            store_cpu_cycles_by_tax[cat] += branch.cycles
-
-    # Calculate the total CPU cycles
-    total_cpu_cycles = sum(store_cpu_cycles_by_tax.values())
-
-    # Calculate the percentage of CPU cycles for each tax category
-    percentage_cpu_cycles = {tax: (store_cpu_cycles_by_tax[tax] / total_cpu_cycles) * 100 for tax in store_cpu_cycles_by_tax.keys()}
-
-    # Calculate the percentage of CPU cycles for the 'application_logic' category
-    application_logic_percentage = (store_cpu_cycles_by_tax['application_logic'] / total_cpu_cycles) * 100
-
-    # Calculate the percentage of CPU cycles for all other tax categories combined
-    other_tax_categories_percentage = 100 - application_logic_percentage
-
-    # Plot the results
-    plt.figure(figsize=(8, 6))
-    plt.bar('application_logic', application_logic_percentage, color='black', label='Application Logic')
-    plt.bar('application_logic', other_tax_categories_percentage, bottom=application_logic_percentage, color='maroon', label='Other Tax Categories')
-    plt.xlabel('Memcached')
-    plt.ylabel('Percentage of CPU Cycles (%)')
-    plt.title('Percentage of CPU Cycles by Category')
-    plt.legend()
-    plt.xticks([])
-    plt.ylim(0, 100)
-
-    # Save the plot as an image
-    plt.title("Memcached All Branches Sample Attribution - CPU Cycles")
-    plt.savefig("cpu_cycles_memcached/all_branches_sample_attribution.png", bbox_inches="tight")
-
-    # Show the plot
-    plt.show()
-
-# =============================================================================
-# Function: plot_tax_heatmap
-# Description: This function generates a heatmap representing the frequency of function calls between different tax categories in the Memcached application,
-#              across all samples, considering all branch stacks.
-# =============================================================================
-
-def plot_tax_heatmap(perf_sample_events, ip_to_func_name):
-    # Define tax categories
-    tax_categories = [
-        "c_libraries",
-        "compress",
-        "encryption",
-        "mem",
-        "sync",
-        "rpc",
-        "serialization",
-        "application_logic",
-        "kernel"
-    ]
-
-    # Initialize list to store chains of tax categories for each branch stack
-    bucketized_chains = []
-
-    # Iterate over each sample event
-    for (i, event) in enumerate(perf_sample_events):
-        sample = event.sample_event
-        curr_chain = []
-
-        # Iterate over each branch in the branch stack
-        for branch in sample.branch_stack:
-            ip = branch.from_ip
-            func = ip_to_func_name[ip]
-
-            # Categorize the function into a tax category
-            if func is None or func == "":
-                cat = "application_logic"
-            else:
-                cat = bucketize(func)
-
-            curr_chain.append(cat)
-        bucketized_chains.append(curr_chain)
-
-    # Initialize arrays for heatmap data
-    heatmap_hops = np.full((len(tax_categories), len(tax_categories)), -1)
-    heatmap_annotation = np.zeros((len(tax_categories), len(tax_categories)))
-
-    # Calculate frequency of function calls between tax categories
-    for i, from_tax in enumerate(tax_categories):
-        for j, to_tax in enumerate(tax_categories):
-            if from_tax == to_tax:
-                continue
-            heat_val = 0
-            path_count = 0
-
-            # Iterate over each chain of tax categories
-            for chain in bucketized_chains:
-                min_hops = 33
-                found = False
-
-                # Find the minimum number of function calls between from_tax and to_tax in each chain
-                for (chain_idx, bucket) in enumerate(chain):
-                    if bucket == from_tax:
-                        to_chains = chain[chain_idx:]
-                        for (search_idx, curr_bucket) in enumerate(to_chains):
-                            if curr_bucket == to_tax:
-                                found = True
-                                min_hops = min(min_hops, np.abs(search_idx - chain_idx))
-
-                heat_val += min_hops if found else 0
-                path_count += 1 if found else 0
-
-            # Store frequency of function calls in heatmap data arrays
-            heatmap_annotation[i, j] = path_count
-            if path_count == 0:
-                continue
-            heatmap_hops[i, j] = heat_val / path_count
-
-    # Generate heatmap
-    ax = sns.heatmap(heatmap_hops,
-                     xticklabels=tax_categories,
-                     yticklabels=tax_categories,
-                     annot=heatmap_annotation,
-                     fmt="g",
-                     linewidths=1,
-                     linecolor='black',
-                     vmax=20,
-                     annot_kws={"size": 7},
-                     cbar={"label": "# Function Calls Between"})
-
-    # Customize plot appearance
-    plt.xticks(rotation=45, ha="right", rotation_mode="anchor")
-
-    # Add color bar label
-    cbar = ax.collections[0].colorbar
-    cbar.set_label("# Function Calls Between", size=9)
-
-    # Set plot title
-    plt.title("Memcached Tax Heatmap")
-
-    # Save the plot
-    plt.savefig("cpu_cycles_memcached/tax_heatmap.png", bbox_inches="tight")
 
 
 # =============================================================================
@@ -374,9 +189,5 @@ with open("ip_map.pickle", "wb") as f:
 def work():
     print("Plotting Tax Sharing All Functions")
     plot_tax_sharing_all_functions(perf_sample_events, ip_to_func_name)
-    print("Plotting All Branches Sample Attribution")
-    plot_all_branches_sample_attribution(perf_sample_events, ip_to_func_name)
-    print("Plotting Tax Heatmap")
-    plot_tax_heatmap(perf_sample_events, ip_to_func_name)
 
 work()

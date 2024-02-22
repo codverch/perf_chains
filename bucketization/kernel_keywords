@@ -396,12 +396,4 @@ ngx_resolve_name
 ngx_resolve_start
 ngx_get_connection
 __libc_alloca_cutoff
-event_active_nolock_  
-__libc_read
-__libc_open64
-_IO_file_fopen
-_IO_file_xsputn
-__fxstat64
-__open64 # Provides system call interface for opening files
-__close_nocancel
-_IO_unsave_markers
+event_active_nolock_   
