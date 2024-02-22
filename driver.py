@@ -154,6 +154,114 @@ def plot_tax_sharing_all_functions(perf_sample_events, ip_to_func_name):
     plt.cla()
     plt.clf()
 
+def plot_tax_sharing_top_functions(perf_sample_events, ip_to_func_name):
+ 
+    # Initialize x-axis (tax categories) and y-axis (percentage of CPU cycles) data
+    xs = tax_categories
+    ys = [0 for _ in tax_categories]
+
+    # Calculate total CPU cycles across all samples and first branch stack
+    total_cpu_cycles = sum([event.sample_event.branch_stack[0].cycles for event in perf_sample_events if event.sample_event.branch_stack])
+
+    # Iterate over each sample event
+    for (i, event) in enumerate(perf_sample_events):
+        sample = event.sample_event
+        taxes_found = []
+
+        # Iterate over first branch stacks in each sample
+        if sample.branch_stack:
+            branch = sample.branch_stack[0]
+            instruction_pointer = branch.from_ip
+            function_name = ip_to_func_name.get(instruction_pointer, None)
+            cat = bucketize(function_name)
+
+            if(cat is None):
+                cat = "application_logic"
+
+            if cat not in taxes_found:
+                ys[xs.index(cat)] += (branch.cycles / total_cpu_cycles) * 100
+                # taxes_found.append(cat)
+
+    # Print raw data for tax sharing
+    print("Tax Sharing Raw Data for all functions")
+    print(xs)
+    print(ys)
+
+    # Sort tax categories based on percentage of CPU cycles for better visualization
+    xs = sorted(xs, key=(lambda x: ys[xs.index(x)]), reverse=True)
+    ys.sort(reverse=True)
+
+    # Create a bar plot
+    ax = sns.barplot(x=xs, y=ys, palette="muted")
+
+    # Customize plot appearance
+    plt.xticks(rotation=45, ha="right", rotation_mode="anchor")
+    plt.xlabel("Tax Categories", fontsize=16)
+    plt.ylabel("Percentage of CPU Cycles", fontsize=16)
+    plt.title("Memcached Tax Sharing Top functions", fontsize=16)
+    plt.savefig("cpu_cycles_memcached/tax_sharing_top_functions.png", bbox_inches="tight")
+
+    # Clear and close the plot to avoid overlapping with other plots
+    plt.cla()
+    plt.clf()
+
+
+
+def plot_all_branches_sample_attribution(perf_sample_events, ip_to_func_name):
+
+    # Initialize a dictionary to store CPU cycles for each tax category
+    store_cpu_cycles_by_tax = {tax: 0 for tax in tax_categories}
+
+    # Iterate through each sample
+    for (i, event) in enumerate(perf_sample_events):
+        sample = event.sample_event
+        
+        # Iterate through each branch stack in the sample
+        for branch in sample.branch_stack:
+            # Get the function name from the instruction pointer
+            instruction_pointer = branch.from_ip
+            function_name = ip_to_func_name.get(instruction_pointer, None)
+
+            # Bucketize the function name
+            cat = bucketize(function_name)
+
+            if(cat is None):
+                cat = "application_logic"
+            
+            # Add the cycles to the total for the category
+            store_cpu_cycles_by_tax[cat] += branch.cycles
+
+    # Calculate the total CPU cycles
+    total_cpu_cycles = sum(store_cpu_cycles_by_tax.values())
+
+    # Calculate the percentage of CPU cycles for each tax category
+    percentage_cpu_cycles = {tax: (store_cpu_cycles_by_tax[tax] / total_cpu_cycles) * 100 for tax in store_cpu_cycles_by_tax.keys()}
+
+    # Calculate the percentage of CPU cycles for the 'application_logic' category
+    application_logic_percentage = (store_cpu_cycles_by_tax['application_logic'] / total_cpu_cycles) * 100
+
+    # Calculate the percentage of CPU cycles for all other tax categories combined
+    other_tax_categories_percentage = 100 - application_logic_percentage
+
+    # Plot the results
+    plt.figure(figsize=(8, 6))
+    plt.bar('application_logic', application_logic_percentage, color='black', label='Application Logic')
+    plt.bar('application_logic', other_tax_categories_percentage, bottom=application_logic_percentage, color='maroon', label='Other Tax Categories')
+    plt.xlabel('Memcached')
+    plt.ylabel('Percentage of CPU Cycles (%)')
+    plt.title('Percentage of CPU Cycles by Category')
+    plt.legend()
+    plt.xticks([])
+    plt.ylim(0, 100)
+
+    # Save the plot as an image
+    plt.title("Memcached All Branches Sample Attribution - CPU Cycles")
+    plt.savefig("cpu_cycles_memcached/all_branches_sample_attribution.png", bbox_inches="tight")
+
+    # Show the plot
+    plt.show()
+
+
 
 
 # =============================================================================
@@ -187,7 +295,11 @@ with open("ip_map.pickle", "wb") as f:
 
 
 def work():
+    print("Plotting Tax Sharing Top Functions")
+    plot_tax_sharing_top_functions(perf_sample_events, ip_to_func_name)
     print("Plotting Tax Sharing All Functions")
     plot_tax_sharing_all_functions(perf_sample_events, ip_to_func_name)
-
+    print("Plotting All Branches Sample Attribution")
+    plot_all_branches_sample_attribution(perf_sample_events, ip_to_func_name)
+    
 work()
