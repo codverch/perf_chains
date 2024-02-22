@@ -330,11 +330,11 @@ with open("ip_map.pickle", "wb") as f:
     # print(ip_to_func_name.keys())
 
 def work():
-    print("Plotting Tax Heatmap")
-    plot_tax_heatmap(perf_sample_events, ip_to_func_name)
+    # print("Plotting Tax Heatmap")
+    # plot_tax_heatmap(perf_sample_events, ip_to_func_name)
+    # print("Plotting All Branches Sample Attribution")
+    # plot_all_branches_sample_attribution(perf_sample_events, ip_to_func_name)
     print("Plotting Tax Sharing All Functions")
     plot_tax_sharing_all_functions(perf_sample_events, ip_to_func_name)
-    print("Plotting All Branches Sample Attribution")
-    plot_all_branches_sample_attribution(perf_sample_events, ip_to_func_name)
     
 work()
