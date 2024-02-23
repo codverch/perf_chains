@@ -81,6 +81,10 @@ sudo perf record -j any_call,any_ret -p <microservice_pid> -- sleep <time_in_sec
     Execute the following command to generate the output graphs for the collected samples in the results folder. To make changes to the          graph, modify driver.py:
 
    ```bash
-   python3 driver.py
+   sudo python3 driver.py
    ```
+
+## Caution: Empty Lines in Bucketization Files
+
+Ensure that none of the bucketization files used for categorizing functions contain empty lines. Empty lines in these files can lead to discrepancies in the results, as they may cause functions to be categorized incorrectly or not categorized at all. Before using the bucketization files, review them to remove any empty lines.
 
