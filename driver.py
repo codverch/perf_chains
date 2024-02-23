@@ -88,12 +88,12 @@ def bucketize(function_name):
 # ============================================================================
 
 def plot_tax_sharing_all_functions(perf_sample_events, ip_to_func_name):
-    # Initialize x-axis (tax categories) and y-axis (percentage of L1 icache load misses) data
+    # Initialize x-axis (tax categories) and y-axis (percentage of branch mispredictions) data
     xs = tax_categories
     ys = [0 for _ in tax_categories]
 
-    # Calculate total L1 icache load misses across all samples and branch stacks
-    total_icache_misses = sum([len(event.sample_event.branch_stack) for event in perf_sample_events if event.sample_event.branch_stack])
+    # Calculate total branch mispredictions across all samples and branch stacks
+    total_branch_mispredictions = sum([len(event.sample_event.branch_stack) for event in perf_sample_events if event.sample_event.branch_stack])
 
     # Iterate over each sample event
     for (i, event) in enumerate(perf_sample_events):
@@ -111,8 +111,8 @@ def plot_tax_sharing_all_functions(perf_sample_events, ip_to_func_name):
 
             ys[xs.index(cat)] += 1
 
-    # Calculate percentage of L1 icache load misses for each tax category
-    ys_percentage = [(y / total_icache_misses) * 100 for y in ys]
+    # Calculate percentage of branch mispredictions for each tax category
+    ys_percentage = [(y / total_branch_mispredictions) * 100 for y in ys]
 
     # Create a bar plot
     ax = sns.barplot(x=xs, y=ys_percentage, palette="muted")
@@ -120,9 +120,9 @@ def plot_tax_sharing_all_functions(perf_sample_events, ip_to_func_name):
     # Customize plot appearance
     plt.xticks(rotation=45, ha="right", rotation_mode="anchor")
     plt.xlabel("Tax Categories", fontsize=16)
-    plt.ylabel("Percentage of Total L1 icache Load Misses", fontsize=16)
+    plt.ylabel("Percentage of Total Branch Mispredictions", fontsize=16)
     plt.title("Memcached Tax Sharing All Functions", fontsize=16)
-    plt.savefig("l1_icache_memcached/tax_sharing_all_functions.png", bbox_inches="tight")
+    plt.savefig("branch_mispredictions_memcached/tax_sharing_all_functions.png", bbox_inches="tight")
 
     # Clear and close the plot to avoid overlapping with other plots
     plt.cla()
